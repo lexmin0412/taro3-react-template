@@ -2,47 +2,14 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { ComponentClass } from 'react';
+import { WImage } from 'taro-cui'
+
+import Line from '~/components/Line'
 import Toast from '~/utils/toast'
-
-import request from '~/utils/request'
+import { IPageOwnProps, IPageState, IProps } from './index.itf'
 import MicangPhpService from '~/services/php/micang.php.service'
+
 import './index.scss'
-
-/**
- * IPageStateProps
- */
-interface IPageStateProps {
-  home: {
-    exbitionData: {
-
-    }
-  },
-  loading: {
-    global: boolean;
-  };
-}
-
-/**
- * 定义dispatch
- */
-interface IPageDispatchProps {
-  dispatch: (arg0: any) => any;
-}
-
-/**
- * 界面属性定义
- */
-interface IPageOwnProps { }
-
-/**
- * 界面状态定义
- */
-interface IPageState { }
-
-/**
- * IProps
- */
-type IProps = IPageStateProps & IPageDispatchProps & IPageOwnProps;
 
 /**
  * Index
@@ -129,6 +96,8 @@ class Index extends Component {
             )
           })
         }
+        <Line height={1} color="#45aafa" />
+        <WImage type="goods" src="https://xxx.weilingdi.com" />
       </View>
     )
   }
