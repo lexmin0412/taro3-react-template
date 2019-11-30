@@ -1,138 +1,68 @@
-# Taro项目模版
+# Taro + Dva + TypeScript 项目模板
 
-https://www.jianshu.com/p/71e209987c83
+## Build Setup
 
-## 初始化
-
-```sh
-taro init taro-template
+```zsh
+git clone https://github.com/cathe-zhang/taro_template.git
+cd taro_template
+yarn
+yarn dev:h5
 ```
 
-安装redux相关依赖
+## 项目结构
 
-```bash
-yarn add redux @tarojs/redux @tarojs/redux-h5 redux-thunk redux-logger
+### 目录
+
+```tree
+├── dist                   编译结果目录
+├── config                 编译配置目录
+|   ├── dev.js             开发时配置
+|   ├── index.js           默认配置
+|   └── uat.js             测试打包配置
+|   └── prod.js            生产打包配置
+├── src                    源码目录
+|   ├── asstes             静态资源存放
+|   ├── components         常规组件文件夹
+|   ├── config             配置存放文件夹
+|   ├── constants          常量存放文件夹
+|   ├── enums              枚举
+|   ├── interceptors       taro接口拦截器
+|   ├── interfaces         接口存放
+|   ├── models             dva 的 model
+|   ├── pages              页面文件夹
+|   ├── services           服务类文件夹
+|   ├── styles             项目通用样式
+|   ├── utils              工具类存放文件夹
+|   └── app.tsx            项目入口文件
+└── package.json           项目依赖配置
+└── tsconfig.json          ts编译配置文件
 ```
 
-安装dva
+## 开发
 
-```bash
-yarn add dva-core dva-loading
-```
+### 新建页面
 
-- `dva-core`：封装 redux 和 redux-saga 的一个插件
-- `dva-loading`：管理页面的 loading 状态
+在 pages 文件夹下新建一个文件夹，作为一个模块
 
-https://wldoperation.weilingdi.com/mcang.php/Exhibition/getExhibition
+一个功能完备的页面至少包括以下三个文件：
 
-## 各模块完善
+- 页面
+- 样式
+- 接口定义
 
-### 不同环境下的域名等配置
 
-新建 src/config 文件夹
 
-并在这个文件夹下新建以下文件 
-- base.config.ts 书写默认配置 用于开发环境
-- uat.config.ts 书写测试环境配置
-- prod.config.ts 书写生产环境配置
-- index.config.ts 根据环境变量判断使用对象合并 导出对应的配置
 
-base.config.ts
-```js
-const config = {
-  php: {
-    url: 'https://wldoperation.58wld.com'
-  },
-  javaMapi: {
-    url: 'https://mapi.58wld.com/weleadin-web-mapi'
-  },
-  md5: {
-    key: '123456',
-  },
-  tDes: {
-    key: 'jdjhdjkdkkdkdk'
-  },
-  bMap: {
-    ak: 'y1pkfoj9chbELTmUzrjOKrGsSwgq7AjB',
-  }
-}
+## 技术栈
 
-export default config
-```
+- [taro](https://nervjs.github.io/taro/docs/README.html)
+- [taro-ui](https://taro-ui.aotu.io/)
+- [dvajs](https://dvajs.com/guide/)
+- [typescript](https://www.tslang.cn/docs/handbook/basic-types.html)
+- [scss](https://www.sass.hk/)
 
-uat.config.ts
-```ts
-import { ProjectConfig } from './../interface/projectConfig.itf';
+## 项目文档
 
-const config: ProjectConfig = {
-  php: {
-    url: 'https://wldoperation.58wld.com'
-  },
-  javaMapi: {
-    url: 'https://mapi.58wld.com/weleadin-web-mapi'
-  },
-  md5: {
-    key: '123456',
-  },
-  tDes: {
-    key: 'jdjhdjkdkkdkdk'
-  },
-  bMap: {
-    ak: 'y1pkfoj9chbELTmUzrjOKrGsSwgq7AjB',
-  }
-}
-
-export default config
-
-```
-
-prod.config.ts
-```ts
-const config = {
-  php: {
-    url: 'https://wldoperation.weilingdi.com'
-  },
-  javaMapi: {
-    url: 'https://mapi.weilingdi.com/weleadin-web-mapi'
-  },
-  md5: {
-    key: 'normal',
-  },
-  tDes: {
-    key: 'nomal-key'
-  },
-  bMap: {
-    ak: 'y1pkfoj9chbELTmUzrjOKrGsSwgq7AjB',
-  }
-}
-
-export default config
-
-```
-
-index.config.ts
-```ts
-import baseConfig from './base.config';
-import uatConfig from './uat.config';
-import prodConfig from './prod.config';
-
-let config = {}
-
-// 生产环境合并基础配置和生产配置
-if ( process.env.NODE_ENV === 'production' ) {
-  config = { ...baseConfig, ...prodConfig }
-}
-// 测试环境合并基础配置和测试配置
-else if ( process.env.NODE_ENV === 'uat' ) {
-  config = { ...baseConfig, ...uatConfig }
-}
-// 开发环境直接使用基础配置
-else {
-  config = baseConfig
-}
-
-export default config
-```
-
-### 请求配置
-
+- [更新日志](./CHANGELOG.md)
+- [开发计划](./TODO.md)
+- [项目搭建文档](./NOTE.md)
