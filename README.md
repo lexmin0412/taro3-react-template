@@ -338,7 +338,65 @@ class Index extends Component {
 }
 ```
 
+### 使用组件
 
+在业务开发的过程中，我们常需要复用一些相同的结构，如商品轮播图，订单item等，如果每个页面都复制粘贴一遍，不仅不美观，更难以维护，这时候就需要开发组件了。
+
+组件分为展示型组件和容器型组件。展示型组件只需要接收父组件传递的属性并渲染页面，容器型组件则会涉及到数据处理等复杂的逻辑，难以重用，所以平常我们开发的一般都是展示型的组件。
+
+#### 1. 定义组件
+
+组件和页面不一样，我们不需要去管在整个应用层面的不同组件的逻辑关系，只需要关注组件本身，所以不像 pages 下的文件结构，我们直接在 components 文件夹下直接新建文件即可。
+
+最简单的组件，如一条分割线，组件代码如下：
+
+```tsx
+// components/Line.tsx
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
+
+/**
+ * 组件需要的Props定义
+ */
+interface IProps {
+  height?: number; // 高度
+  color?: string; // 颜色
+}
+
+export default class Line extends Component<IProps> {
+
+  render() {
+    return (
+      <View
+        style={{
+          background: this.props.color || '#F5F5F5',
+          height: `${Taro.pxTransform(this.props.height || 10)}`
+        }}
+      />
+    );
+  }
+}
+```
+
+如果需要定义样式，在同级文件夹下新建 scss 文件并引入即可。
+
+#### 2. 在页面中引用
+
+```tsx
+import Line from '~/components/Line'
+
+class Index extends Component {
+
+  render() {
+    return (
+      <View className='index-page'>
+        <Text>Hello world!</Text>
+        <Line height={1} color="#45aafa" />
+      </View>
+    )
+  }
+}
+```
 
 ## 技术栈
 
