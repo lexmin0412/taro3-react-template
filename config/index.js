@@ -1,3 +1,5 @@
+const path = require('path')
+
 const config = {
   projectName: 'taro-template',
   date: '2019-11-26',
@@ -6,6 +8,21 @@ const config = {
     '640': 2.34 / 2,
     '750': 1,
     '828': 1.81 / 2
+  },
+  // 解析alias路径
+  alias: {
+    '~/': path.resolve(__dirname, '..', 'src/'),
+    '~/assets': path.resolve(__dirname, '..', 'src/assets'),
+    '~/components': path.resolve(__dirname, '..', 'src/components'),
+    '~/config': path.resolve(__dirname, '..', 'src/config'),
+    '~/constants': path.resolve(__dirname, '..', 'src/constants'),
+    '~/enums': path.resolve(__dirname, '..', 'src/enums'),
+    '~/interceptors': path.resolve(__dirname, '..', 'src/interceptors'),
+    '~/interfaces': path.resolve(__dirname, '..', 'src/interfaces'),
+    '~/models': path.resolve(__dirname, '..', 'src/models'),
+    '~/pages': path.resolve(__dirname, '..', 'src/pages'),
+    '~/services': path.resolve(__dirname, '..', 'src/services'),
+    '~/utils': path.resolve(__dirname, '..', 'src/utils'),
   },
   sourceRoot: 'src',
   outputRoot: 'dist',

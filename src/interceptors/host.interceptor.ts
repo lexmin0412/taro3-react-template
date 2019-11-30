@@ -1,0 +1,14 @@
+import { INTERCEPTOR_HEADER } from '~/constants/header'
+
+export default function(chain) {
+  console.log('enter host interceptor', chain)
+  const requestParams = chain.requestParams
+  const { header, url } = requestParams
+
+  // 如果传入url自带域名则不做处理 否则加上对应的域名
+  if ( !(url.startsWith('https://') || url.startsWith('http://')) ) {
+    requestParams.url = `${header[INTERCEPTOR_HEADER].hostUrl.url}${url}`
+  }
+  console.log('after hostInterceptor', requestParams)
+  return chain.proceed(requestParams)
+}

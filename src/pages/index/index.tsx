@@ -1,5 +1,8 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+
+import request from '~/utils/request'
+import MicangPhpService from '~/services/php/micang.php.service'
 import './index.scss'
 
 export default class Index extends Component {
@@ -17,13 +20,42 @@ export default class Index extends Component {
 
   componentWillMount () { }
 
-  componentDidMount () { }
+  componentDidMount () {
+    // MicangPhpService.getExhibition().then((res)=>{
+    //   console.log('res',res)
+    // }).catch((err)=>{
+    //   console.log('err',err)
+    // })
+    this.querysfds()
+  }
 
   componentWillUnmount () { }
 
   componentDidShow () { }
 
   componentDidHide () { }
+
+  // 直接在页面调用service
+  async querysfds () {
+    console.log('MicangPhpService.getExhibition',MicangPhpService.getExhibition)
+    let result = await MicangPhpService.getExhibition({
+      c_type: 1,
+      pageindex: 1,
+      pagesize: 10
+    },)
+    console.log('result',result)
+  }
+
+  // 在页面调用model
+  // async querysfds () {
+  //   console.log('MicangPhpService.getExhibition',MicangPhpService.getExhibition)
+  //   let result = await MicangPhpService.getExhibition({
+  //     c_type: 1,
+  //     pageindex: 1,
+  //     pagesize: 10
+  //   },)
+  //   console.log('result',result)
+  // }
 
   render () {
     return (

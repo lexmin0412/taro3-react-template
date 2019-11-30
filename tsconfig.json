@@ -22,7 +22,33 @@
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts"
-    ]
+    ],
+    "paths" : {
+      "~/": ["src/"],
+      "~/*": ["src/*"],
+      "~/assets": ["src/assets/"],
+      "~/assets/*": ["src/assets/*"],
+      "~/components": ["src/components/"],
+      "~/components/*": ["src/components/*"],
+      "~/config": ["src/config/"],
+      "~/config/*": ["src/config/*"],
+      "~/constants": ["src/constants/"],
+      "~/constants/*": ["src/constants/*"],
+      "~/enums": ["src/enums/"],
+      "~/enums/*": ["src/enums/*"],
+      "~/interceptors": ["src/interceptors/"],
+      "~/interceptors/*": ["src/interceptors/*"],
+      "~/interfaces": ["src/interfaces/"],
+      "~/interfaces/*": ["src/interfaces/*"],
+      "~/models/": ["src/models/"],
+      "~/models/*": ["src/models/*"],
+      "~/pages/": ["src/pages/"],
+      "~/pages/*": ["src/pages/*"],
+      "~/services": ["src/services/"],
+      "~/services/*": ["src/services/*"],
+      "~/utils": ["src/utils/"],
+      "~/utils/*": ["src/utils/*"],
+    }
   },
   "exclude": [
     "node_modules",
