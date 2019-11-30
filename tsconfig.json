@@ -46,6 +46,8 @@
       "~/pages/*": ["src/pages/*"],
       "~/services": ["src/services/"],
       "~/services/*": ["src/services/*"],
+      "~/styles": ["src/styles/"],
+      "~/styles/*": ["src/styles/*"],
       "~/utils": ["src/utils/"],
       "~/utils/*": ["src/utils/*"],
     }
