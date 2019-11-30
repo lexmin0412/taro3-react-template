@@ -203,6 +203,143 @@ export interface IPageState { }
 export type IProps = IPageStateProps & IPageDispatchProps & IPageOwnProps;
 ```
 
+### 请求数据
+
+在页面中请求数据，需要先做一个判断：当前这个接口的数据需不需要跨页面共享，如果不需要，那么就没有必要经过dva，直接调用 service 即可；反之则需要定义 model , 在页面上发起 action, 走 dva 的流程。
+
+#### 直接调用 service 获取数据
+
+```tsx
+import MicangPhpService from '~/services/php/micang.php.service'
+
+class Index extends Component {
+
+  state = {}
+
+  componentDidMount() {
+    this.queryExhibitionData()
+  }
+  
+  // 直接调用service
+  async queryExhibitionData () {
+    let result = await MicangPhpService.getExhibition({
+      c_type: 1,
+      pageindex: 1,
+      pagesize: 10
+    },)
+    if ( +result.code === 0 ) {
+      this.setState({
+        exbitionData: result.data
+      })
+    }
+  }
+
+  render() {
+    const { exbitionData } = this.state
+    return (
+      <View className='home-index-page'>
+        {
+          exbitionData.exhibition_list && exbitionData.exhibition_list.map((item,index)=>{
+            return (
+              <View>{item.now_time_str}</View>
+            )
+          })
+        }
+      </View>
+    )
+  }
+}
+```
+
+#### 通过 dva 获取数据
+
+##### 1. 定义 model
+
+在 src/models 下新建文件:
+
+```ts
+// models/home.ts
+import MicangPhpService from '~/services/php/micang.php.service'
+
+export default {
+  namespace: 'home',
+  state: { exbitionData: {} },
+  effects: {
+    /**
+     * 获取会场数据
+     */
+    *getExhibition({payload}, { call, put }) {
+      const { code, data } = yield call(
+        MicangPhpService.getExhibition.bind(MicangPhpService, payload)
+      );
+      if (data) {
+        yield put({
+          type: 'saveExhibitionData',
+          payload: {
+            data
+          }
+        });
+      }
+    }
+  },
+  reducers: {
+    // 保存数据到redux
+    saveExhibitionData(state, { payload }) {
+      const { data } = payload;
+      return { ...state,
+        exbitionData: data
+      };
+    }
+  }
+};
+```
+
+##### 2. 在页面上发起 action
+
+```tsx
+// pages/home/index.tsx
+import { connect } from '@tarojs/redux'
+
+@connect(({ home }) => {
+  return { home };
+})
+class Index extends Component {
+
+  componentDidMount() {
+    this.queryExhibitionData()
+  }
+
+  // 调用dva action请求数据
+  queryExhibitionData () {
+    this.props.dispatch({
+      type: 'home/getExhibition',
+      payload: {
+        c_type: 1,
+        pageindex: 1,
+        pagesize: 10
+      }
+    })
+  }
+
+  render() {
+    const { exbitionData } = this.props.home
+    return (
+      <View className='home-index-page'>
+        {
+          exbitionData.exhibition_list && exbitionData.exhibition_list.map((item,index)=>{
+            return (
+              <View>{item.now_time_str}</View>
+            )
+          })
+        }
+      </View>
+    )
+  }
+}
+```
+
+
+
 ## 技术栈
 
 - [taro](https://nervjs.github.io/taro/docs/README.html)
