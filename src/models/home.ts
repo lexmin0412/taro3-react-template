@@ -11,7 +11,6 @@ export default {
 			const { code, data } = yield call(
 				MicangPhpService.getExhibition.bind(MicangPhpService, payload)
 			);
-			console.log('model data', code, data);
 			if (data) {
 				yield put({
 					type: 'saveExhibitionData',
@@ -23,9 +22,8 @@ export default {
 		}
 	},
 	reducers: {
-		// 保存数据
+		// 保存数据到redux
 		saveExhibitionData(state, { payload }) {
-			console.log('reducer payload', payload);
 			const { data } = payload;
       return { ...state,
         exbitionData: data
