@@ -8310,6 +8310,11 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
 
+taro-cui@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/taro-cui/-/taro-cui-0.1.7.tgz#c8c26dcc6b0ef4f6617209d71ef0eee73e8c0b6e"
+  integrity sha512-5cKzZcA+H1ngx5n/xnC7U4LiIVNv2+yXIu8MONxqR85MZYI+udoGUO1wfMGuHM9tC6BzGGvhgMoCKL6Flvl1mQ==
+
 terser-webpack-plugin@^1.1.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-1.4.1.tgz#61b18e40eaee5be97e771cdbb10ed1280888c2b4"
