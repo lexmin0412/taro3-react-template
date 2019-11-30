@@ -1,11 +1,52 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
+import { ComponentClass } from 'react';
 
 import request from '~/utils/request'
 import MicangPhpService from '~/services/php/micang.php.service'
 import './index.scss'
 
-export default class Index extends Component {
+/**
+ * IPageStateProps
+ */
+interface IPageStateProps {
+  home: {}
+}
+
+/**
+ * 定义dispatch
+ */
+interface IPageDispatchProps {
+  dispatch: (arg0: any) => any;
+}
+
+/**
+ * 界面属性定义
+ */
+interface IPageOwnProps { }
+
+/**
+ * 界面状态定义
+ */
+interface IPageState { }
+
+/**
+ * IProps
+ */
+type IProps = IPageStateProps & IPageDispatchProps & IPageOwnProps;
+
+/**
+ * Index
+ */
+interface Index {
+  props: IProps;
+}
+
+@connect(({ home }) => {
+  return { home };
+})
+class Index extends Component {
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -18,36 +59,25 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillMount () { }
+  componentWillMount() { }
 
-  componentDidMount () {
+  componentDidMount() {
     // MicangPhpService.getExhibition().then((res)=>{
     //   console.log('res',res)
     // }).catch((err)=>{
     //   console.log('err',err)
     // })
-    this.querysfds()
+    this.queryExhibitionData()
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
   // 直接在页面调用service
-  async querysfds () {
-    console.log('MicangPhpService.getExhibition',MicangPhpService.getExhibition)
-    let result = await MicangPhpService.getExhibition({
-      c_type: 1,
-      pageindex: 1,
-      pagesize: 10
-    },)
-    console.log('result',result)
-  }
-
-  // 在页面调用model
-  // async querysfds () {
+  // async queryExhibitionData () {
   //   console.log('MicangPhpService.getExhibition',MicangPhpService.getExhibition)
   //   let result = await MicangPhpService.getExhibition({
   //     c_type: 1,
@@ -57,7 +87,22 @@ export default class Index extends Component {
   //   console.log('result',result)
   // }
 
-  render () {
+  // 在页面调用model
+  async queryExhibitionData() {
+    console.log('this.props', this.props)
+    this.props.dispatch({
+      type: 'home/getExhibition',
+      payload: {
+        c_type: 1,
+        pageindex: 1,
+        pagesize: 10
+      }
+    }).then((res)=>{
+      console.log('res model from page',res)
+    })
+  }
+
+  render() {
     return (
       <View className='index'>
         <Text>Hello world!</Text>
@@ -65,3 +110,5 @@ export default class Index extends Component {
     )
   }
 }
+
+export default Index as ComponentClass<IPageOwnProps, IPageState>;

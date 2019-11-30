@@ -1,5 +1,9 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import '@tarojs/async-await'
+import { Provider } from '@tarojs/redux'
+import dva from '~/utils/dva'
+import models from '~/models/index'
+
 import Index from './pages/index'
 
 import './app.scss'
@@ -9,6 +13,16 @@ import './app.scss'
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
+
+const dvaApp = dva.createApp({
+  initialState: {},
+  models,
+  onError: e => {
+    console.log("dva-error", e);
+  }
+})
+
+const store = dvaApp.getStore()
 
 class App extends Component {
 
@@ -31,19 +45,21 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
+  componentDidMount() { }
 
-  componentDidShow () {}
+  componentDidShow() { }
 
-  componentDidHide () {}
+  componentDidHide() { }
 
-  componentDidCatchError () {}
+  componentDidCatchError() { }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
-      <Index />
+      <Provider store={store} >
+        <Index />
+      </Provider>
     )
   }
 }
