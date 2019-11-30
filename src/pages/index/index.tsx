@@ -2,6 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { ComponentClass } from 'react';
+import Toast from '~/utils/toast'
 
 import request from '~/utils/request'
 import MicangPhpService from '~/services/php/micang.php.service'
@@ -96,6 +97,7 @@ class Index extends Component {
 
   // 在页面调用model
   async queryExhibitionData() {
+    Toast.loading('加载中...')
     console.log('this.props', this.props)
     this.props.dispatch({
       type: 'home/getExhibition',
@@ -106,6 +108,7 @@ class Index extends Component {
       }
     }).then((res)=>{
       console.log('res model from page',res)
+      Toast.hideLoading()
     })
   }
 
