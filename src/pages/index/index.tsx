@@ -11,7 +11,14 @@ import './index.scss'
  * IPageStateProps
  */
 interface IPageStateProps {
-  home: {}
+  home: {
+    exbitionData: {
+
+    }
+  },
+  loading: {
+    global: boolean;
+  };
 }
 
 /**
@@ -43,8 +50,8 @@ interface Index {
   props: IProps;
 }
 
-@connect(({ home }) => {
-  return { home };
+@connect(({ home, loading }) => {
+  return { home, loading };
 })
 class Index extends Component {
 
@@ -103,9 +110,22 @@ class Index extends Component {
   }
 
   render() {
+    const { exbitionData } = this.props.home
+    const { loading } = this.props
+    console.log('exhibitionData', exbitionData, this.props)
     return (
       <View className='index'>
         <Text>Hello world!</Text>
+        {
+          loading.global ?
+          <View>loading...</View>
+          :
+          exbitionData.exhibition_list && exbitionData.exhibition_list.map((item,index)=>{
+            return (
+              <View>{item.now_time_str}</View>
+            )
+          })
+        }
       </View>
     )
   }
