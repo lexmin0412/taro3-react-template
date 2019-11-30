@@ -47,11 +47,161 @@ yarn dev:h5
 一个功能完备的页面至少包括以下三个文件：
 
 - 页面
+
+  ```tsx
+  // pages/home/index
+  import Taro, { Component, Config } from '@tarojs/taro'
+  import { View, Text } from '@tarojs/components'
+  import { connect } from '@tarojs/redux'
+  import { ComponentClass } from 'react';
+
+  import { IPageOwnProps, IPageState, IProps } from './index.itf'
+  import Line from '~/components/Line'
+  import Toast from '~/utils/toast'
+
+  import './index.scss'
+
+  interface Index {
+    props: IProps;
+  }
+
+  @connect(({ home, loading }) => {
+    return { home, loading };
+  })
+  class Index extends Component {
+
+    config: Config = {
+      // 设置页面标题
+      navigationBarTitleText: '首页'
+    }
+
+    componentDidMount() {
+      this.queryExhibitionData()
+    }
+
+    // 调用dva action请求数据
+    async queryExhibitionData() {
+      Toast.loading('加载中...')
+      console.log('this.props', this.props)
+      this.props.dispatch({
+        type: 'home/getExhibition',
+        payload: {
+          c_type: 1,
+          pageindex: 1,
+          pagesize: 10
+        }
+      }).then((res)=>{
+        console.log('res model from page',res)
+        Toast.hideLoading()
+      })
+    }
+
+    render() {
+      const { exbitionData } = this.props.home
+      const { loading } = this.props
+      return (
+        <View className='home-index-page'>
+          <Text>Hello world!</Text>
+          {
+            loading.global ?
+            <View>loading...</View>
+            :
+            exbitionData.exhibition_list && exbitionData.exhibition_list.map((item,index)=>{
+              return (
+                <View>{item.now_time_str}</View>
+              )
+            })
+          }
+          <Line height={1} color="#45aafa" />
+        </View>
+      )
+    }
+  }
+
+  export default Index as ComponentClass<IPageOwnProps, IPageState>;
+  ```
+
+  #### 静态资源导入规范
+
+  一个页面文件导入模块时应该按照如下规范：
+
+  1. 先导入第三方模块，如第三方UI库等
+  2. 再导入项目内部模块，如组件、工具类等
+  3. 导入静态文件，图片在前，其他资源次之，样式文件最后
+
+  示例：
+
+  ```tsx
+  // 导入第三方库
+  import Taro, { Component, Config } from '@tarojs/taro'
+  import { View, Text } from '@tarojs/components'
+  import { connect } from '@tarojs/redux'
+  import { ComponentClass } from 'react';
+
+  // 导入项目内部模块
+  import { IPageOwnProps, IPageState, IProps } from './index.itf'
+  import Line from '~/components/Line'
+  import Toast from '~/utils/toast'
+
+  // 导入静态文件和样式
+  import './index.scss'
+  ```
+
+  #### 样式类名命名规范
+
+  - 页面容器应以模块-文件名-容器类型命名，如 home-index-page, line-component 等
+
 - 样式
+
+```scss
+// pages/home/index.scss
+@import './../../styles/base.scss';
+
+.index-page {
+  background: $theme-color;
+}
+```
+
 - 接口定义
 
+```ts
+// pages/home/index.itf.ts
+/**
+ * redux数据定义
+ */
+interface IPageStateProps {
+  home: {
+    exbitionData: {
+      exhibition_list: Array<any>
+    }
+  },
+  loading: {
+    global: boolean;
+  };
+}
 
+/**
+ * 定义dispatch
+ */
+interface IPageDispatchProps {
+  dispatch: (arg0: any) => any;
+}
 
+/**
+ * 界面属性定义
+ */
+export interface IPageOwnProps { }
+
+/**
+ * 页面state定义
+ */
+export interface IPageState { }
+
+/**
+ * IProps
+ */
+export type IProps = IPageStateProps & IPageDispatchProps & IPageOwnProps;
+```
 
 ## 技术栈
 
