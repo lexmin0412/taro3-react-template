@@ -1,4 +1,4 @@
-# Taro + Dva + TypeScript 项目模板
+# Taro + Dva + TypeScript + Scss 项目模板
 
 ## Build Setup
 
