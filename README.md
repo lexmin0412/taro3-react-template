@@ -3,9 +3,13 @@
 ## Build Setup
 
 ```zsh
+# 获取模版
 git clone https://github.com/cathe-zhang/taro_template.git
+# 进入项目文件夹
 cd taro_template
+# 安装依赖
 yarn
+# 本地浏览器运行
 yarn dev:h5
 ```
 
