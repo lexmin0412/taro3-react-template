@@ -3,8 +3,9 @@ import '@tarojs/async-await'
 import { Provider } from '@tarojs/redux'
 import dva from '~/utils/dva'
 import models from '~/models/index'
+import { checkUpdate } from '~/utils/mp'
 
-import Index from './pages/index'
+import Index from './pages/home/index'
 
 import './app.scss'
 
@@ -35,7 +36,7 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/index/index'
+      'pages/home/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -45,7 +46,10 @@ class App extends Component {
     }
   }
 
-  componentDidMount() { }
+  componentDidMount() {
+    // 检查更新
+    checkUpdate()
+  }
 
   componentDidShow() { }
 
