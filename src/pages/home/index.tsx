@@ -2,7 +2,6 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { ComponentClass } from 'react';
-import { WImage } from 'taro-cui'
 
 import Line from '~/components/Line'
 import Toast from '~/utils/toast'
@@ -84,7 +83,7 @@ class Index extends Component {
     const { loading } = this.props
     console.log('exhibitionData', exbitionData, this.props)
     return (
-      <View className='index'>
+      <View className='home-index-page'>
         <Text>Hello world!</Text>
         {
           loading.global ?
@@ -97,7 +96,6 @@ class Index extends Component {
           })
         }
         <Line height={1} color="#45aafa" />
-        <WImage type="goods" src="https://xxx.weilingdi.com" />
       </View>
     )
   }
