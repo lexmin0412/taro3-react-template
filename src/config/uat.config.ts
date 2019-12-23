@@ -1,8 +1,6 @@
-import { ProjectConfig } from './../interface/projectConfig.itf';
-
-const config: ProjectConfig = {
+const config = {
   php: {
-    url: 'https://wldoperation.58wld.com'
+    url: 'http://v.juhe.cn'
   },
   javaMapi: {
     url: 'https://mapi.58wld.com/weleadin-web-mapi'
