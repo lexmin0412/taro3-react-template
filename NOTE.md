@@ -28,6 +28,7 @@ https://wldoperation.weilingdi.com/mcang.php/Exhibition/getExhibition
 ## 各模块完善
 
 ### 完善文件结构
+
 - assets
 - components
 - config
@@ -101,18 +102,19 @@ const config = {
 }
 ```
 
-
 ### 不同环境下的域名等配置
 
 新建 src/config 文件夹
 
-并在这个文件夹下新建以下文件 
+并在这个文件夹下新建以下文件
+
 - base.config.ts 书写默认配置 用于开发环境
 - uat.config.ts 书写测试环境配置
 - prod.config.ts 书写生产环境配置
 - index.config.ts 根据环境变量判断使用对象合并 导出对应的配置
 
 base.config.ts
+
 ```js
 const config = {
   php: {
@@ -136,6 +138,7 @@ export default config
 ```
 
 uat.config.ts
+
 ```ts
 import { ProjectConfig } from './../interface/projectConfig.itf';
 
@@ -162,6 +165,7 @@ export default config
 ```
 
 prod.config.ts
+
 ```ts
 const config = {
   php: {
@@ -182,10 +186,10 @@ const config = {
 }
 
 export default config
-
 ```
 
 index.config.ts
+
 ```ts
 import baseConfig from './base.config';
 import uatConfig from './uat.config';
@@ -207,6 +211,29 @@ else {
 }
 
 export default config
+```
+
+### 定义全局变量
+
+在 config/index.config.ts 中, 需要通过 Node 环境变量判断来区分使用的配置, 所以我们在根目录下的 `global.d.ts` 中需要定义全局对象 process
+
+```ts
+declare const process: {
+	env: {
+		/**
+		 * taro环境变量
+		 */
+		TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq';
+		/**
+		 * node环境变量
+		 */
+		NODE_ENV: 'development' | 'uat' | 'production';
+		/**
+		 * 扩展其他属性
+		 */
+    [key: string]: any;
+  }
+}
 ```
 
 ### 配置dva
@@ -275,6 +302,7 @@ export default {
 在src下新建interceptors文件夹
 
 一个大型项目至少需要以下的几个请求拦截器：
+
 - host拦截器
 - 头部拦截器
 - 数据处理拦截器
@@ -282,10 +310,20 @@ export default {
 host拦截器：
 在interceptors文件夹下面新建host.interceptor.ts
 
-```
+```ts
+import { INTERCEPTOR_HEADER } from '~/constants/header'
 
-```
+export default function(chain) {
+  const requestParams = chain.requestParams
+  const { header, url } = requestParams
 
+  // 如果传入url自带域名则不做处理 否则加上对应的域名
+  if ( !(url.startsWith('https://') || url.startsWith('http://')) ) {
+    requestParams.url = `${header[INTERCEPTOR_HEADER].hostUrl.url}${url}`
+  }
+  return chain.proceed(requestParams)
+}
+```
 
 在taro中使用async/awiat
 
