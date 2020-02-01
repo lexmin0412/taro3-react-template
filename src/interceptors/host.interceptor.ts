@@ -1,3 +1,7 @@
+/**
+ * host拦截器 处理url拼接等
+ */
+
 import { INTERCEPTOR_HEADER } from '~/constants/header'
 
 export default function(chain) {

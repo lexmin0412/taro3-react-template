@@ -1,3 +1,7 @@
+/**
+ * 删除自定义请求头拦截器
+ */
+
 import { INTERCEPTOR_HEADER } from '~/constants/header'
 
 export default function(chain) {
