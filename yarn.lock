@@ -123,10 +123,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@tarojs/async-await@^1.3.26":
-  version "1.3.26"
-  resolved "https://registry.yarnpkg.com/@tarojs/async-await/-/async-await-1.3.26.tgz#eccd8741b7009dd7a81204078c865383245624f5"
-  integrity sha512-UcBbNDSCZzgn1zVPGhLREJ/r+tCYq8buRHECKFm9Q+zC86ZMCFNb86EC7/4SICMJZ1BQaMm2ovMKYLAF3HdRCA==
+"@tarojs/async-await@^1.3.22":
+  version "1.3.33"
+  resolved "http://npm.pt.hydee.cn/@tarojs%2fasync-await/-/async-await-1.3.33.tgz#f364de5f0fcd748f67b5627d8f348fd616e649e1"
+  integrity sha1-82TeXw/NdI9ntWJ9jzSP1hbmSeE=
   dependencies:
     promise-polyfill "^7.1.2"
     regenerator-runtime "^0.11.1"
@@ -173,23 +173,23 @@
   dependencies:
     uglify-js "^3.3.24"
 
-"@tarojs/redux-h5@^1.3.25":
-  version "1.3.25"
-  resolved "https://registry.yarnpkg.com/@tarojs/redux-h5/-/redux-h5-1.3.25.tgz#3795c606f5272f17dcac1d378657b70b9dbb166e"
-  integrity sha512-utyDSIuQbO8n/VEbFKbqZOFiQeBdmd9a+YCe+6QeEkuuIlF9neXvZfEzIcRO+tXAAXSvwqQ0sUEYZabqsZLoRg==
+"@tarojs/redux-h5@^1.3.22":
+  version "1.3.33"
+  resolved "http://npm.pt.hydee.cn/@tarojs%2fredux-h5/-/redux-h5-1.3.33.tgz#63d72193054b948ec29d2d43ff49f3026675329b"
+  integrity sha1-Y9chkwVLlI7CnS1D/0nzAmZ1Mps=
   dependencies:
     hoist-non-react-statics "^2.5.0"
     invariant "^2.2.4"
     loose-envify "^1.1.0"
     prop-types "^15.6.1"
 
-"@tarojs/redux@^1.3.25":
-  version "1.3.25"
-  resolved "https://registry.yarnpkg.com/@tarojs/redux/-/redux-1.3.25.tgz#7c92897984daedc5631e43d9ebe66ba1049cce97"
-  integrity sha512-hx4jfUd/eRErFbBa0Qri9sxMv9DuLuLz+mIpRMJRq7/FCK/YXB7fm1kv6wxfhAokUn0QtIUjdBKr2WeXUiQ4xA==
+"@tarojs/redux@^1.3.22":
+  version "1.3.33"
+  resolved "http://npm.pt.hydee.cn/@tarojs%2fredux/-/redux-1.3.33.tgz#317baa99f5c6cdb09f3799ac57aa9cae8c0432fa"
+  integrity sha1-MXuqmfXGzbCfN5msV6qcrowEMvo=
   dependencies:
-    "@tarojs/taro" "1.3.25"
-    "@tarojs/utils" "1.3.25"
+    "@tarojs/taro" "1.3.33"
+    "@tarojs/utils" "1.3.33"
 
 "@tarojs/router@1.3.22":
   version "1.3.22"
@@ -281,22 +281,22 @@
   dependencies:
     "@tarojs/utils" "1.3.22"
 
-"@tarojs/taro@1.3.25":
-  version "1.3.25"
-  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-1.3.25.tgz#70fa2ec933da30f08770739478a76a7ecb752358"
-  integrity sha512-DTgS5K9Sz0JZtwQ1nqD7GYRpBxbKioYwzmCEPjuyAhOXY6JDxPyZkbLGfsqSTh86CQgy/hBq6oh1E1of/JBGrw==
+"@tarojs/taro@1.3.33":
+  version "1.3.33"
+  resolved "http://npm.pt.hydee.cn/@tarojs%2ftaro/-/taro-1.3.33.tgz#2c4dcbf9f739a4e93647638998f45d1621638fcd"
+  integrity sha1-LE3L+fc5pOk2R2OJmPRdFiFjj80=
   dependencies:
-    "@tarojs/utils" "1.3.25"
+    "@tarojs/utils" "1.3.33"
 
 "@tarojs/utils@1.3.22":
   version "1.3.22"
   resolved "https://registry.yarnpkg.com/@tarojs/utils/-/utils-1.3.22.tgz#38d473fc538a7ad6d7b2eab93eba3552794037d9"
   integrity sha512-Af4SqG5Y5elRwLQte6p82eFYUfF9s0HXEXlw8NRpQkEkNQEJchrMOa8YGoAwTR8+3SxaP8soWtuYbnVHCDDL3g==
 
-"@tarojs/utils@1.3.25":
-  version "1.3.25"
-  resolved "https://registry.yarnpkg.com/@tarojs/utils/-/utils-1.3.25.tgz#646698f3bb2babed837447617ccec7bd4ee393e3"
-  integrity sha512-c/gpkBdPX94KwPKZRcQMO1FiRlho9r+VxF1StqDseaRUmQTCMcir44Cfw4NYVcMmpjm3YtWIDHWMCTimoMvaPA==
+"@tarojs/utils@1.3.33":
+  version "1.3.33"
+  resolved "http://npm.pt.hydee.cn/@tarojs%2futils/-/utils-1.3.33.tgz#8593b0b8b298628cf94faec7771e987beabf43c6"
+  integrity sha1-hZOwuLKYYoz5T67Hdx6Ye+q/Q8Y=
 
 "@tarojs/webpack-runner@1.3.22":
   version "1.3.22"
