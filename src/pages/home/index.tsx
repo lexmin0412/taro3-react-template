@@ -1,12 +1,14 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Input } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { ComponentClass } from 'react';
 
 import Line from '~/components/Line'
 import Toast from '~/utils/toast'
 import { IPageOwnProps, IPageState, IProps } from './index.itf'
-import MicangPhpService from '~/services/php/micang.php.service'
+import MobileService from '~/services/apisJuhe/mobile.service'
+import WeatherService from '~/services/apisJuhe/weather.service'
+import MicangPhpService from '~/services/wldOperation/micang.php.service'
 
 import './index.scss'
 
@@ -31,7 +33,13 @@ class Index extends Component {
    */
   config: Config = {
     navigationBarTitleText: '首页'
-  }
+	}
+
+	state = {
+		phoneNumber: '',
+		mobileText: '',
+		weatherText: '',  // 天气预报文字
+	}
 
   componentWillMount() { }
 
@@ -41,7 +49,9 @@ class Index extends Component {
     // }).catch((err)=>{
     //   console.log('err',err)
     // })
-    this.queryExhibitionData()
+		// this.queryExhibitionData()
+		// this.queryMobile()
+
   }
 
   componentWillUnmount() { }
@@ -51,36 +61,88 @@ class Index extends Component {
   componentDidHide() { }
 
   // 直接在页面调用service
-  // async queryExhibitionData () {
-  //   console.log('MicangPhpService.getExhibition',MicangPhpService.getExhibition)
-  //   let result = await MicangPhpService.getExhibition({
-  //     c_type: 1,
-  //     pageindex: 1,
-  //     pagesize: 10
-  //   },)
-  //   console.log('result',result)
-  // }
+  async queryExhibitionData () {
+    let result = await MicangPhpService.getExhibition({
+      c_type: 1,
+      pageindex: 1,
+      pagesize: 10
+    },)
+    console.log('result',result)
+  }
 
   // 在页面调用model
-  async queryExhibitionData() {
-    Toast.loading('加载中...')
-    console.log('this.props', this.props)
-    this.props.dispatch({
-      type: 'home/getExhibition',
-      payload: {
-        c_type: 1,
-        pageindex: 1,
-        pagesize: 10
-      }
-    }).then((res)=>{
-      console.log('res model from page',res)
-      Toast.hideLoading()
-    })
-  }
+  // async queryExhibitionData() {
+  //   Toast.loading('加载中...')
+  //   console.log('this.props', this.props)
+  //   this.props.dispatch({
+  //     type: 'home/getExhibition',
+  //     payload: {
+	// 			type: 'top',
+	// 			key: '4f19cac29ddbd92f1c2093e859a93809'
+  //     }
+  //   }).then((res)=>{
+  //     console.log('res model from page',res)
+  //     Toast.hideLoading()
+	// 	})
+	// }
+
+	/**
+	 * 查询手机号码归属地
+	 */
+	async queryMobile(phoneNumber: number|string) {
+		let { data } = await MobileService.queryMobile({
+			phoneNumber
+		})
+		this.setState({
+			mobileText: `${data.province}${data.city}${data.company}`
+		})
+		console.log('查手机号归属地结果', data)
+	}
+
+	/**
+	 * 手机号输入
+	 */
+	handleMobileInput = (e) => {
+		this.setState({
+			phoneNumber: e.detail.value
+		})
+		// if ( this.state.mobileText ) {
+		// 	this.setState({
+		// 		mobileText: ''
+		// 	})
+		// }
+	}
+
+	/**
+	 * 查询按钮点击
+	 */
+	handleSearchBtnClick = () => {
+		console.log('into handleSearchBtnclick')
+		const { phoneNumber } = this.state
+		this.queryMobile(phoneNumber)
+	}
+
+	/**
+	 * 查询天气预报
+	 */
+	async queryWeather() {
+		// const { data } = await WeatherService.queryWeather({
+		// 	city: '长沙'
+		// })
+		WeatherService.queryWeather({
+			city: '长沙'
+		}).then((res)=>{
+			console.log('长沙天气预报结果', res)
+		}).catch(err=>{
+			console.error('长沙天气预报结果', err)
+		})
+		// console.log('长沙天气预报结果', data)
+	}
 
   render() {
     const { exbitionData } = this.props.home
-    const { loading } = this.props
+		const { loading } = this.props
+		const { mobileText, phoneNumber, weatherText } = this.state
     console.log('exhibitionData', exbitionData, this.props)
     return (
       <View className='home-index-page'>
@@ -95,7 +157,26 @@ class Index extends Component {
             )
           })
         }
-        <Line height={1} color="#45aafa" />
+        <Line height={1} color="#ff4a4a" />
+
+				<Text>查询手机号归属地</Text>
+				<Input type="number" onInput={this.handleMobileInput.bind(this)} placeholder="请输入手机号" />
+				<View onClick={this.handleSearchBtnClick.bind(this)}>点击查询</View>
+				{
+					mobileText &&
+					<View>
+						查询结果：手机号{phoneNumber}的归属地为{mobileText}
+					</View>
+				}
+				<View onClick={this.queryWeather.bind(this)}>
+					点击查询天气预报
+				</View>
+				<View>
+					天气预报：{weatherText}
+				</View>
+				<View onClick={this.queryExhibitionData.bind(this)}>
+					获取banner数据
+				</View>
       </View>
     )
   }

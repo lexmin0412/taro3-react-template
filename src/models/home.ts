@@ -1,4 +1,4 @@
-import MicangPhpService from '~/services/php/micang.php.service'
+import MicangPhpService from '~/services/vJuhe/micang.php.service'
 
 export default {
 	namespace: 'home',
@@ -8,7 +8,7 @@ export default {
 		 * 获取用户信息【鉴权】app 交互
 		 */
 		*getExhibition({payload}, { call, put }) {
-			const { code, data } = yield call(
+			const { data } = yield call(
 				MicangPhpService.getExhibition.bind(MicangPhpService, payload)
 			);
 			if (data) {
