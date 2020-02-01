@@ -3,13 +3,13 @@ import BaseRequest from '~/utils/request'
 class MicangPhpService extends BaseRequest {
   constructor() {
     super({
-      hostKey: 'php'
+      hostKey: 'vJuhe'
     })
   }
 
   getExhibition(data): Promise<any> {
     return this.post({
-      url: '/mcang.php/Exhibition/getExhibition',
+      url: '/toutiao/index',
       data
     })
   }
