@@ -18,7 +18,8 @@ const interceptors = [
 	headerInterceptor,
 	dataInterceptor,
 	delInterceptor,
-	Taro.interceptors.logInterceptor
+	Taro.interceptors.logInterceptor,
+	Taro.interceptors.timeoutInterceptor
 ]
 interceptors.forEach(interceptorItem=>Taro.addInterceptor(interceptorItem))
 
