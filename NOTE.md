@@ -261,25 +261,25 @@ function createApp(opt) {
 	}
 	app = create(opt);
 	app.use(createLoading({}));
-
+	
 	// 适配支付宝小程序
 	if (Taro.getEnv() === Taro.ENV_TYPE.ALIPAY) {
 		// @ts-ignore
 		global = {};
 	}
-
+	
 	// @ts-ignore
 	if (!global.registered) opt.models.forEach(model => app.model(model));
 	// @ts-ignore
 	global.registered = true;
-
+	
 	app.start();
-
+	
 	store = app._store;
 	app.getStore = () => store;
-
+	
 	dispatch = store.dispatch;
-
+	
 	app.dispatch = dispatch;
 	return app;
 }
@@ -303,9 +303,9 @@ export default {
 
 一个大型项目至少需要以下的几个请求拦截器：
 
-- host拦截器
-- 头部拦截器
-- 数据处理拦截器
+- host拦截器 用于根据不同的标识拼接不同的 url 前缀等
+- 头部拦截器 用于进行请求头的配置
+- 数据处理拦截器 用于数据格式的统一，接口错误的抛出等
 
 host拦截器：
 在interceptors文件夹下面新建host.interceptor.ts
