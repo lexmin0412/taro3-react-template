@@ -1,3 +1,7 @@
+/**
+ * 请求基类
+ */
+
 import Taro from '@tarojs/taro'
 import { INTERCEPTOR_HEADER } from '~/constants/header'
 import hostConfig from '~/config/index.config'
@@ -8,9 +12,26 @@ import dataInterceptor from '~/interceptors/data.interceptor'
 
 console.log('hostconfig', hostConfig)
 
+// 添加拦截器
+const interceptors = [
+	hostInterceptor,
+	headerInterceptor,
+	dataInterceptor,
+	delInterceptor,
+	Taro.interceptors.logInterceptor
+]
+interceptors.forEach(interceptorItem=>Taro.addInterceptor(interceptorItem))
+
 interface IOptions {
   hostKey: string;
   [key: string]: any;
+}
+
+interface IRequestConfig {
+	url: string;
+	data?: any,
+	method: 'GET' | 'POST';
+	[key: string]: any;
 }
 
 class BaseRequest {
@@ -28,7 +49,7 @@ class BaseRequest {
     header = { 'Content-Type': 'application/json' },
     dataType = 'json',
     responseType = 'text',
-  }) {
+  }: IRequestConfig) {
 
     // 添加自定义请求头，用于host和header处理
     const hostKey = this.options ? this.options.hostKey : '';
@@ -42,13 +63,7 @@ class BaseRequest {
     header[INTERCEPTOR_HEADER] = {
       hostKey,
       hostUrl
-    }
-
-    // 添加拦截器
-    Taro.addInterceptor(hostInterceptor)
-    Taro.addInterceptor(headerInterceptor)
-    Taro.addInterceptor(dataInterceptor)
-    Taro.addInterceptor(delInterceptor)
+		}
 
     return Taro.request({
       url,
@@ -58,7 +73,16 @@ class BaseRequest {
       dataType,
       responseType,
     })
-  }
+	}
+
+	public get({
+		url
+	}) {
+		return this.request({
+			method: 'GET',
+			url,
+		})
+	}
 
   public post({
     url,
