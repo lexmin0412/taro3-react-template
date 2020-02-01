@@ -1,10 +1,4 @@
 const config = {
-  php: {
-    url: 'https://wldoperation.weilingdi.com'
-  },
-  javaMapi: {
-    url: 'https://mapi.weilingdi.com/weleadin-web-mapi'
-  },
   md5: {
     key: 'normal',
   },
