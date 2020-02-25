@@ -116,6 +116,9 @@ const config = {
 module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
-  }
-  return merge({}, config, require('./prod'))
+  } else if ( process.env.NODE_ENV === 'uat' ) {
+    return merge({}, config, require('./uat'))
+	} else {
+		return merge({}, config, require('./prod'))
+	}
 }
