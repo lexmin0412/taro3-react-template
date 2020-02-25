@@ -6,6 +6,8 @@ import Taro from '@tarojs/taro'
 import { SUCC_LIST, LOGIN_FAILURE_LIST } from '~/constants/code'
 import { INTERCEPTOR_HEADER } from '~/constants/header'
 import Toast from '~/utils/toast'
+import Pages from '~/utils/pages'
+import { logoutJumpInterval } from '~/constants/timeout'
 
 export default function (chain) {
 	console.log('enter data interceptor', chain)
@@ -70,12 +72,17 @@ export default function (chain) {
 			// 4. 登录失效前端逻辑处理
 			if (LOGIN_FAILURE_LIST.includes(resultData.code)) {
 				console.error('into login falire')
+
+				/**
+				 * 防止多个接口重复跳转登录 阈值设置为2s
+				 */
 				const storageTimeStamp = Taro.getStorageSync('loginFailureTimeStamp')
 				Taro.setStorageSync('loginFailureTimeStamp', new Date().getTime())
-				if ( !storageTimeStamp || (storageTimeStamp && ((new Date().getTime() - storageTimeStamp) > 2000)) ) {
+				if ( !storageTimeStamp || (storageTimeStamp && ((new Date().getTime() - storageTimeStamp) > logoutJumpInterval)) ) {
 					// 这里处理登录失效逻辑，如跳转登录页面
+					const authPage = Pages.getPage('auth')
 					Taro.navigateTo({
-						url: '/pages/authorization/auth'
+						url: `/${authPage}`
 					})
 				}
 				// return Promise.reject(resultData.msg)
