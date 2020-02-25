@@ -10,8 +10,6 @@ import hostInterceptor from '~/interceptors/host.interceptor'
 import delInterceptor from '~/interceptors/del.interceptor'
 import dataInterceptor from '~/interceptors/data.interceptor'
 
-console.log('hostconfig', hostConfig)
-
 // 添加拦截器
 const interceptors = [
 	hostInterceptor,
@@ -31,7 +29,7 @@ interface IOptions {
 interface IRequestConfig {
 	url: string;
 	data?: any,
-	method: 'GET' | 'POST';
+	method: 'GET' | 'POST' | 'PUT' | 'DELETE';
 	[key: string]: any;
 }
 
@@ -49,7 +47,8 @@ class BaseRequest {
     method,
     header = { 'Content-Type': 'application/json' },
     dataType = 'json',
-    responseType = 'text',
+		responseType = 'text',
+		showToast = true
   }: IRequestConfig) {
 
     // 添加自定义请求头，用于host和header处理
@@ -63,7 +62,8 @@ class BaseRequest {
     }
     header[INTERCEPTOR_HEADER] = {
       hostKey,
-      hostUrl
+			hostUrl,
+			showToast
 		}
 
     return Taro.request({
@@ -76,23 +76,47 @@ class BaseRequest {
     })
 	}
 
-	public get({
-		url
+	public get(payload: {
+		url: string,
+		data: any,
+		showToast?: boolean
 	}) {
 		return this.request({
 			method: 'GET',
-			url,
+			...payload
 		})
 	}
 
-  public post({
-    url,
-    data
+  public post(payload: {
+    url: string,
+    data: any,
+		showToast?: boolean
   }) {
     return this.request({
       method: 'POST',
-      url,
-      data
+      ...payload
+    })
+	}
+
+	public put(payload: {
+    url: string,
+    data: any,
+		showToast?: boolean
+  }) {
+    return this.request({
+      method: 'PUT',
+      ...payload
+    })
+	}
+
+	public delete(payload: {
+    url: string,
+    data: any,
+		showToast?: boolean
+  }) {
+    return this.request({
+      method: 'DELETE',
+      ...payload
     })
   }
 }
