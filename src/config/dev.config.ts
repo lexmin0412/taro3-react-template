@@ -1,7 +1,4 @@
 const config = {
-	wldOperation: {
-		url: 'https://wldoperation.58wld.com/mcang.php'
-	},
 	apisJuhe: {
 		url: 'http://apis.juhe.cn'
 	},

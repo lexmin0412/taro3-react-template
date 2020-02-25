@@ -1,4 +1,4 @@
-import baseConfig from './base.config';
+import baseConfig from './dev.config';
 import uatConfig from './uat.config';
 import prodConfig from './prod.config';
 
