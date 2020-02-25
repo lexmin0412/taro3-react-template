@@ -15,7 +15,8 @@ class WeatherService extends BaseRequest {
 	}): Promise<any> {
 		const { city } = params
     return this.get({
-      url: `/simpleWeather/query?city=${encodeURIComponent('长沙')}&key=82f914d9fe22175b65665f4055eb3509`,
+			url: `/simpleWeather/query?city=${encodeURIComponent('长沙')}&key=82f914d9fe22175b65665f4055eb3509`,
+			data: params
     })
   }
 }
