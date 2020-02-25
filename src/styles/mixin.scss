@@ -14,3 +14,78 @@
 	text-overflow: ellipsis;
   overflow: hidden;
 }
+
+
+// 1px边框处理
+
+@mixin border-bottom-1px($color: #eee, $type: solid) {
+  &:after {
+    content: "  ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px $type $color;
+    transform-origin: left bottom;
+    transform: scale(1, 0.5);
+  }
+ }
+ /* 上边框 */
+ @mixin border-top-1px($color: #eee, $type: solid) {
+  &:after {
+    content: "  ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px $type $color;
+    transform-origin: left top;
+    transform: scale(1, 0.5);
+  }
+ }
+ /* 左边框 */
+ @mixin border-left-1px($color: #eee, $type: solid) {
+  &:after {
+    content: "  ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    border-left: 1px $type $color;
+    transform-origin: left top;
+    transform: scale(0.5, 1);
+  }
+ }
+ /* 右边框 */
+ @mixin border-right-1px($color: #eee, $type: solid) {
+  &:after {
+    content: "  ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    border-right: 1px $type $color;
+    transform-origin: right top;
+    transform: scale(0.5, 1);
+  }
+ }
+ /* 四边框 */
+ @mixin border-1px($radius: 0px, $color: #eee) {
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px $type $color;
+    transform-origin: 0 0;
+    transform: scale(0.5, 0.5);
+    box-sizing: border-box;
+    border-radius: $radius;
+  }
+ }
