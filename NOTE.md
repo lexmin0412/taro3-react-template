@@ -23,8 +23,6 @@ yarn add dva-core dva-loading
 - `dva-core`：封装 redux 和 redux-saga 的一个插件
 - `dva-loading`：管理页面的 loading 状态
 
-https://wldoperation.weilingdi.com/mcang.php/Exhibition/getExhibition
-
 ## 各模块完善
 
 ### 完善文件结构
