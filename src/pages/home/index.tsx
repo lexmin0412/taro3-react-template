@@ -4,11 +4,9 @@ import { connect } from '@tarojs/redux'
 import { ComponentClass } from 'react';
 
 import Line from '~/components/Line'
-import Toast from '~/utils/toast'
 import { IPageOwnProps, IPageState, IProps } from './index.itf'
 import MobileService from '~/services/apisJuhe/mobile.service'
 import WeatherService from '~/services/apisJuhe/weather.service'
-import MicangPhpService from '~/services/wldOperation/micang.php.service'
 
 import './index.scss'
 
@@ -44,13 +42,6 @@ class Index extends Component {
   componentWillMount() { }
 
   componentDidMount() {
-    // MicangPhpService.getExhibition().then((res)=>{
-    //   console.log('res',res)
-    // }).catch((err)=>{
-    //   console.log('err',err)
-    // })
-		// this.queryExhibitionData()
-		// this.queryMobile()
 
   }
 
@@ -59,32 +50,6 @@ class Index extends Component {
   componentDidShow() { }
 
   componentDidHide() { }
-
-  // 直接在页面调用service
-  async queryExhibitionData () {
-    let result = await MicangPhpService.getExhibition({
-      c_type: 1,
-      pageindex: 1,
-      pagesize: 10
-    },)
-    console.log('result',result)
-  }
-
-  // 在页面调用model
-  // async queryExhibitionData() {
-  //   Toast.loading('加载中...')
-  //   console.log('this.props', this.props)
-  //   this.props.dispatch({
-  //     type: 'home/getExhibition',
-  //     payload: {
-	// 			type: 'top',
-	// 			key: '4f19cac29ddbd92f1c2093e859a93809'
-  //     }
-  //   }).then((res)=>{
-  //     console.log('res model from page',res)
-  //     Toast.hideLoading()
-	// 	})
-	// }
 
 	/**
 	 * 查询手机号码归属地
@@ -106,11 +71,6 @@ class Index extends Component {
 		this.setState({
 			phoneNumber: e.detail.value
 		})
-		// if ( this.state.mobileText ) {
-		// 	this.setState({
-		// 		mobileText: ''
-		// 	})
-		// }
 	}
 
 	/**
@@ -126,9 +86,6 @@ class Index extends Component {
 	 * 查询天气预报
 	 */
 	async queryWeather() {
-		// const { data } = await WeatherService.queryWeather({
-		// 	city: '长沙'
-		// })
 		WeatherService.queryWeather({
 			city: '长沙'
 		}).then((res)=>{
@@ -136,7 +93,6 @@ class Index extends Component {
 		}).catch(err=>{
 			console.error('长沙天气预报结果', err)
 		})
-		// console.log('长沙天气预报结果', data)
 	}
 
   render() {
@@ -173,9 +129,6 @@ class Index extends Component {
 				</View>
 				<View>
 					天气预报：{weatherText}
-				</View>
-				<View onClick={this.queryExhibitionData.bind(this)}>
-					获取banner数据
 				</View>
       </View>
     )
