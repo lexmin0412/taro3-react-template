@@ -10,6 +10,7 @@ import hostInterceptor from '~/interceptors/host.interceptor'
 import delInterceptor from '~/interceptors/del.interceptor'
 import dataInterceptor from '~/interceptors/data.interceptor'
 
+
 // 添加拦截器
 const interceptors = [
 	hostInterceptor,
@@ -77,9 +78,10 @@ class BaseRequest {
 	}
 
 	public get(payload: {
-		url: string,
-		data: any,
-		showToast?: boolean
+		url: string;
+		data: any;
+		showToast?: boolean;
+		header?: any
 	}) {
 		return this.request({
 			method: 'GET',
@@ -90,7 +92,8 @@ class BaseRequest {
   public post(payload: {
     url: string,
     data: any,
-		showToast?: boolean
+		showToast?: boolean;
+		header?: any
   }) {
     return this.request({
       method: 'POST',
@@ -101,7 +104,8 @@ class BaseRequest {
 	public put(payload: {
     url: string,
     data: any,
-		showToast?: boolean
+		showToast?: boolean;
+		header?: any
   }) {
     return this.request({
       method: 'PUT',
@@ -112,7 +116,8 @@ class BaseRequest {
 	public delete(payload: {
     url: string,
     data: any,
-		showToast?: boolean
+		showToast?: boolean;
+		header?: any
   }) {
     return this.request({
       method: 'DELETE',
