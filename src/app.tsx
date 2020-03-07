@@ -47,11 +47,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // 检查更新
-    checkUpdate()
   }
 
-  componentDidShow() { }
+  componentDidShow() {
+    // 检查更新
+		checkUpdate()
+	}
 
   componentDidHide() { }
 
