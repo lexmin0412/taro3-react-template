@@ -15,7 +15,8 @@ class MobileService extends BaseRequest {
 	}): Promise<any> {
 		const { phoneNumber } = params
     return this.get({
-      url: `/mobile/get?phone=${phoneNumber}&key=01316ea1229f3e75d538fb346e290e4b`,
+			url: `/mobile/get?phone=${phoneNumber}&key=01316ea1229f3e75d538fb346e290e4b`,
+			data: {}
     })
   }
 }
