@@ -89,6 +89,15 @@ const config = {
     publicPath: '/',
     staticDirectory: 'static',
     esnextModules: ['taro-ui', 'taro-cui'],
+		output: {
+			// 输出配置 hash
+			filename: 'js/[name].[hash:8].js',
+			chunkFilename: 'js/[name].[chunkhash:8].js'
+    },
+		miniCssExtractPluginOption: {
+			filename: 'css/[name].[hash:8].css',
+			chunkFilename: 'css/[id].[chunkhash:8].css'
+		},
     module: {
       postcss: {
         autoprefixer: {
