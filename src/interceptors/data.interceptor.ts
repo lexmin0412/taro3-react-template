@@ -7,7 +7,6 @@ import { SUCC_LIST, LOGIN_FAILURE_LIST } from '~/constants/code'
 import { INTERCEPTOR_HEADER } from '~/constants/header'
 import Toast from '~/utils/toast'
 import Pages from '~/utils/pages'
-import { logoutJumpInterval } from '~/constants/timeout'
 
 export default function (chain) {
 	console.log('enter data interceptor', chain)
@@ -20,9 +19,7 @@ export default function (chain) {
 		// 先判断状态码
 		if (res.statusCode !== 200) {
 			// 错误处理
-			console.error(`接口异常: ${res.data.path}`, res.statusCode)
 			Toast.error('很抱歉，数据临时丢失，请耐心等待修复')
-			// throw `很抱歉，数据临时丢失，请耐心等待修复`;
 			return Promise.resolve('很抱歉，数据临时丢失，请耐心等待修复')
 		}
 
@@ -35,64 +32,27 @@ export default function (chain) {
 			throw `返回数据为空：${resultData}`;
 		}
 
-
-		/**
-		 * 以下是针对后台接口返回结构不同的处理
-		 */
-
-		if (resultData.hasOwnProperty('error_code')) {
-			// 结构为 error_code reason result resultcode 的返回数据处理
-
-			// 2. 统一返回格式
-			// code 返回编码 强转字符串
-			// msg 错误信息字符串 一般用于前端错误展示
-			// data 返回数据
-			resultData.code = resultData.error_code.toString()
-			resultData.msg = resultData.reason
-			resultData.data = resultData.result
-			delete resultData.error_code
-			delete resultData.result
-			delete resultData.reason
-
-			// 接口返回错误code时前端错误抛出
-			if (!SUCC_LIST.includes(resultData.code) && showToast ) {
+		// 接口返回格式 可根据具体后端返回结构做调整
+		// code 返回编码 强转字符串
+		// msg 错误信息字符串 一般用于前端错误展示
+		// data 返回数据
+		resultData.code = resultData.code ? resultData.code.toString() : resultData.code
+		// 3. 接口返回错误code时前端错误抛出
+		// 4. 登录失效前端逻辑处理
+		if (LOGIN_FAILURE_LIST.includes(resultData.code)) {
+			console.error('into login falire')
+			// 这里处理登录失效逻辑，如跳转登录页面
+			// TODO: 多个接口失效跳转登录的逻辑需要处理
+			const authPage = Pages.getPage('auth')
+			Taro.navigateTo({
+				url: `/${authPage}`
+			})
+		} else if (!SUCC_LIST.includes(resultData.code) && showToast) {
+			console.log('非登录失效的失败code', resultData)
+			if (resultData.code === '50000') {
+				Toast.error('系统开小差了')
+			} else {
 				Toast.error(resultData.msg)
-				return Promise.reject(`${resultData.code}:${resultData.msg}`)
-			}
-		} else {
-			console.log('into data handle', resultData)
-			// 结构为 code data msg 的返回数据处理
-
-			// 2. 统一返回格式
-			// code 返回编码 强转字符串
-			// msg 错误信息字符串 一般用于前端错误展示
-			// data 返回数据
-			resultData.code = resultData.code ? resultData.code.toString() : resultData.code
-			// 3. 接口返回错误code时前端错误抛出
-			// 4. 登录失效前端逻辑处理
-			if (LOGIN_FAILURE_LIST.includes(resultData.code)) {
-				console.error('into login falire')
-
-				/**
-				 * 防止多个接口重复跳转登录 阈值设置为2s
-				 */
-				const storageTimeStamp = Taro.getStorageSync('loginFailureTimeStamp')
-				Taro.setStorageSync('loginFailureTimeStamp', new Date().getTime())
-				if ( !storageTimeStamp || (storageTimeStamp && ((new Date().getTime() - storageTimeStamp) > logoutJumpInterval)) ) {
-					// 这里处理登录失效逻辑，如跳转登录页面
-					const authPage = Pages.getPage('auth')
-					Taro.navigateTo({
-						url: `/${authPage}`
-					})
-				}
-				// return Promise.reject(resultData.msg)
-			} else if (!SUCC_LIST.includes(resultData.code) && showToast) {
-				console.log('非登录失效的失败code', resultData)
-				if (resultData.code === '50000') {
-					Toast.error('系统开小差了')
-				} else {
-					Toast.error(resultData.msg)
-				}
 			}
 		}
 		console.error('返回之前的resultData', resultData)
