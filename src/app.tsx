@@ -2,12 +2,17 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import '@tarojs/async-await'
 import { Provider } from '@tarojs/redux'
 import dva from '~/utils/dva'
+
 import models from '~/models/index'
 import { checkUpdate } from '~/utils/mp'
-
 import Index from './pages/home/index'
 
 import './app.scss'
+
+if (process.env.TARO_ENV === 'h5') {
+	const VConsole = require('vconsole')
+	new VConsole()
+}
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
