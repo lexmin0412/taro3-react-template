@@ -1,6 +1,6 @@
 # Taro 2.0 项目模版
 
-> 说明：master分支跟随taro最新稳定版分支而更新，1.0版本的是项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
+> 说明：master分支跟随taro最新稳定版分支而更新，1.0版本的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
 
 ## 导航
 
