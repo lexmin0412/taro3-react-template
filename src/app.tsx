@@ -9,7 +9,8 @@ import Index from './pages/home/index'
 
 import './app.scss'
 
-if (process.env.TARO_ENV === 'h5') {
+// h5非生产环境添加vconsole
+if (process.env.TARO_ENV === 'h5' && process.env.NODE_ENV !== 'production') {
 	const VConsole = require('vconsole')
 	new VConsole()
 }
