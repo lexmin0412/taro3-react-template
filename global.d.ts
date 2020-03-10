@@ -9,20 +9,16 @@ declare module "*.scss";
 declare module "*.sass";
 declare module "*.styl";
 
+declare namespace JSX {
+    interface IntrinsicElements {
+        'import': React.DetailedHTMLProps<React.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>
+    }
+}
+
 // @ts-ignore
 declare const process: {
   env: {
-		/**
-		 * taro环境变量
-		 */
-		TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq';
-		/**
-		 * node环境变量
-		 */
-		NODE_ENV: 'development' | 'uat' | 'production';
-		/**
-		 * 扩展其他属性
-		 */
+    TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq';
     [key: string]: any;
   }
 }

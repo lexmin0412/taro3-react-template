@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "taro-template",
-  "description": "taro+dva+typescript项目模版",
+  "projectname": "taro_2_template",
+  "description": "taro2.0 template",
   "appid": "touristappid",
   "setting": {
     "urlCheck": true,

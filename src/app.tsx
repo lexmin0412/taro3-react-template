@@ -1,19 +1,10 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import '@tarojs/async-await'
-import { Provider } from '@tarojs/redux'
-import dva from '~/utils/dva'
+import { Provider } from '@tarojs/mobx'
+import Index from './pages/index'
 
-import models from '~/models/index'
-import { checkUpdate } from '~/utils/mp'
-import Index from './pages/home/index'
+import counterStore from './store/counter'
 
 import './app.scss'
-
-// h5非生产环境添加vconsole
-if (process.env.TARO_ENV === 'h5' && process.env.NODE_ENV !== 'production') {
-	const VConsole = require('vconsole')
-	new VConsole()
-}
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -21,15 +12,9 @@ if (process.env.TARO_ENV === 'h5' && process.env.NODE_ENV !== 'production') {
 //   require('nerv-devtools')
 // }
 
-const dvaApp = dva.createApp({
-  initialState: {},
-  models,
-  onError: e => {
-    console.log("dva-error", e);
-  }
-})
-
-const store = dvaApp.getStore()
+const store = {
+  counterStore
+}
 
 class App extends Component {
 
@@ -42,7 +27,7 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/home/index'
+      'pages/index/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -52,23 +37,19 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-  }
+  componentDidMount () {}
 
-  componentDidShow() {
-    // 检查更新
-		checkUpdate()
-	}
+  componentDidShow () {}
 
-  componentDidHide() { }
+  componentDidHide () {}
 
-  componentDidCatchError() { }
+  componentDidCatchError () {}
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render() {
+  render () {
     return (
-      <Provider store={store} >
+      <Provider store={store}>
         <Index />
       </Provider>
     )
