@@ -1,3 +1,6 @@
+const path = require('path')
+const defineConstants = require('./../build/defineConstants/index')
+
 const config = {
   projectName: 'taro_2_template',
   date: '2020-3-10',
@@ -6,6 +9,23 @@ const config = {
     '640': 2.34 / 2,
     '750': 1,
     '828': 1.81 / 2
+  },
+  defineConstants: defineConstants,
+  // 解析alias路径
+  alias: {
+    '~/': path.resolve(__dirname, '..', 'src/'),
+    '~/assets': path.resolve(__dirname, '..', 'src/assets'),
+    '~/components': path.resolve(__dirname, '..', 'src/components'),
+    '~/config': path.resolve(__dirname, '..', 'src/config'),
+    '~/constants': path.resolve(__dirname, '..', 'src/constants'),
+    '~/enums': path.resolve(__dirname, '..', 'src/enums'),
+    '~/interceptors': path.resolve(__dirname, '..', 'src/interceptors'),
+    '~/interfaces': path.resolve(__dirname, '..', 'src/interfaces'),
+    '~/models': path.resolve(__dirname, '..', 'src/models'),
+    '~/pages': path.resolve(__dirname, '..', 'src/pages'),
+    '~/services': path.resolve(__dirname, '..', 'src/services'),
+    '~/styles': path.resolve(__dirname, '..', 'src/styles'),
+    '~/utils': path.resolve(__dirname, '..', 'src/utils'),
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -21,8 +41,6 @@ const config = {
       'transform-class-properties',
       'transform-object-rest-spread'
     ]
-  },
-  defineConstants: {
   },
   mini: {
     postcss: {
@@ -83,8 +101,15 @@ const config = {
 }
 
 module.exports = function (merge) {
-  if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+  let exportConfig = {}
+  if (process.env.NODE_ENV === 'pro') {
+    exportConfig = merge({}, config, require('./pro'))
+  } else if ( process.env.NODE_ENV === 'sit' ) {
+    exportConfig = merge({}, config, require('./sit'))
+  } else if ( process.env.NODE_ENV === 'uat' ) {
+    exportConfig = merge({}, config, require('./uat'))
+  } else {
+    exportConfig = merge({}, config, require('./dev'))
   }
-  return merge({}, config, require('./prod'))
+  return exportConfig
 }

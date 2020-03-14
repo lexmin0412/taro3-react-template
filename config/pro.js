@@ -1,9 +1,10 @@
+const defineConstants = require('./../build/defineConstants/index')
+
 module.exports = {
   env: {
-    NODE_ENV: '"production"'
+    NODE_ENV: '"pro"'
   },
-  defineConstants: {
-  },
+  defineConstants,
   mini: {},
   h5: {
     /**

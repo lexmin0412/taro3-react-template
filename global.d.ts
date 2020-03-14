@@ -18,7 +18,36 @@ declare namespace JSX {
 // @ts-ignore
 declare const process: {
   env: {
+    /**
+     * TARO环境变量
+     */
     TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq';
+    /**
+		 * node环境变量
+		 */
+    NODE_ENV: 'dev' | 'sit' | 'uat' | 'pro';
+    /**
+     * 其他扩展属性
+     */
     [key: string]: any;
   }
+}
+
+/**
+ * NODE环境变量 dev-开发 sit-测试 uat-预发 pro-生产
+ */
+declare const NODE_ENV: 'dev' | 'sit' | 'uat' | 'pro'
+
+/**
+ * 环境变量配置
+ */
+declare const APP_CONF: {
+  /**
+   * 接口HOST
+   */
+  API_HOST: string;
+  /**
+   * 图片oss域名
+   */
+  IMG_OSS_PREFIX: string;
 }
