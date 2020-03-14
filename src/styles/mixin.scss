@@ -1,0 +1,18 @@
+// 宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// 多行截取
+@mixin textOrient($line) {
+  display: -webkit-box;
+  // 需要加上这一句autoprefixer的忽略规则 否则这一行样式加不上 导致无法展示省略号
+  /*! autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+	-webkit-line-clamp: $line;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	word-break: break-all;
+	// white-space: nowrap;
+}
