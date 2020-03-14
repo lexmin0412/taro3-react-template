@@ -1,0 +1,19 @@
+.nodata-comp {
+	width: 100%;
+	height: 60vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	.no-data-icon {
+		width: 236px;
+		height: 154px;
+	}
+
+	.no-data-text {
+		margin-top: 28px;
+		font-size: 28px;
+		color: #666666;
+	}
+}
