@@ -1,6 +1,6 @@
 # Taro 2.0 项目模版
 
-> 说明：master分支跟随taro最新稳定版分支而更新，1.0版本的是项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
+> 说明：master分支跟随taro最新稳定版分支而更新，1.0版本的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
 
 ## 导航
 
@@ -157,7 +157,7 @@ yarn dev:h5
 
   #### 类名规范
 
-  - 页面容器应以模块-文件名-容器类型命名，如 home-index-page, line-component 等
+  - 页面容器应以模块-文件名-容器类型命名，如 home-index-page, line-comp 等
 
 - 样式
 
@@ -432,13 +432,11 @@ class Index extends Component {
 
 - [taro](https://nervjs.github.io/taro/docs/README.html)
 - [taro-ui](https://taro-ui.aotu.io/)
-- [dvajs](https://dvajs.com/guide/)
+- [mobx](https://cn.mobx.js.org/)
 - [typescript](https://www.tslang.cn/docs/handbook/basic-types.html)
 - [scss](https://www.sass.hk/)
 
 ## 项目文档
 
-- [更新日志](./CHANGELOG.md)
-- [开发计划](./TODO.md)
 - [项目搭建文档](./NOTE.md)
 - [常见问题记录](./problems.md)
