@@ -10,7 +10,7 @@ export default function(chain) {
 
   // 如果传入url自带域名则不做处理 否则加上对应的域名
   if ( !(url.startsWith('https://') || url.startsWith('http://')) ) {
-    requestParams.url = `${header[Constants.INTERCEPTOR_HEADER].hostUrl.url}${url}`
+    requestParams.url = `${header[Constants.INTERCEPTOR_HEADER].hostUrl}${url}`
   }
   return chain.proceed(requestParams)
 }
