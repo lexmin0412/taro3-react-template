@@ -7,7 +7,7 @@
 - 语言
   - [x] TypeScript
   - [x] Sass
-  - [ ] async/await支持
+  - [x] async/await支持
 - 状态管理
   - [x] mobx
 - 接口请求
