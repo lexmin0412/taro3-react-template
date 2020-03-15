@@ -1,10 +1,11 @@
-const defineConstants = require('./../build/defineConstants/index')
-
 module.exports = {
   env: {
     NODE_ENV: '"pro"'
   },
-  defineConstants,
+  defineConstants: {
+    API_HOST: '"https://xx.com/"',
+    APPID: '"wx0b32dc740be4b1f5"'
+  },
   mini: {},
   h5: {
     /**

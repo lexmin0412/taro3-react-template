@@ -10,7 +10,11 @@ console.log('构建环境标识', process.argv[2])
 const env = process.argv[2]
 console.log('开始编译小程序project.config.json', env)
 
-const appid = env === 'pro' ? require('./../build/defineConstants/pro').APP_CONF.APPID : require('./../build/defineConstants/index').APP_CONF.APPID
+console.log('看看配置文件',require('./../config/pro').defineConstants.APP_CONF)
+console.log('index配置', require('./../config/dev').defineConstants)
+
+// const appid = env === 'pro' ? require('./../config/pro').defineConstants.APP_CONF.APPID : require('./../config/dev').defineConstants.APP_CONF.APPID
+const appid = env === 'pro' ? 'wx0b32dc740be4b1f5' : 'wx0b32dc740be4b1f5'
 console.log('appid', appid)
 
 const projectConfig = `

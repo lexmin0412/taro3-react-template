@@ -1,5 +1,4 @@
 const path = require('path')
-const defineConstants = require('./../build/defineConstants/index')
 
 const config = {
   projectName: 'taro_2_template',
@@ -10,7 +9,10 @@ const config = {
     '750': 1,
     '828': 1.81 / 2
   },
-  defineConstants: defineConstants,
+  defineConstants: {
+    API_HOST: '"https://xx.com/"',
+    APPID: '"wx0b32dc740be4b1f5"'
+  },
   // 解析alias路径
   alias: {
     '~/': path.resolve(__dirname, '..', 'src/'),
@@ -39,7 +41,13 @@ const config = {
     plugins: [
       'transform-decorators-legacy',
       'transform-class-properties',
-      'transform-object-rest-spread'
+      'transform-object-rest-spread',
+      ['transform-runtime', {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": 'babel-runtime'
+      }]
     ]
   },
   mini: {

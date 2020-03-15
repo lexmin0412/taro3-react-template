@@ -1,8 +1,9 @@
-const defineConstants = require('./../build/defineConstants/sit')
-
 module.exports = {
   env: {
     NODE_ENV: '"sit"'
   },
-  defineConstants,
+  defineConstants: {
+    API_HOST: '"https://xx.com/"',
+    APPID: '"wx0b32dc740be4b1f5"'
+  },
 }
