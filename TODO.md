@@ -2,8 +2,8 @@
 
 ### 快速开发及智能打包
 
-1. 规范package.json编译命令，测试所有场景
-1. 小程序打包 根据环境可配置APPID, 生成不同的project.config.json文件
+- [x] 规范package.json编译命令，测试所有场景
+- [x] 小程序打包 根据环境可配置APPID, 生成不同的project.config.json文件
 2. 快捷命令 可通过node快速生成页面及组件模版(mobx模版)
 
 环境分为两种 打包的环境和代码的运行环境
