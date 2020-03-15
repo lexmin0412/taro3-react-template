@@ -33,9 +33,9 @@
   - [ ] 倒计时组件，可自定义结束时间、自定义倒计时长、是否展示天，自定义item样式
   - [ ] 按钮组件，可自定义类名、自定义宽高、背景色、圆角、positionType
 - 工具类
-  - [ ] mp.ts 小程序独有api封装（如检查更新）
-  - [ ] toast.ts loading/toast api封装简化
-  - [ ] page.ts 页面工具类，实现获取页面路由、跳转等功能
+  - [x] mp.ts 小程序独有api封装（如检查更新）
+  - [x] toast.ts loading/toast api封装简化
+  - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
 
 ## 错误收集
 
