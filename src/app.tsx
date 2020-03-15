@@ -3,6 +3,7 @@ import { Provider } from '@tarojs/mobx'
 import Index from './pages/index'
 
 import counterStore from './store/counter'
+import { checkUpdate } from '~/utils/mp'
 
 import './app.scss'
 
@@ -12,6 +13,13 @@ import './app.scss'
 //   require('nerv-devtools')
 // }
 
+// h5非生产环境添加vconsole
+if (process.env.TARO_ENV === 'h5' && process.env.NODE_ENV !== 'pro') {
+	const VConsole = require('vconsole')
+	new VConsole()
+}
+
+// mobx store
 const store = {
   counterStore
 }
@@ -27,19 +35,52 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/lab/hooks',
+      'pages/user/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+			color: '#969BA0',
+			selectedColor: '#333333',
+			backgroundColor: '#ffffff',
+      list: [
+				{
+					iconPath: 'assets/images/icon_tabbar_goods_default.png',
+					selectedIconPath:
+						'assets/images/icon_tabbar_goods_selected.png',
+					pagePath: 'pages/index/index',
+					text: '首页'
+        },
+        {
+					iconPath: 'assets/images/icon_tabbar_goods_default.png',
+					selectedIconPath:
+						'assets/images/icon_tabbar_goods_selected.png',
+					pagePath: 'pages/lab/hooks',
+					text: '实验室'
+        },
+				{
+					iconPath: 'assets/images/icon_tabbar_goods_default.png',
+					selectedIconPath:
+						'assets/images/icon_tabbar_goods_selected.png',
+					pagePath: 'pages/user/index',
+					text: '我的'
+				},
+      ]
     }
   }
 
   componentDidMount () {}
 
-  componentDidShow () {}
+  componentDidShow () {
+    // 检查更新
+		checkUpdate()
+  }
 
   componentDidHide () {}
 
