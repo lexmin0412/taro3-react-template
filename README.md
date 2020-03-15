@@ -2,6 +2,38 @@
 
 > 说明：master分支跟随taro最新稳定版分支而更新，1.0版本的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
 
+## 功能列表
+
+- 语言
+  - [x] TypeScript
+  - [x] Sass
+  - [ ] async/await支持
+- 状态管理
+  - [x] mobx
+- 接口请求
+  - [x] request类
+  - [x] 拦截器
+    - [x] url拦截器
+    - [x] header拦截器
+    - [x] data拦截器
+  - [ ] 开发环境本地代理
+  - [ ] jsonp支持
+- 调试
+  - [x] vconsole（h5环境）
+- 小程序
+  - [x] 检查更新
+
+## 错误收集
+
+```js
+regeneratorRuntime is not defined
+```
+
+问题：没有async await支持  https://nervjs.github.io/taro/docs/async-await.html#docsNav
+https://nervjs.github.io/taro/docs/migrate-to-2.html
+
+切换npm源： npm config set registry https://registry.npmjs.org/
+
 ## 导航
 
 - [项目结构](#项目结构)
@@ -32,6 +64,7 @@
 - [ ] Hooks重构
 - [ ] README更新，如dva改成mobx
 - [ ] 新增生成命令，能够做到一键生成文件
+- [ ] 2.0迁移指南，针对文章中的内容进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
 
 ## Setup
 
