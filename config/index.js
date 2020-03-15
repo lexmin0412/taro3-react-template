@@ -9,10 +9,7 @@ const config = {
     '750': 1,
     '828': 1.81 / 2
   },
-  defineConstants: {
-    API_HOST: '"https://xx.com/"',
-    APPID: '"wx0b32dc740be4b1f5"'
-  },
+  defineConstants: {},
   // 解析alias路径
   alias: {
     '~/': path.resolve(__dirname, '..', 'src/'),
