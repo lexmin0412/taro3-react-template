@@ -1,8 +1,9 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import { View, Button, Text, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
+import MobileService from '~/services/apisJuhe/mobile.service'
 import './index.scss'
 
 type PageStateProps = {
@@ -14,8 +15,15 @@ type PageStateProps = {
   }
 }
 
+type PageState = {
+  testState: string;
+  phoneNumber: string;  // 手机号
+  mobileText: string;  // 手机号归属地展示文字
+}
+
 interface Index {
   props: PageStateProps;
+  state: PageState;
 }
 
 @inject('counterStore')
@@ -33,21 +41,33 @@ class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillMount () { }
-
-  componentWillReact () {
-    console.log('componentWillReact')
+  state = {
+    testState: '1212',
+    phoneNumber: '',
+    mobileText: '',
   }
 
-  componentDidMount () { }
+  componentWillMount() { }
 
-  componentWillUnmount () { }
+  componentWillReact() {
+    console.log('componentWillReact', this.props)
+  }
 
-  componentDidShow () { }
+  componentDidMount() {
+    console.log('APP_CONF', APP_CONF)
+  }
 
-  componentDidHide () { }
+  componentWillUnmount() {}
+
+  componentDidShow() { }
+
+  componentDidHide() { }
 
   increment = () => {
+    const { testState } = this.state
+    this.setState({
+      testState: `${this.state.testState}expand`
+    })
     const { counterStore } = this.props
     counterStore.increment()
   }
@@ -62,17 +82,42 @@ class Index extends Component {
     counterStore.incrementAsync()
   }
 
-  render () {
+  // 手机号输入
+  handleInput(type, e) {
+    this.setState({
+      phoneNumber: e.detail.value
+    })
+  }
+
+  // 查询手机号归属地
+  async queryMobile() {
+    console.log('into handleSearchBtnclick')
+    const { phoneNumber } = this.state
+    let result = await MobileService.queryMobile({
+      phoneNumber
+    })
+    const { data } = result
+    this.setState({
+      mobileText: `${data.province}${data.city}${data.company}`
+    })
+  }
+
+  render() {
     const { counterStore: { counter } } = this.props
+    const { testState, mobileText } = this.state
     return (
       <View className='index'>
+        <Input onInput={this.handleInput.bind(this, 'mobile')} type="number" placeholder="请输入手机号" />
+        <Button onClick={this.queryMobile.bind(this)}>查询手机号归属地</Button>
+        <View>归属地：{mobileText}</View>
         <Button onClick={this.increment}>+</Button>
         <Button onClick={this.decrement}>-</Button>
         <Button onClick={this.incrementAsync}>Add Async</Button>
+        <Button onClick={this.incrementAsync}>{testState}</Button>
         <Text>{counter}</Text>
       </View>
     )
   }
 }
 
-export default Index  as ComponentType
+export default Index as ComponentType
