@@ -37,16 +37,24 @@
   - [x] toast.ts loading/toast api封装简化
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
 
-## 错误收集
+## 升级问题处理
 
-```js
-regeneratorRuntime is not defined
-```
+1. 使用 async/await 在小程序中报 `regeneratorRuntime is not defined`
 
-问题：没有async await支持  https://nervjs.github.io/taro/docs/async-await.html#docsNav
-https://nervjs.github.io/taro/docs/migrate-to-2.html
+  问题：没有async await支持  
 
-切换npm源： npm config set registry https://registry.npmjs.org/
+  解决方案：
+
+  https://nervjs.github.io/taro/docs/async-await.html#docsNav
+  https://nervjs.github.io/taro/docs/migrate-to-2.html
+
+## 不想百度的操作
+
+1. 切换npm源 
+
+  ```shell
+  npm config set registry https://registry.npmjs.org/
+  ```
 
 ## 导航
 
