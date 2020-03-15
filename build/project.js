@@ -10,11 +10,7 @@ console.log('构建环境标识', process.argv[2])
 const env = process.argv[2]
 console.log('开始编译小程序project.config.json', env)
 
-console.log('看看配置文件',require('./../config/pro').defineConstants)
-console.log('index配置', require('./../config/dev').defineConstants.APP_CONF)
-
-// const appid = env === 'pro' ? require('./../config/pro').defineConstants.APP_CONF.APPID : require('./../config/dev').defineConstants.APP_CONF.APPID
-const appid = env === 'pro' ? 'wx0b32dc740be4b1f5' : 'wx0b32dc740be4b1f5'
+const appid = require(`./../config/${env}`).defineConstants.APP_CONF.APPID
 console.log('appid', appid)
 
 const projectConfig = `
@@ -22,7 +18,7 @@ const projectConfig = `
   "miniprogramRoot": "./dist",
   "projectname": "taro-template",
   "description": "taro2.0项目模板",
-  "appid": "${appid}",
+  "appid": ${appid},
   "setting": {
     "urlCheck": true,
     "es6": false,
