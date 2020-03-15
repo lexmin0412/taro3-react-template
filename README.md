@@ -36,6 +36,13 @@
   - [x] mp.ts 小程序独有api封装（如检查更新）
   - [x] toast.ts loading/toast api封装简化
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
+  
+## TODO
+
+- [x] 完善文件结构，实现1.0版本的所有功能
+- [ ] Hooks重构
+- [ ] README更新，如dva改成mobx
+- [ ] 根据2.0迁移指南进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
 
 ## 升级问题处理
 
@@ -79,14 +86,6 @@
 以下是项目结构的缩略图
 
 ![项目结构](./structure.png)
-
-## TODO
-
-- [ ] 完善文件结构，实现1.0版本的所有功能
-- [ ] Hooks重构
-- [ ] README更新，如dva改成mobx
-- [ ] 新增生成命令，能够做到一键生成文件
-- [ ] 2.0迁移指南，针对文章中的内容进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
 
 ## Setup
 
