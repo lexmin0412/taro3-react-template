@@ -39,18 +39,18 @@
 
 ## 升级问题处理
 
-1. 使用 async/await 在小程序中报 `regeneratorRuntime is not defined`
+### 使用 async/await 在小程序中报 `regeneratorRuntime is not defined`
 
-  问题：没有async await支持  
+原因：没有async await支持  
 
-  解决方案：
+解决方案：
 
-  https://nervjs.github.io/taro/docs/async-await.html#docsNav
-  https://nervjs.github.io/taro/docs/migrate-to-2.html
+- https://nervjs.github.io/taro/docs/async-await.html#docsNav
+- https://nervjs.github.io/taro/docs/migrate-to-2.html
 
 ## 不想百度的操作
 
-1. 切换npm源 
+### 切换npm源 
 
   ```shell
   npm config set registry https://registry.npmjs.org/
@@ -493,5 +493,4 @@ class Index extends Component {
 
 ## 项目文档
 
-- [项目搭建文档](./NOTE.md)
 - [常见问题记录](./problems.md)
