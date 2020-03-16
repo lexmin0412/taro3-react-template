@@ -18,7 +18,7 @@ class LianouService extends BaseRequest {
     ComName: string;  // 药品名称 多个药品用_隔开
   }) {
     return this.post({
-      url: '1.0/store/queryCenterStore',
+      url: '/store/queryCenterStore',
       data: {
         merCode: '666666'
       }
