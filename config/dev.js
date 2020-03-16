@@ -4,7 +4,7 @@ module.exports = {
   },
   defineConstants: {
     APP_CONF: {
-      API_HOST: '"/api"',
+      API_HOST: '"/api/1.0"',
       APPID: '"wx0b32dc740be4b1f5"',
       APIS_JUHE: '"https://wldoperation.58wld.com"',
       API_MAP_QQ: '"https://apis.map.qq.com"',
@@ -15,12 +15,12 @@ module.exports = {
     devServer: {
       port: '9000',
       proxy: {
-        '/api': {
-          target: 'https://middle.test.ydjia.cn/businesses-gateway/customer',
+        '/api/1.0': {
+          target: 'https://middle.test.ydjia.cn/businesses-gateway/customer/1.0',
           changeOrigin: true,
           ws: false,
           pathRewrite: {
-            '^/api': ``
+            '^/api/1.0': ``
           }
         },
       },
