@@ -17,7 +17,7 @@
     - [x] header拦截器
     - [x] data拦截器
   - [ ] 开发环境本地代理
-  - [ ] jsonp支持
+  - [x] jsonp支持
 - 调试
   - [x] vconsole（h5环境）
 - 工程化
@@ -43,6 +43,7 @@
 - [ ] Hooks重构
 - [ ] README更新，如dva改成mobx
 - [ ] 根据2.0迁移指南进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
+- [ ] 研究拦截器在request类调用中执行的可行性
 
 ## 升级问题处理
 
