@@ -92,7 +92,8 @@ class BaseRequest {
 		data: any;
 		showToast?: boolean;
 		header?: any,
-    crossHeaderInterceptor: boolean
+    resType?: 1 | 0,
+    crossHeaderInterceptor?: boolean,
 	}) {
 		return this.request({
 			method: 'GET',
@@ -105,7 +106,8 @@ class BaseRequest {
     data: any,
 		showToast?: boolean;
 		header?: any,
-    crossHeaderInterceptor: boolean,
+    resType?: 1 | 0,
+    crossHeaderInterceptor?: boolean,
   }) {
     return this.request({
       method: 'POST',
@@ -118,7 +120,8 @@ class BaseRequest {
     data: any,
 		showToast?: boolean;
 		header?: any,
-    crossHeaderInterceptor: boolean,
+    resType?: 1 | 0,
+    crossHeaderInterceptor?: boolean,
   }) {
     return this.request({
       method: 'PUT',
@@ -132,7 +135,7 @@ class BaseRequest {
 		showToast?: boolean;
 		header?: any,
     resType?: 1 | 0,
-    crossHeaderInterceptor: boolean,
+    crossHeaderInterceptor?: boolean,
   }) {
     return this.request({
       method: 'DELETE',
@@ -143,8 +146,10 @@ class BaseRequest {
   public jsonp(payload: {
     url: string,
     data: any,
+		showToast?: boolean;
+		header?: any,
     resType?: 1 | 0,
-    crossHeaderInterceptor: boolean,
+    crossHeaderInterceptor?: boolean,
   }) {
     return this.request({
       method: 'GET',
