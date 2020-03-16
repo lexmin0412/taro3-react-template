@@ -28,6 +28,7 @@ class MobileService extends BaseRequest {
         output: 'jsonp',
         callback: 'jsonhandle1'
       },
+      resType: 1,
     })
   }
 }

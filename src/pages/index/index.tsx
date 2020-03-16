@@ -3,7 +3,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import MobileService from '~/services/apisJuhe/mobile.service'
+import QQMapWSService from '~/services/qqMap/ws.service'
+import Toast from '~/utils/toast'
 import './index.scss'
 
 type PageStateProps = {
@@ -57,7 +58,7 @@ class Index extends Component {
     console.log('APP_CONF', APP_CONF)
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
   componentDidShow() { }
 
@@ -89,17 +90,25 @@ class Index extends Component {
     })
   }
 
-  // 查询手机号归属地
-  async queryMobile() {
-    console.log('into handleSearchBtnclick')
-    const { phoneNumber } = this.state
-    let result = await MobileService.queryMobile({
-      phoneNumber
+  // // 查询手机号归属地
+  // async queryMobile() {
+  //   console.log('into handleSearchBtnclick')
+  //   const { phoneNumber } = this.state
+  //   let result = await MobileService.queryMobile({
+  //     phoneNumber
+  //   })
+  //   const { data } = result
+  //   this.setState({
+  //     mobileText: `${data.province}${data.city}${data.company}`
+  //   })
+  // }
+
+  async handleJSONPTest() {
+    let result = await QQMapWSService.geocoder({
+      location: `28.2532,112.87887`,
+      get_poi: 0,
     })
-    const { data } = result
-    this.setState({
-      mobileText: `${data.province}${data.city}${data.company}`
-    })
+    console.log('result', result)
   }
 
   render() {
@@ -108,8 +117,11 @@ class Index extends Component {
     return (
       <View className='index'>
         <Input onInput={this.handleInput.bind(this, 'mobile')} type="number" placeholder="请输入手机号" />
-        <Button onClick={this.queryMobile.bind(this)}>查询手机号归属地</Button>
+        {/* <Button onClick={this.queryMobile.bind(this)}>查询手机号归属地</Button> */}
         <View>归属地：{mobileText}</View>
+        <Button onClick={this.handleJSONPTest.bind(this)}>
+          jsonp 测试
+        </Button>
         <Button onClick={this.increment}>+</Button>
         <Button onClick={this.decrement}>-</Button>
         <Button onClick={this.incrementAsync}>Add Async</Button>

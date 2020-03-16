@@ -7,6 +7,7 @@ module.exports = {
       API_HOST: '"https://xx.com/"',
       APPID: '"wx0b32dc740be4b1f5"',
       APIS_JUHE: '"https://wldoperation.58wld.com"',
+      API_MAP_QQ: '"https://apis.map.qq.com"',
     }
   },
   mini: {},

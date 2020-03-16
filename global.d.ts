@@ -10,9 +10,9 @@ declare module "*.sass";
 declare module "*.styl";
 
 declare namespace JSX {
-    interface IntrinsicElements {
-        'import': React.DetailedHTMLProps<React.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>
-    }
+  interface IntrinsicElements {
+    'import': React.DetailedHTMLProps<React.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>
+  }
 }
 
 // @ts-ignore
@@ -50,4 +50,12 @@ declare const APP_CONF: {
    * 图片oss域名
    */
   IMG_OSS_PREFIX: string;
+  /**
+   * 腾讯地图接口服务域名
+   */
+  API_MAP_QQ: '"https://apis.map.qq.com"',
+  /**
+   * 腾讯地图服务key
+   */
+  KEY_MAP_QQ: '"E6HBZ-A72WD-XM74M-PA3OE-DA3EK-FKFYO"',
 }
