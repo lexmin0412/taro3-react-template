@@ -12,15 +12,17 @@ import dataInterceptor from '~/interceptors/data.interceptor'
 console.log('hostconfig', APP_CONF)
 
 // 添加拦截器
-const interceptors = [
-	hostInterceptor,
-	headerInterceptor,
-	dataInterceptor,
-	delInterceptor,
-	Taro.interceptors.logInterceptor,
-	Taro.interceptors.timeoutInterceptor
-]
-interceptors.forEach(interceptorItem=>Taro.addInterceptor(interceptorItem))
+const getInterceptors = () => {
+  return [
+    hostInterceptor,
+    headerInterceptor,
+    dataInterceptor,
+    delInterceptor,
+    Taro.interceptors.logInterceptor,
+    Taro.interceptors.timeoutInterceptor
+  ]
+}
+getInterceptors().forEach(interceptorItem=>Taro.addInterceptor(interceptorItem))
 
 interface IOptions {
   hostKey: string;
@@ -51,7 +53,10 @@ class BaseRequest {
 		},
     dataType = 'json',
 		responseType = 'text',
-		showToast = true
+    showToast = true,
+    jsonp = false,
+    crossHeaderInterceptor = false,
+    resType = 0
   }: IRequestConfig) {
 
     // 添加自定义请求头，用于host和header处理
@@ -66,7 +71,9 @@ class BaseRequest {
     header[Constants.INTERCEPTOR_HEADER] = {
       hostKey,
 			hostUrl,
-			showToast
+      showToast,
+      resType,
+      crossHeaderInterceptor
 		}
 
     return Taro.request({
@@ -76,6 +83,7 @@ class BaseRequest {
       header,
       dataType,
       responseType,
+      jsonp
     })
 	}
 
@@ -83,11 +91,12 @@ class BaseRequest {
 		url: string;
 		data: any;
 		showToast?: boolean;
-		header?: any
+		header?: any,
+    crossHeaderInterceptor: boolean
 	}) {
 		return this.request({
 			method: 'GET',
-			...payload
+			...payload,
 		})
 	}
 
@@ -95,7 +104,8 @@ class BaseRequest {
     url: string,
     data: any,
 		showToast?: boolean;
-		header?: any
+		header?: any,
+    crossHeaderInterceptor: boolean,
   }) {
     return this.request({
       method: 'POST',
@@ -107,7 +117,8 @@ class BaseRequest {
     url: string,
     data: any,
 		showToast?: boolean;
-		header?: any
+		header?: any,
+    crossHeaderInterceptor: boolean,
   }) {
     return this.request({
       method: 'PUT',
@@ -119,10 +130,25 @@ class BaseRequest {
     url: string,
     data: any,
 		showToast?: boolean;
-		header?: any
+		header?: any,
+    resType?: 1 | 0,
+    crossHeaderInterceptor: boolean,
   }) {
     return this.request({
       method: 'DELETE',
+      ...payload
+    })
+  }
+
+  public jsonp(payload: {
+    url: string,
+    data: any,
+    resType?: 1 | 0,
+    crossHeaderInterceptor: boolean,
+  }) {
+    return this.request({
+      method: 'GET',
+      jsonp: true,
       ...payload
     })
   }

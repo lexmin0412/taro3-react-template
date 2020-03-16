@@ -12,7 +12,7 @@ export default function (chain) {
   console.log('enter data interceptor', chain)
   const requestParams = chain.requestParams
   const { header } = requestParams
-  const { showToast } = header[Constants.INTERCEPTOR_HEADER]
+  const { showToast, resType } = header[Constants.INTERCEPTOR_HEADER]
   return chain.proceed(requestParams).then((res) => {
     console.log('data拦截器接收到的数据', res)
 
@@ -36,13 +36,23 @@ export default function (chain) {
     }
 
     console.log('into data handle', resultData)
-    // 结构为 code data msg 的返回数据处理
+
+    // 返回格式统一为 code data msg
+    // 腾讯地图webservice接口返回格式统一
+    if ( resType === 1 ) {
+      resultData.code = resultData.status
+      resultData.msg = resultData.message
+      resultData.data = resultData.result
+    }
 
     // 2. 统一返回格式
     // code 返回编码 强转字符串
     // msg 错误信息字符串 一般用于前端错误展示
     // data 返回数据
-    resultData.code = resultData.code ? resultData.code.toString() : resultData.code
+    resultData.code = resultData.hasOwnProperty('code') ? resultData.code.toString() : resultData.code
+
+    console.error('resultData', resultData)
+
     // 3. 接口返回错误code时前端错误抛出
     // 4. 登录失效前端逻辑处理
     if (LOGIN_FAILURE_LIST.includes(resultData.code)) {
