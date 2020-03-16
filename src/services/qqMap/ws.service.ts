@@ -1,6 +1,6 @@
 import BaseRequest from '~/utils/request'
 
-class MobileService extends BaseRequest {
+class QQMapWebService extends BaseRequest {
   constructor() {
     super({
       hostKey: 'API_MAP_QQ'
@@ -33,4 +33,4 @@ class MobileService extends BaseRequest {
   }
 }
 
-export default new MobileService() as MobileService
+export default new QQMapWebService() as QQMapWebService

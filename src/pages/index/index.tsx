@@ -4,6 +4,7 @@ import { View, Button, Text, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
 import QQMapWSService from '~/services/qqMap/ws.service'
+import LianouService from '~/services/hydee/lianou.service'
 import Toast from '~/utils/toast'
 import './index.scss'
 
@@ -111,6 +112,13 @@ class Index extends Component {
     console.log('result', result)
   }
 
+  async handleProxyText() {
+    let result = await LianouService.queryDiseaseByDrugName({
+      ComName: '阿莫西林胶囊'
+    })
+    console.log('result', result)
+  }
+
   render() {
     const { counterStore: { counter } } = this.props
     const { testState, mobileText } = this.state
@@ -121,6 +129,9 @@ class Index extends Component {
         <View>归属地：{mobileText}</View>
         <Button onClick={this.handleJSONPTest.bind(this)}>
           jsonp 测试
+        </Button>
+        <Button onClick={this.handleProxyText.bind(this)}>
+          本地代理 测试
         </Button>
         <Button onClick={this.increment}>+</Button>
         <Button onClick={this.decrement}>-</Button>
