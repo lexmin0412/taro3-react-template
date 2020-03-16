@@ -16,7 +16,7 @@
     - [x] url拦截器
     - [x] header拦截器
     - [x] data拦截器
-  - [ ] 开发环境本地代理
+  - [x] 开发环境本地代理
   - [x] jsonp支持
 - 调试
   - [x] vconsole（h5环境）
