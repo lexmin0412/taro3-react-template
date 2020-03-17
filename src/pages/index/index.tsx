@@ -2,6 +2,7 @@ import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import { AtNoticebar, AtTag } from 'taro-ui'
 
 import QQMapWSService from '~/services/qqMap/ws.service'
 import LianouService from '~/services/hydee/lianou.service'
@@ -124,10 +125,14 @@ class Index extends Component {
     const { testState, mobileText } = this.state
     return (
       <View className='index'>
+        <AtNoticebar>这是 NoticeBar 通告栏</AtNoticebar>
+        <AtTag size='small'>标签</AtTag>
         <Input onInput={this.handleInput.bind(this, 'mobile')} type="number" placeholder="请输入手机号" />
         {/* <Button onClick={this.queryMobile.bind(this)}>查询手机号归属地</Button> */}
         <View>归属地：{mobileText}</View>
-        <Button onClick={this.handleJSONPTest.bind(this)}>
+        <Button onClick={this.handleJSONPTest.bind(this)}
+          className="button-jsonp"
+        >
           jsonp 测试
         </Button>
         <Button onClick={this.handleProxyText.bind(this)}>

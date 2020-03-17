@@ -46,7 +46,8 @@
     "mobx": "4.8.0",
     "nerv-devtools": "^1.5.5",
     "nervjs": "^1.5.5",
-    "regenerator-runtime": "0.11.1"
+    "regenerator-runtime": "0.11.1",
+    "taro-ui": "^2.3.1"
   },
   "devDependencies": {
     "@tarojs/cli": "2.0.6",
