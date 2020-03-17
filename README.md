@@ -4,12 +4,13 @@
 
 ## 功能列表
 
-- 语言
+- 基础功能支持
   - [x] TypeScript
-  - [x] Sass
-  - [x] async/await支持
-- 状态管理
-  - [x] mobx
+  - [x] Sass，全局注入公用样式文件
+  - [x] UI库（taro-ui）
+  - [x] 状态管理（mobx）
+  - [x] 异步编程（async/await）
+  - [x] 引入字体（iconfont）
 - 接口请求
   - [x] request类
   - [x] 拦截器
@@ -22,9 +23,16 @@
   - [x] vconsole（h5环境）
 - 工程化
   - [x] 全局变量
+  - [x] 编译前的环境变量检查
+  - [x] 通过命令一键生成文件
+
+    优化计划：
+    - [x] 命令行交互获取文件名等参数
+    - [ ] 命令行上下键可选择要生成的文件类型等操作
+    - [ ] 迁移至taro-create-file 2.0版本，使用npm引入
   - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
-  - [ ] 通过命令一键生成文件
   - [ ] 自建组件库(taro-cui，待升级taro2.0)
+  - [ ] 自建工具类库（wtils）
 - 组件
   - [ ] image 图片组件 提供错误处理、loading过渡、查看大图等功能
   - [ ] imgUploader 图片上传组件 基于image 提供上传图片、图片数量限制、删除图片、查看大图等功能
@@ -56,6 +64,23 @@
 
 - https://nervjs.github.io/taro/docs/async-await.html#docsNav
 - https://nervjs.github.io/taro/docs/migrate-to-2.html
+
+## 打包优化
+
+### taro-ui 样式引入
+
+```scss
+// app.scss
+
+// 方式1: 一次性引入所有样式
+@import '~taro-ui/dist/style/index.scss';
+
+// 方式2: 在使用到新的组件时才引入
+@import "~taro-ui/dist/style/components/noticeBar.scss";
+@import "~taro-ui/dist/style/components/tag.scss"
+```
+
+对于上面的情况，如果在项目中只使用到了 taro-ui 中的 Button 和 Tag 组件，打包后的 app.css 体积从 210kb 减少到 53kb，只要打包后生成的app.css 文件小于210kb，那么这种引入方式就是值得的。
 
 ## 不想百度的操作
 
