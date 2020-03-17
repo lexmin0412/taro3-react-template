@@ -83,6 +83,10 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    router: {
+      mode: 'browser', // 或者是 'hash'
+      basename: '/h5', // 添加basesname为/h5后 使用taro路由跳转后的路径为 /h5/url 但在地址栏输入 url 和 /h5/url 都可以访问到对应的页面
+		},
     postcss: {
       autoprefixer: {
         enable: true,
