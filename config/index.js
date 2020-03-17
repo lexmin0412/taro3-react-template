@@ -1,4 +1,5 @@
 const path = require('path')
+const BuildPlugin = require('./../build/plugins/buildPlugin')
 
 const config = {
   projectName: 'taro_2_template',
@@ -38,6 +39,9 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
+  plugins: [
+    new BuildPlugin()
+  ],
   babel: {
     sourceMap: true,
     presets: [
