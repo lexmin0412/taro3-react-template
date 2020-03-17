@@ -1,0 +1,7 @@
+.sass-test {
+  @include textOrient(1);
+  @include wh(100%, 200px);
+
+  font-size: 28px;
+  color: $theme-color;
+}

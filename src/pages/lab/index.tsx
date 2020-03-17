@@ -81,6 +81,16 @@ class Index extends Component {
     console.log('result', result)
   }
 
+  handleCustomRoute() {
+    console.error('into handleCustomRoute')
+    // Taro.switchTab({
+    //   url: '/pages/index/index'
+    // })
+    Taro.switchTab({
+      url: '/pages/index/index'
+    })
+  }
+
   render() {
     return (
       <View className='index'>
@@ -93,6 +103,18 @@ class Index extends Component {
         </Button>
         <Button onClick={this.handleProxyText.bind(this)}>
           本地代理 测试
+        </Button>
+        <Button onClick={this.handleCustomRoute.bind(this)}>
+          自定义路由 测试
+        </Button>
+        <Button onClick={this.handleCustomRoute.bind(this)}
+          className="sass-test"
+        >
+          sass文件全局注册 测试
+        </Button>
+        <Button className="iconfont-test iconfont down">
+          iconfont 测试
+          <Text>&#xe63d;</Text>
         </Button>
       </View>
     )

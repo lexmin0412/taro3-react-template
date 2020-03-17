@@ -1,1 +1,14 @@
-@import '~taro-ui/dist/style/index.scss';
+// @import '~taro-ui/dist/style/index.scss';
+
+@import "~taro-ui/dist/style/components/noticeBar.scss";
+@import "~taro-ui/dist/style/components/tag.scss";
+
+
+// iconfont引入
+@font-face {
+	font-family: "iconfont";
+	src: url("./assets/fonts/iconfont.ttf");
+}
+.iconfont {
+	font-family: iconfont;
+}
