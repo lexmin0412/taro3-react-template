@@ -66,45 +66,6 @@ class Index extends Component {
 
   componentDidHide() { }
 
-  increment = () => {
-    const { testState } = this.state
-    this.setState({
-      testState: `${this.state.testState}expand`
-    })
-    const { counterStore } = this.props
-    counterStore.increment()
-  }
-
-  decrement = () => {
-    const { counterStore } = this.props
-    counterStore.decrement()
-  }
-
-  incrementAsync = () => {
-    const { counterStore } = this.props
-    counterStore.incrementAsync()
-  }
-
-  // 手机号输入
-  handleInput(type, e) {
-    this.setState({
-      phoneNumber: e.detail.value
-    })
-  }
-
-  // // 查询手机号归属地
-  // async queryMobile() {
-  //   console.log('into handleSearchBtnclick')
-  //   const { phoneNumber } = this.state
-  //   let result = await MobileService.queryMobile({
-  //     phoneNumber
-  //   })
-  //   const { data } = result
-  //   this.setState({
-  //     mobileText: `${data.province}${data.city}${data.company}`
-  //   })
-  // }
-
   async handleJSONPTest() {
     let result = await QQMapWSService.geocoder({
       location: `28.2532,112.87887`,
@@ -121,15 +82,10 @@ class Index extends Component {
   }
 
   render() {
-    const { counterStore: { counter } } = this.props
-    const { testState, mobileText } = this.state
     return (
       <View className='index'>
-        <AtNoticebar>这是 NoticeBar 通告栏</AtNoticebar>
-        <AtTag size='small'>标签</AtTag>
-        <Input onInput={this.handleInput.bind(this, 'mobile')} type="number" placeholder="请输入手机号" />
-        {/* <Button onClick={this.queryMobile.bind(this)}>查询手机号归属地</Button> */}
-        {/* <View>归属地：{mobileText}</View> */}
+        <AtNoticebar>taro-ui组件测试：通告栏</AtNoticebar>
+        <AtTag size='small'>taro-ui组件测试：标签</AtTag>
         <Button onClick={this.handleJSONPTest.bind(this)}
           className="button-jsonp"
         >
@@ -138,11 +94,6 @@ class Index extends Component {
         <Button onClick={this.handleProxyText.bind(this)}>
           本地代理 测试
         </Button>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Button onClick={this.incrementAsync}>{testState}</Button>
-        <Text>{counter}</Text>
       </View>
     )
   }

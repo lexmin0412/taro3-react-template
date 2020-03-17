@@ -36,6 +36,7 @@ class App extends Component {
   config: Config = {
     pages: [
       'pages/index/index',
+      'pages/lab/index',
       'pages/lab/hooks',
       'pages/user/index'
     ],
@@ -61,7 +62,7 @@ class App extends Component {
 					iconPath: 'assets/images/icon_tabbar_goods_default.png',
 					selectedIconPath:
 						'assets/images/icon_tabbar_goods_selected.png',
-					pagePath: 'pages/lab/hooks',
+					pagePath: 'pages/lab/index',
 					text: '实验室'
         },
 				{
