@@ -1,8 +1,8 @@
 {
-  "name": "taro_2_template",
-  "version": "1.0.0",
+  "name": "taro_template",
+  "version": "2.0.0",
   "private": true,
-  "description": "taro2.0 template",
+  "description": "基于taro2.0的开箱即用多端项目模版",
   "templateInfo": {
     "name": "mobx",
     "typescript": true,
