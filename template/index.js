@@ -4,10 +4,10 @@
 
 const fs = require('fs');
 const echoServiceTpl = require('./service.tpl')
-const echoInterfaceTpl = require('./interface.tpl')
+const echoInterfaceTpl = require('./type.tpl')
 const echoPageTemplate = require('./page.tpl')
 const echoScssTpl = require('./scss.tpl')
-const echoModelTpl = require('./model.tpl')
+const echoModelTpl = require('./store.tpl')
 const echoCompTpl = require('./component.tpl')
 
 const typeArray = ['m', 's', 'p', 'c'];
