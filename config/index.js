@@ -86,6 +86,16 @@ const config = {
     router: {
       mode: 'browser', // 或者是 'hash'
       basename: '/h5', // 添加basesname为/h5后 使用taro路由跳转后的路径为 /h5/url 但在地址栏输入 url 和 /h5/url 都可以访问到对应的页面
+    },
+    // js文件名添加hash
+		output: {
+			filename: 'js/[name].[hash:8].js',
+			chunkFilename: 'js/[name].[chunkhash:8].js'
+    },
+    // css文件名添加hash
+		miniCssExtractPluginOption: {
+			filename: 'css/[name].[hash:8].css',
+			chunkFilename: 'css/[id].[chunkhash:8].css'
 		},
     postcss: {
       autoprefixer: {
