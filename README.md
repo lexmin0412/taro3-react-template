@@ -32,7 +32,7 @@
     优化计划：
     - [x] 命令行交互获取文件名等参数
     - [ ] 命令行上下键可选择要生成的文件类型等操作
-    - [ ] 迁移至taro-create-file 2.0版本，使用npm引入
+    - [ ] 迁移至taro-create-file 2.0版本(开发中)，使用npm引入
   - [ ] 接入taro模版源 http://taro-docs.jd.com/taro/docs/template.html
   - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
   - [ ] 编译前遍历components文件夹生成index文件，目标：可直接通过index引入任何组件
@@ -53,13 +53,16 @@
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
   - [x] toast.ts loading/toast api封装简化
   
-## TODO
+## 后续功能及优化
 
 - [x] 完善文件结构，实现1.0版本的所有功能
 - [ ] Hooks重构
 - [ ] README更新，如dva改成mobx
 - [ ] 根据2.0迁移指南进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
 - [ ] 研究拦截器在request类调用中执行的可行性
+- [ ] 组件使用外部样式类 https://nervjs.github.io/taro/docs/component-style.html#%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E7%B1%BB 
+- [ ] render-props https://nervjs.github.io/taro/docs/render-props.html
+- [ ] context https://nervjs.github.io/taro/docs/context.html
 
 ## 升级问题处理
 
