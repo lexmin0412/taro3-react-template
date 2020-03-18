@@ -24,13 +24,15 @@
 - 工程化
   - [x] 全局变量
   - [x] 编译前的环境变量检查
-  - [x] 通过命令一键生成文件
+  - [x] 通过命令一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
 
     优化计划：
     - [x] 命令行交互获取文件名等参数
     - [ ] 命令行上下键可选择要生成的文件类型等操作
     - [ ] 迁移至taro-create-file 2.0版本，使用npm引入
+  - [ ] 接入taro模版源 http://taro-docs.jd.com/taro/docs/template.html
   - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
+  - [ ] 编译前遍历components文件夹生成index文件，目标：可直接通过index引入任何组件
   - [ ] 自建组件库(taro-cui，待升级taro2.0)
   - [ ] 自建工具类库（wtils）
 - 组件
@@ -42,9 +44,10 @@
   - [ ] 倒计时组件，可自定义结束时间、自定义倒计时长、是否展示天，自定义item样式
   - [ ] 按钮组件，可自定义类名、自定义宽高、背景色、圆角、positionType
 - 工具类
+  - [x] img.ts 图片处理类（如拼接url、预览等）
   - [x] mp.ts 小程序独有api封装（如检查更新）
-  - [x] toast.ts loading/toast api封装简化
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
+  - [x] toast.ts loading/toast api封装简化
   
 ## TODO
 
@@ -65,7 +68,7 @@
 - https://nervjs.github.io/taro/docs/async-await.html#docsNav
 - https://nervjs.github.io/taro/docs/migrate-to-2.html
 
-## 打包优化
+## 优化
 
 ### taro-ui 样式引入
 
@@ -81,6 +84,10 @@
 ```
 
 对于上面的情况，如果在项目中只使用到了 taro-ui 中的 Button 和 Tag 组件，打包后的 app.css 体积从 210kb 减少到 53kb，只要打包后生成的app.css 文件小于210kb，那么这种引入方式就是值得的。
+
+### 官方优化指南
+
+- [最佳实践](https://nervjs.github.io/taro/docs/best-practice.html#%E7%BB%99%E7%BB%84%E4%BB%B6%E8%AE%BE%E7%BD%AE-defaultprops)
 
 ## 不想百度的操作
 
@@ -114,7 +121,7 @@
 
 ![项目结构](./structure.png)
 
-## Setup
+## Start
 
 ```zsh
 # 获取模版
