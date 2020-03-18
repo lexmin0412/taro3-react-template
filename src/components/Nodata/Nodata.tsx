@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 
-import defaultIcon from '~/assets/images/common/icon_default_order_list.png'
+import defaultIcon from '~/assets/images/common/img_default_goods.png'
 import './Nodata.scss'
 
 /**
@@ -16,10 +16,10 @@ interface IProps {
 export default class Line extends Component<IProps> {
 
 	render() {
-		const { text, height } = this.props
+		const { text, height, icon } = this.props
 		return (
 			<View className="nodata-comp" style={{height: height + 'px'}}>
-				<Image className="no-data-icon" src={defaultIcon}
+				<Image className="no-data-icon" src={icon||defaultIcon}
 				/>
 				<Text className="no-data-text">{text||'暂无相关数据'}</Text>
 			</View>

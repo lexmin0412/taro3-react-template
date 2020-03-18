@@ -7,7 +7,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { Card, TImage } from '~/components'
+import { Card, TImage, Nodata } from '~/components'
 
 import { PageStateProps, PageState } from './comp'
 import './comp.scss'
@@ -83,6 +83,14 @@ class Comp extends Component {
                 )
               })
             }
+          </View>
+        }
+
+{
+          type === 'default' &&
+          <View className="demo-page-item">
+            缺省组件
+            <Nodata />
           </View>
         }
       </View>

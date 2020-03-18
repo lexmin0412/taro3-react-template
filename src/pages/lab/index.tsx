@@ -125,6 +125,7 @@ class Index extends Component {
         </Button>
         <Button onClick={this.hanldeCompTest.bind(this, 'image')}>图片组件测试</Button>
         <Button onClick={this.hanldeCompTest.bind(this, 'card')}>卡片组件测试</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'default')}>缺省组件测试</Button>
       </View>
     )
   }

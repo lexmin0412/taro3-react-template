@@ -30,7 +30,7 @@ import { View, Image } from '@tarojs/components'
 
 import IMG from '~/utils/img'
 
-import goodsDefaultImg from '~/assets/images/comon/img_default_goods.png'
+import goodsDefaultImg from '~/assets/images/common/img_default_goods.png'
 import './TImage.scss'
 
 /**
