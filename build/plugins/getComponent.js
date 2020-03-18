@@ -1,5 +1,9 @@
 const fs = require('fs')
 
+/**
+ * 扫描components文件夹生成index.ts 以支持一行代码写完组件引入
+ * 示例：import { Card, TImage } from '~/components'
+ */
 const checkComponent = () => {
   console.log('检查组件')
 
