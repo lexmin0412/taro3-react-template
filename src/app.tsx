@@ -38,7 +38,9 @@ class App extends Component {
       'pages/index/index',
       'pages/lab/index',
       'pages/lab/hooks',
-      'pages/user/index'
+      'pages/lab/comp',
+      'pages/user/index',
+      'pages/common/imgPreview'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -52,23 +54,23 @@ class App extends Component {
 			backgroundColor: '#ffffff',
       list: [
 				{
-					iconPath: 'assets/images/icon_tabbar_goods_default.png',
+					iconPath: 'assets/images/icon/icon_tabbar_goods_default.png',
 					selectedIconPath:
-						'assets/images/icon_tabbar_goods_selected.png',
+						'assets/images/icon/icon_tabbar_goods_selected.png',
 					pagePath: 'pages/index/index',
 					text: '首页'
         },
         {
-					iconPath: 'assets/images/icon_tabbar_goods_default.png',
+					iconPath: 'assets/images/icon/icon_tabbar_goods_default.png',
 					selectedIconPath:
-						'assets/images/icon_tabbar_goods_selected.png',
+						'assets/images/icon/icon_tabbar_goods_selected.png',
 					pagePath: 'pages/lab/index',
 					text: '实验室'
         },
 				{
-					iconPath: 'assets/images/icon_tabbar_goods_default.png',
+					iconPath: 'assets/images/icon/icon_tabbar_goods_default.png',
 					selectedIconPath:
-						'assets/images/icon_tabbar_goods_selected.png',
+						'assets/images/icon/icon_tabbar_goods_selected.png',
 					pagePath: 'pages/user/index',
 					text: '我的'
 				},

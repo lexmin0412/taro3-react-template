@@ -4,6 +4,7 @@ import { View, Button, Text, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import { AtNoticebar, AtTag } from 'taro-ui'
 
+import TImage from '~/components/TImage/TImage'
 import QQMapWSService from '~/services/qqMap/ws.service'
 import LianouService from '~/services/hydee/lianou.service'
 import Toast from '~/utils/toast'
@@ -87,7 +88,13 @@ class Index extends Component {
     //   url: '/pages/index/index'
     // })
     Taro.switchTab({
-      url: '/pages/index/index'
+      url: '/pages/comp/index'
+    })
+  }
+
+  handleImageCompTest() {
+    Taro.navigateTo({
+      url: '/pages/lab/comp'
     })
   }
 
@@ -116,6 +123,7 @@ class Index extends Component {
           iconfont 测试
           <Text>&#xe63d;</Text>
         </Button>
+        <Button onClick={this.handleImageCompTest.bind(this)}>图片组件测试</Button>
       </View>
     )
   }
