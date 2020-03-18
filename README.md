@@ -35,7 +35,7 @@
     - [ ] 迁移至taro-create-file 2.0版本，使用npm引入
   - [ ] 接入taro模版源 http://taro-docs.jd.com/taro/docs/template.html
   - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
-  - [ ] 自建组件库(taro-cui，待升级taro2.0)
+  - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
   - [ ] 自建工具类库（wtils）
 - 组件
   - [x] image 图片组件 提供错误处理、loading过渡、查看大图等功能
