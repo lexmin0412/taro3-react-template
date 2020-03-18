@@ -57,7 +57,7 @@
 
 - [x] 完善文件结构，实现1.0版本的所有功能
 - [ ] Hooks重构
-- [ ] README更新，如dva改成mobx
+- [ ] 升级之后的README更新
 - [ ] 根据2.0迁移指南进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
 - [ ] 研究拦截器在每次发起request时执行的可行性
 
