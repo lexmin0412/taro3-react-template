@@ -1,6 +1,7 @@
 # Taro 2.0 项目模版
 
-> 说明：master 分支跟随 taro 最新稳定版分支而更新，当前基于taro 2.0，基于 taro 1.0 的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
+> 说明：master 分支同步taro最新稳定版本更新，且会持续添加新功能，测试通过后会合并至release分支，当前版本基于taro 2.0；
+> 基于 taro 1.0 的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
 
 ## 功能列表
 
@@ -26,7 +27,6 @@
   - [x] 编译前操作
     - [x] 环境变量检查
     - [x] 扫描components文件夹生成入口文件，实现一个页面只有一行组件引用的代码
-  - [x] 编译
   - [x] 通过命令一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
 
     优化计划：
@@ -35,8 +35,7 @@
     - [ ] 迁移至taro-create-file 2.0版本(开发中)，使用npm引入
   - [ ] 接入taro模版源 http://taro-docs.jd.com/taro/docs/template.html
   - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
-  - [ ] 编译前遍历components文件夹生成index文件，目标：可直接通过index引入任何组件
-  - [ ] 自建组件库(taro-cui，待升级taro2.0)
+  - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
   - [ ] 自建工具类库（wtils）
 - 组件
   - [x] image 图片组件 提供错误处理、loading过渡、查看大图等功能
@@ -46,7 +45,7 @@
   - [ ] 基础弹窗组件，可选择弹窗方式，包括中间弹窗、底部弹窗，可自定义关闭按钮
   - [ ] 倒计时组件，可自定义结束时间、自定义倒计时长、是否展示天，自定义item样式
   - [ ] 按钮组件，可自定义类名、自定义宽高、背景色、圆角、positionType
-  - [ ] 缺省组件 可自定义图片、文字、宽高
+  - [x] 缺省组件 可自定义图片、文字、宽高
 - 工具类
   - [x] img.ts 图片处理类（如拼接url、预览等）
   - [x] mp.ts 小程序独有api封装（如检查更新）
@@ -57,12 +56,12 @@
 
 - [x] 完善文件结构，实现1.0版本的所有功能
 - [ ] Hooks重构
-- [ ] README更新，如dva改成mobx
+- [ ] 升级之后的README更新
 - [ ] 根据2.0迁移指南进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
-- [ ] 研究拦截器在request类调用中执行的可行性
 - [ ] 组件使用外部样式类 https://nervjs.github.io/taro/docs/component-style.html#%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E7%B1%BB 
 - [ ] render-props https://nervjs.github.io/taro/docs/render-props.html
 - [ ] context https://nervjs.github.io/taro/docs/context.html
+- [ ] 研究拦截器在每次发起request时执行的可行性
 
 ## 升级问题处理
 
