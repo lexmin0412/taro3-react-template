@@ -26,7 +26,6 @@
   - [x] 编译前操作
     - [x] 环境变量检查
     - [x] 扫描components文件夹生成入口文件，实现一个页面只有一行组件引用的代码
-  - [x] 编译
   - [x] 通过命令一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
 
     优化计划：
@@ -35,7 +34,6 @@
     - [ ] 迁移至taro-create-file 2.0版本，使用npm引入
   - [ ] 接入taro模版源 http://taro-docs.jd.com/taro/docs/template.html
   - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
-  - [ ] 编译前遍历components文件夹生成index文件，目标：可直接通过index引入任何组件
   - [ ] 自建组件库(taro-cui，待升级taro2.0)
   - [ ] 自建工具类库（wtils）
 - 组件
