@@ -7,7 +7,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import TImage from '~/components/TImage/TImage'
+import { Card, TImage } from '~/components'
+
 import { PageStateProps, PageState } from './comp'
 import './comp.scss'
 
@@ -59,6 +60,26 @@ class Comp extends Component {
                     height={150}
                     showLoading={true}
                   />
+                )
+              })
+            }
+          </View>
+        }
+        {
+          type === 'card' &&
+          <View className="demo-page-item">
+            卡片组件
+            {
+              imageList.map((item,index)=>{
+                return (
+                  <Card customStyle={{
+                    borderRadius: 20,
+                    hSpace: 20,
+                    vSpace: 20,
+                    padding: 20
+                  }}>
+                    卡片
+                  </Card>
                 )
               })
             }

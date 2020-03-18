@@ -92,9 +92,9 @@ class Index extends Component {
     })
   }
 
-  handleImageCompTest() {
+  hanldeCompTest(type) {
     Taro.navigateTo({
-      url: '/pages/lab/comp'
+      url: `/pages/lab/comp?type=${type}`
     })
   }
 
@@ -123,7 +123,8 @@ class Index extends Component {
           iconfont 测试
           <Text>&#xe63d;</Text>
         </Button>
-        <Button onClick={this.handleImageCompTest.bind(this)}>图片组件测试</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'image')}>图片组件测试</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'card')}>卡片组件测试</Button>
       </View>
     )
   }
