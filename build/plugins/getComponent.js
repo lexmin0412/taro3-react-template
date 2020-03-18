@@ -16,13 +16,11 @@ const checkComponent = () => {
   let Names = ``
 
   var outerDirs = fs.readdirSync("./src/components");
-  console.log(outerDirs);
 
   outerDirs.forEach((item,index)=>{
     console.log('item', item)
 
     var innerDir = fs.readdirSync(`./src/components/${item}`)
-    console.log('innerDir', innerDir)
 
     // 去除后缀名
     let newLines = []
@@ -52,6 +50,7 @@ export {
 }`
 
   fs.writeFileSync('./src/components/index.ts', indexLines)
+  console.log('扫描完成，components/index.ts创建成功')
 
 }
 
