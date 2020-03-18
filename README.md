@@ -3,6 +3,25 @@
 > 说明：master 分支同步taro最新稳定版本更新，且会持续添加新功能，测试通过后会合并至release分支，当前版本基于taro 2.0；
 > 基于 taro 1.0 的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
 
+
+## 导航
+
+- [项目结构](#项目结构)
+- [TODO](#TODO)
+- [Setup](#Setup)
+- [开发](#开发)
+  - [新建页面](#新建页面)
+    - [静态资源导入规范](#静态资源导入规范)
+    - [类名规范](类名规范)
+- [请求数据](#请求数据)
+  - [创建service](#创建service)
+  - [service文件设计规范](#service文件设计规范)
+  - [直接调用service获取数据](#直接调用service获取数据)
+  - [通过dva获取数据](#通过dva获取数据)
+- [使用组件](#使用组件)
+- [技术栈](#技术栈)
+- [项目文档](#项目文档)
+
 ## 功能列表
 
 - 基础功能支持
@@ -103,24 +122,6 @@
   npm config set registry https://registry.npmjs.org/
   ```
 
-## 导航
-
-- [项目结构](#项目结构)
-- [TODO](#TODO)
-- [Setup](#Setup)
-- [开发](#开发)
-  - [新建页面](#新建页面)
-    - [静态资源导入规范](#静态资源导入规范)
-    - [类名规范](类名规范)
-- [请求数据](#请求数据)
-  - [创建service](#创建service)
-  - [service文件设计规范](#service文件设计规范)
-  - [直接调用service获取数据](#直接调用service获取数据)
-  - [通过dva获取数据](#通过dva获取数据)
-- [使用组件](#使用组件)
-- [技术栈](#技术栈)
-- [项目文档](#项目文档)
-
 ## 项目结构
 
 以下是项目结构的缩略图
@@ -142,88 +143,52 @@ yarn dev:h5
 
 ## 开发
 
-### 新建页面
+### 编译命令
 
-在 pages 文件夹下新建一个文件夹，作为一个模块
+格式：
 
-一个功能完备的页面至少包括以下三个文件：
+```shell
+yarn <mode>:<platform>-<env>
+```
 
-- 页面
+`mode`，编译模式：
 
-  ```tsx
-  // pages/home/index
-  import Taro, { Component, Config } from '@tarojs/taro'
-  import { View, Text } from '@tarojs/components'
-  import { connect } from '@tarojs/redux'
-  import { ComponentClass } from 'react';
+- dev 本地开发
+- build 服务器部署
 
-  import { IPageOwnProps, IPageState, IProps } from './index.itf'
-  import Line from '~/components/Line'
-  import Toast from '~/utils/toast'
+`platform`，编译目标平台
 
-  import './index.scss'
+- mp 微信小程序
+- h5 h5
 
-  interface Index {
-    props: IProps;
-  }
+`env`，环境配置标识，不同标识使用不同的环境配置，如接口host
 
-  @connect(({ home, loading }) => {
-    return { home, loading };
-  })
-  class Index extends Component {
+- sit 测试环境
+- uat 预发环境
+- pro 生产环境
+- 空  开发环境
 
-    config: Config = {
-      // 设置页面标题
-      navigationBarTitleText: '首页'
-    }
+示例：
 
-    componentDidMount() {
-      this.queryExhibitionData()
-    }
+```shell
+yarn dev:mp  # 本地开发 小程序 开发环境
+yarn dev:mp-sit  # 本地开发 小程序 测试环境
+yarn build:mp   # 部署 小程序 开发环境
+yarn build-mo-pro  # 部署 小程序 生产环境
+```
 
-    // 调用dva action请求数据
-    async queryExhibitionData() {
-      Toast.loading('加载中...')
-      console.log('this.props', this.props)
-      this.props.dispatch({
-        type: 'home/getExhibition',
-        payload: {
-          c_type: 1,
-          pageindex: 1,
-          pagesize: 10
-        }
-      }).then((res)=>{
-        console.log('res model from page',res)
-        Toast.hideLoading()
-      })
-    }
+### 新建文件
 
-    render() {
-      const { exbitionData } = this.props.home
-      const { loading } = this.props
-      return (
-        <View className='home-index-page'>
-          <Text>Hello world!</Text>
-          {
-            loading.global ?
-            <View>loading...</View>
-            :
-            exbitionData.exhibition_list && exbitionData.exhibition_list.map((item,index)=>{
-              return (
-                <View>{item.now_time_str}</View>
-              )
-            })
-          }
-          <Line height={1} color="#45aafa" />
-        </View>
-      )
-    }
-  }
+执行 `yarn template`, 根据指引即可快速创建文件，减少繁琐的新建文件操作，通过该命令可创建如下四种文件：
 
-  export default Index as ComponentClass<IPageOwnProps, IPageState>;
-  ```
+- 页面（同时生成对应的scss和ts类型生命文件）
+- 组件（同时生成对应的scss文件）
+- mobx模块
+- service类
 
-  #### 静态资源导入规范
+### 开发规范
+
+#### 静态资源导入规范
 
   一个页面文件导入模块时应该按照如下规范：
 
@@ -249,9 +214,9 @@ yarn dev:h5
   import './index.scss'
   ```
 
-  #### 类名规范
+#### 类名规范
 
-  - 页面容器应以模块-文件名-容器类型命名，如 home-index-page, line-comp 等
+- 页面容器应以模块-文件名-容器类型命名，如 home-index-page, line-comp 等
 
 - 样式
 
