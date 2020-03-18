@@ -57,11 +57,6 @@
 - [x] 完善文件结构，实现1.0版本的所有功能
 - [ ] Hooks重构
 - [ ] 升级之后的README更新
-- [ ] 根据2.0迁移指南进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
-- [ ] 组件使用外部样式类 https://nervjs.github.io/taro/docs/component-style.html#%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E7%B1%BB 
-- [ ] render-props https://nervjs.github.io/taro/docs/render-props.html
-- [ ] context https://nervjs.github.io/taro/docs/context.html
-- [ ] 研究拦截器在每次发起request时执行的可行性
 
 ## 升级问题处理
 
