@@ -13,7 +13,7 @@ module.exports = {
   },
   h5: {
     devServer: {
-      port: '9000',
+      port: '10086',
       proxy: {
         '/api/1.0': {
           target: 'https://middle.test.ydjia.cn/businesses-gateway/customer/1.0',
