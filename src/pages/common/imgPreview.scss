@@ -1,0 +1,50 @@
+.imgPreview-page {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+
+  .img-preview-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+    line-height: 80px;
+    color: #fff;
+
+    .back {
+      width: 80px;
+      font-size: 32px;
+    }
+    .title {
+      flex: 1;
+      text-align: center;
+      font-size: 32px;
+    }
+    .right-actions {
+      width: 80px;
+    }
+  }
+  .img-preview-swiper {
+    width: 100%;
+    height: 100%;
+
+    .img-preview-swiper-item {
+      // width: 100vw!important;
+      // height: 100%;
+
+      .img-preview-ele {
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
