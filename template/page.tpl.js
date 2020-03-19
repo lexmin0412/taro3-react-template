@@ -31,6 +31,10 @@ class ${wtils.transFirstLetterToUpper(filename)} extends Component {
     navigationBarTitleText: '${desc}'
   }
 
+  state: PageState = {
+
+  }
+
   // 监听mobx状态变化
   componentWillReact () {
     console.log('componentWillReact', this.props)
