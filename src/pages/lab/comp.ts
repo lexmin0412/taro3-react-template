@@ -11,4 +11,7 @@ export type PageStateProps = {
  */
 export type PageState = {
   type: string;
+  imageList: Array<string>;
+  hasMore: boolean;
+  showPaging: boolean;
 }
