@@ -14,4 +14,6 @@ export type PageState = {
   imageList: Array<string>;
   hasMore: boolean;
   showPaging: boolean;
+  modalVisible: boolean;
+  modalType: 'center' | 'bottom'
 }

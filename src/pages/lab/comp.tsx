@@ -7,7 +7,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { Card, TImage, Nodata, Paging } from '~/components'
+import { Card, TImage, Nodata, Paging, Modal } from '~/components'
 
 import { PageStateProps, PageState } from './comp'
 import './comp.scss'
@@ -24,7 +24,7 @@ class Comp extends Component {
     navigationBarTitleText: '组件演示'
   }
 
-  state = {
+  state: PageState = {
     type: 'image',
     imageList: [
       'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
@@ -38,7 +38,9 @@ class Comp extends Component {
       'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
     ],
     hasMore: true,
-    showPaging: true
+    showPaging: true,
+    modalVisible: false,
+    modalType: 'center'
   }
 
   // 监听mobx状态变化
@@ -80,8 +82,15 @@ class Comp extends Component {
     }, 1000);
   }
 
+  showModal(type) {
+    this.setState({
+      modalVisible: true,
+      modalType: type
+    })
+  }
+
   render () {
-    const { type, imageList, hasMore } = this.state
+    const { type, imageList, hasMore, modalVisible, modalType } = this.state
     return (
       <View className='comp-page'>
         <View className="comp-page-title">组件演示</View>
@@ -141,6 +150,24 @@ class Comp extends Component {
           <View className="demo-page-item">
             缺省组件
             <Paging hasMore={hasMore} showPaging={true} />
+          </View>
+        }
+
+        {
+          type === 'modal' &&
+          <View className="demo-page-item">
+            弹窗组件
+            <Button onClick={this.showModal.bind(this, 'center')}>点击展示弹窗（居中弹窗）</Button>
+            <Button onClick={this.showModal.bind(this, 'bottom')}>点击展示弹窗（底部弹窗）</Button>
+            <Modal
+              positionType={modalType}
+              title="弹窗标题"
+              visible={modalVisible}
+            >
+              <View>这是内容这是内容这是内容这是内
+                容这是内容这是内容这是内容这是内容这是内容这是内容
+              </View>
+            </Modal>
           </View>
         }
       </View>
