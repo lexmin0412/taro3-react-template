@@ -1,5 +1,5 @@
 /**
- * 用于在taro之前根据环境生成不同的project.config.json
+ * 用于在项目打包之前根据环境生成不同的project.config.json
  */
 
 const fs = require('fs')
