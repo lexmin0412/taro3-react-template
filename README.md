@@ -3,7 +3,6 @@
 > 说明：master 分支同步taro最新稳定版本更新，且会持续添加新功能，测试通过后会合并至release分支，当前版本基于taro 2.0；
 > 基于 taro 1.0 的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
 
-
 ## 导航
 
 - [项目结构](#项目结构)
@@ -59,11 +58,11 @@
 - 组件
   - [x] image 图片组件 提供错误处理、loading过渡、查看大图等功能
   - [ ] imgUploader 图片上传组件 基于image 提供上传图片、图片数量限制、删除图片、查看大图等功能
-  - [ ] paging 分页提示组件 将scrollerLoader, scrollerEndMessage合并成一个组件，减少判断
+  - [x] paging 分页提示组件 将scrollerLoader, scrollerEndMessage合并成一个组件，减少判断
   - [x] card 卡片组件 提供圆角、阴影功能，可自定义类名、样式（圆角及内外边距）
-  - [ ] 基础弹窗组件，可选择弹窗方式，包括中间弹窗、底部弹窗，可自定义关闭按钮
+  - [x] 基础弹窗组件，可选择弹窗位置，包括中间弹窗、底部弹窗，抛出关闭回调
   - [ ] 倒计时组件，可自定义结束时间、自定义倒计时长、是否展示天，自定义item样式
-  - [ ] 按钮组件，可自定义类名、自定义宽高、背景色、圆角、positionType
+  - [x] 按钮组件，可自定义类名、自定义宽高、背景色、圆角、positionType
   - [x] 缺省组件 可自定义图片、文字、宽高
 - 工具类
   - [x] img.ts 图片处理类（如拼接url、预览等）
