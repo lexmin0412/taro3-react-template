@@ -7,7 +7,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { Card, TImage, Nodata, Paging, Modal } from '~/components'
+import { Card, TImage, Nodata, Paging, Modal, TButton } from '~/components'
 
 import { PageStateProps, PageState } from './comp'
 import './comp.scss'
@@ -168,6 +168,20 @@ class Comp extends Component {
                 容这是内容这是内容这是内容这是内容这是内容这是内容
               </View>
             </Modal>
+          </View>
+        }
+
+        {
+          type === 'button' &&
+          <View className="demo-page-item">
+            按钮组件
+            <TButton
+              wrap={false}
+              text="按钮文字"
+              backgroundColor="#45aafa"
+              width="80%"
+              wrapperHeight={140}
+            />
           </View>
         }
       </View>
