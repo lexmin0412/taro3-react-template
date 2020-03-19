@@ -34,6 +34,10 @@ interface IState {
 
 export default class ${wtils.transFirstLetterToUpper(fileName)} extends Component<IProps, IState> {
 
+  static defaultProps: IProps = {
+
+  }
+
   render () {
     return (
       <View className="${fileName}-comp">
