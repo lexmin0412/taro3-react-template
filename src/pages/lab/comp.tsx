@@ -7,7 +7,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { Card, TImage, Nodata, Paging, Modal, TButton } from '~/components'
+import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown } from '~/components'
 
 import { PageStateProps, PageState } from './comp'
 import './comp.scss'
@@ -181,6 +181,18 @@ class Comp extends Component {
               backgroundColor="#45aafa"
               width="80%"
               wrapperHeight={140}
+            />
+          </View>
+        }
+
+        {
+          type === 'countdown' &&
+          <View className="demo-page-item">
+            倒计时组件
+            <Countdown
+              // leftTime={500}
+              endTime={1584720000000}
+              acmlDateToHours={false}
             />
           </View>
         }
