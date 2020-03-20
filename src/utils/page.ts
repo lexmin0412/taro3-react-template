@@ -11,7 +11,7 @@ class Pages {
       /**
        * 首页
        */
-      home: 'pages/home/index',
+      home: 'pages/index/index',
       /**
        * 授权页
        */

@@ -9,7 +9,7 @@ const checkComponent = () => {
 
   if ( fs.existsSync('./src/components/index.ts') ) {
     fs.unlinkSync('./src/components/index.ts')
-    console.log('删除index.ts成功')
+    console.log('删除index.ts')
   }
 
   let indexLines = ``
@@ -18,7 +18,6 @@ const checkComponent = () => {
   var outerDirs = fs.readdirSync("./src/components");
 
   outerDirs.forEach((item,index)=>{
-    console.log('item', item)
 
     var innerDir = fs.readdirSync(`./src/components/${item}`)
 
@@ -26,6 +25,7 @@ const checkComponent = () => {
     let newLines = []
     innerDir.forEach((inItem,inIndex)=>{
       const sliceRes = inItem.slice(0,inItem.indexOf('.'))
+      // 去重
       if ( newLines.indexOf(sliceRes) === -1 ) {
         newLines.push(sliceRes)
         Names = Names ? `${Names}
@@ -50,7 +50,7 @@ export {
 }`
 
   fs.writeFileSync('./src/components/index.ts', indexLines)
-  console.log('扫描完成，components/index.ts创建成功')
+  console.log('组件扫描完成，components/index.ts创建成功')
 
 }
 
