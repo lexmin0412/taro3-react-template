@@ -7,8 +7,23 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Image, Swiper, SwiperItem } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { PageStateProps, PageState } from './imgPreview'
 import './imgPreview.scss'
+
+
+/**
+ * 页面props
+ */
+type PageStateProps = {
+
+}
+
+/**
+ * 页面state
+ */
+type PageState = {
+  current: number;
+  list: Array<string>;
+}
 
 interface ImgPreview {
   props: PageStateProps;

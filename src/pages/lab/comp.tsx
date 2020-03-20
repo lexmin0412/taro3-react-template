@@ -9,8 +9,26 @@ import { observer, inject } from '@tarojs/mobx'
 
 import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown } from '~/components'
 
-import { PageStateProps, PageState } from './comp'
 import './comp.scss'
+
+/**
+ * 页面props
+ */
+type PageStateProps = {
+  counterStore: any;
+}
+
+/**
+ * 页面state
+ */
+type PageState = {
+  type: string;
+  imageList: Array<string>;
+  hasMore: boolean;
+  showPaging: boolean;
+  modalVisible: boolean;
+  modalType: 'center' | 'bottom'
+}
 
 interface Comp {
   props: PageStateProps;
