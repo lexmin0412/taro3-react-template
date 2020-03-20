@@ -16,8 +16,21 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { PageStateProps, PageState } from './${filename}'
 import './${filename}.scss'
+
+/**
+ * 页面props
+ */
+type PageStateProps = {
+
+}
+
+/**
+ * 页面state
+ */
+type PageState = {
+
+}
 
 interface ${wtils.transFirstLetterToUpper(filename)} {
   props: PageStateProps;
@@ -43,7 +56,6 @@ class ${wtils.transFirstLetterToUpper(filename)} extends Component {
   componentDidMount () { }
 
   render () {
-    const { counterStore: { counter } } = this.props
     return (
       <View className='${filename}-page'>
         <View>${desc||'页面描述'}</View>

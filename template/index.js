@@ -72,7 +72,7 @@ getLineValue('请选择要生成的文件类型： p(页面)、c(组件)、m(mob
             p: [
               { suffix: 'tsx', template: indexTep, },
               { suffix: 'scss', template: scssTep },
-              { suffix: 'ts', template: itfTpl }
+              // { suffix: 'ts', template: itfTpl }
             ],
             m: [
               { suffix: 'ts', template: modelTep }
