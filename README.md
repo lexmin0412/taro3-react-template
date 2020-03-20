@@ -82,9 +82,11 @@
 - [ ] context https://nervjs.github.io/taro/docs/context.html
 - [ ] 研究拦截器在每次发起request时执行的可行性
 
-## 升级问题处理
+## 问题记录
 
-### 使用 async/await 在小程序中报 `regeneratorRuntime is not defined`
+### Taro升级问题
+
+#### 使用 async/await 在小程序中报 `regeneratorRuntime is not defined`
 
 原因：没有async await支持  
 
@@ -92,6 +94,12 @@
 
 - https://nervjs.github.io/taro/docs/async-await.html#docsNav
 - https://nervjs.github.io/taro/docs/migrate-to-2.html
+
+### 其他
+
+#### 小程序中无法识别类型声明独立文件的操作
+
+解决方案：不将类型声明独立文件，此问题需要后续观察。
 
 ## 优化
 
