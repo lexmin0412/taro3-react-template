@@ -7,7 +7,9 @@ class BuildPlugin {
     builder.hooks.beforeBuild.tap('BuildPlugin', (config) => {
       // 在这里做一些打包之前的验证操作 可以获取到配置且可以修改
 
+      // 扫描pages文件夹生成路由列表文件
       getPages().then(()=>{
+        // 结合pages配置项初始化app.tsx
         require('./initApp')()
       })
 

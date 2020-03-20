@@ -12,7 +12,10 @@ const checkComponent = () => {
     console.log('删除index.ts')
   }
 
-  let indexLines = ``
+  let indexLines = `/**
+ * 注意：此文件为编译时自动生成，无需手动修改
+*/
+`
   let Names = ``
 
   var outerDirs = fs.readdirSync("./src/components");
