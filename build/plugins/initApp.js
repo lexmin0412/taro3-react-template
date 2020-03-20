@@ -11,10 +11,10 @@ pages = `    pages: [${pages}
 
 const initApp = () => {
 
-  const appTemplate = fs.readFileSync('./build/plugins/app.js').toString().split("\n")
-  console.log('读取app.js模版')
+  const appTemplate = fs.readFileSync('./build/plugins/app.tsx').toString().split("\n")
+  console.log('读取app.tsx模版')
 
-  const pageLine = appTemplate.findIndex((item)=>item.indexOf('pages: Routes')>-1)
+  const pageLine = appTemplate.findIndex((item)=>item.indexOf('pages: []')>-1)
   appTemplate[pageLine] = pages
 
   appTemplate.join('\n')

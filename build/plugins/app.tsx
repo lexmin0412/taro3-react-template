@@ -2,12 +2,10 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Index from '~/pages/index'
 
-import counterStore from './store/counter'
+import counterStore from '~/store/counter'
 import { checkUpdate } from '~/utils/mp'
 
 import './app.scss'
-
-const Routes = require('./pages/routes')
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -37,7 +35,7 @@ class App extends Component {
    */
   // @ts-ignore
   config: Config = {
-    pages: Routes,
+    pages: [],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
@@ -83,7 +81,9 @@ class App extends Component {
 
   componentDidHide() { }
 
-  componentDidCatchError() { }
+  componentDidCatchError(err) {
+    console.error('catch error', err)
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
