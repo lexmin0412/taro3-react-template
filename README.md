@@ -54,7 +54,7 @@
     - [ ] 命令行上下键可选择要生成的文件类型等操作
     - [ ] 迁移至taro-create-file 2.0版本(开发中)，使用npm引入
   - [ ] 接入taro模版源 http://taro-docs.jd.com/taro/docs/template.html
-  - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
+  - [x] 底层组件，用于页面和组件继承，实现类似vue原型绑定的功能
   - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
   - [x] 引入自建工具类库（wtils）
 - 组件
