@@ -7,7 +7,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown } from '~/components'
+import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader } from '~/components'
 
 import './comp.scss'
 
@@ -104,6 +104,13 @@ class Comp extends Component {
     this.setState({
       modalVisible: true,
       modalType: type
+    })
+  }
+
+  handleImgListChange(list) {
+    console.log('comp page list', list)
+    this.setState({
+      imgList: list
     })
   }
 
@@ -211,6 +218,21 @@ class Comp extends Component {
               // leftTime={500}
               endTime={1584720000000}
               acmlDateToHours={false}
+            />
+          </View>
+        }
+
+        {
+          type === 'imgUploader' &&
+          <View className="demo-page-item">
+            图片上传组件
+            <TImageUploader
+              defaultList={[
+                'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
+              ]}
+              onChange={this.handleImgListChange.bind(this)}
             />
           </View>
         }

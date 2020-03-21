@@ -88,7 +88,7 @@ class Index extends Component {
     //   url: '/pages/index/index'
     // })
     Taro.switchTab({
-      url: '/pages/comp/index'
+      url: '/pages/lab/index'
     })
   }
 
@@ -101,35 +101,36 @@ class Index extends Component {
   render() {
     return (
       <View className='index'>
-        <AtNoticebar>taro-ui组件测试：通告栏</AtNoticebar>
-        <AtTag size='small'>taro-ui组件测试：标签</AtTag>
+        <AtNoticebar>taro-ui组件演示：通告栏</AtNoticebar>
+        <AtTag size='small'>taro-ui组件演示：标签</AtTag>
         <Button onClick={this.handleJSONPTest.bind(this)}
           className="button-jsonp"
         >
-          jsonp 测试
+          jsonp 演示
         </Button>
         <Button onClick={this.handleProxyText.bind(this)}>
-          本地代理 测试
+          本地代理 演示
         </Button>
         <Button onClick={this.handleCustomRoute.bind(this)}>
-          自定义路由 测试
+          自定义路由 演示
         </Button>
         <Button onClick={this.handleCustomRoute.bind(this)}
           className="sass-test"
         >
-          sass文件全局注册 测试
+          sass文件全局注册 演示
         </Button>
         <Button className="iconfont-test iconfont down">
-          iconfont 测试
+          iconfont 演示
           <Text>&#xe63d;</Text>
         </Button>
-        <Button onClick={this.hanldeCompTest.bind(this, 'image')}>图片组件测试</Button>
-        <Button onClick={this.hanldeCompTest.bind(this, 'card')}>卡片组件测试</Button>
-        <Button onClick={this.hanldeCompTest.bind(this, 'default')}>缺省组件测试</Button>
-        <Button onClick={this.hanldeCompTest.bind(this, 'paging')}>分页组件测试</Button>
-        <Button onClick={this.hanldeCompTest.bind(this, 'modal')}>弹窗组件测试</Button>
-        <Button onClick={this.hanldeCompTest.bind(this, 'button')}>按钮组件测试</Button>
-        <Button onClick={this.hanldeCompTest.bind(this, 'countdown')}>倒计时组件测试</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'image')}>图片组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'card')}>卡片组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'default')}>缺省组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'paging')}>分页组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'modal')}>弹窗组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'button')}>按钮组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'countdown')}>倒计时组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'imgUploader')}>图片上传组件演示</Button>
       </View>
     )
   }
