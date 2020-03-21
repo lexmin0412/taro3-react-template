@@ -1,3 +1,7 @@
+/**
+ * 合并模版和配置项生成app.tsx文件
+ */
+
 const fs = require('fs')
 let pages = require('./../../src/pages/routes.js')
 
