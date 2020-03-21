@@ -34,7 +34,7 @@ interface ImgPreview {
 @observer
 class ImgPreview extends Component {
   config: Config = {
-    navigationBarTitleText: '图片预览页面'
+    navigationBarTitleText: '图片预览'
   }
 
   // 监听mobx状态变化

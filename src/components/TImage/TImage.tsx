@@ -106,14 +106,6 @@ class TImage extends Component<IProps, IState> {
     mode: 'aspectFill',
   }
 
-  componentWillMount() {
-    console.log(this.props)
-  }
-
-  componentDidMount() {
-    console.log(this.props)
-  }
-
   /**
    *
    * @param url 图片错误处理
