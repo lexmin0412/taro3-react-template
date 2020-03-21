@@ -55,10 +55,10 @@
   - [ ] 接入taro模版源 http://taro-docs.jd.com/taro/docs/template.html
   - [ ] 底层页面组件，用于其他页面继承，实现类似vue原型绑定的功能
   - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
-  - [ ] 自建工具类库（wtils）
+  - [x] 引入自建工具类库（wtils）
 - 组件
   - [x] image 图片组件 提供错误处理、loading过渡、查看大图等功能
-  - [ ] imgUploader 图片上传组件 基于image 提供上传图片、图片数量限制、删除图片、查看大图等功能
+  - [x] imgUploader 图片上传组件 基于image 提供上传图片、图片数量限制、删除图片、查看大图等功能
   - [x] paging 分页提示组件 将scrollerLoader, scrollerEndMessage合并成一个组件，减少判断
   - [x] card 卡片组件 提供圆角、阴影功能，可自定义类名、样式（圆角及内外边距）
   - [x] 基础弹窗组件，可选择弹窗位置，包括中间弹窗、底部弹窗，抛出关闭回调
@@ -70,6 +70,7 @@
   - [x] mp.ts 小程序独有api封装（如检查更新）
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
   - [x] toast.ts loading/toast api封装简化
+  - [ ] 表单验证类
   
 ## 后续功能及优化
 
@@ -100,6 +101,10 @@
 #### 小程序中无法识别类型声明独立文件的操作
 
 解决方案：不将类型声明独立文件，此问题需要后续观察。
+
+#### h5中 调用chooseImage，点击取消按钮无法不会进入 success fail complete中的任何一个回调
+
+解决方案：loading放在success回调中 上传之前开始展示
 
 ## 优化
 
