@@ -4,6 +4,7 @@
 
 import { Component } from '@tarojs/taro'
 import Meta from '~/utils/meta'
+import FormValidator from '~/utils/FormValidator'
 
 class BaseComponent extends Component {
 
@@ -15,7 +16,12 @@ class BaseComponent extends Component {
    * 设置页面标题
    * @param title 标题文字
    */
-  setTitle = Meta.setTitle
+  _setTitle = Meta.setTitle;
+
+  /**
+   * 表单验证器
+   */
+  _validator = FormValidator;
 }
 
 export default BaseComponent;
