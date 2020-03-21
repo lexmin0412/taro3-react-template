@@ -5,16 +5,16 @@
 import Taro from '@tarojs/taro'
 import Constants from '~/constants/index'
 import headerInterceptor from '~/interceptors/header.interceptor'
-import hostInterceptor from '~/interceptors/url.interceptor'
-import delInterceptor from '~/interceptors/del.interceptor'
+import urlInterceptor from '~/interceptors/url.interceptor'
 import dataInterceptor from '~/interceptors/data.interceptor'
+import delInterceptor from '~/interceptors/del.interceptor'
 
 console.log('hostconfig', APP_CONF)
 
 // 添加拦截器
 const getInterceptors = () => {
   return [
-    hostInterceptor,
+    urlInterceptor,
     headerInterceptor,
     dataInterceptor,
     delInterceptor,
