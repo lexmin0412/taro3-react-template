@@ -6,15 +6,15 @@ const wtils = require('wtils')
  * @param {string} desc 文件描述
  */
 
-
-
 const echoCompTpl = (fileName, desc) => {
   return `/**
   * ${desc}
   */
 
-import Taro, { Component } from '@tarojs/taro'
+import { ComponentType } from 'react'
+import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
+import BaseComponent from '~/components/BaseComponent/baseComponent'
 
 import './${fileName}.scss'
 
@@ -22,7 +22,10 @@ import './${fileName}.scss'
  * props属性
  */
 interface IProps {
-
+  /**
+   * 子元素
+   */
+  children?: any;
 }
 
 /**
@@ -32,7 +35,12 @@ interface IState {
 
 }
 
-export default class ${wtils.transFirstLetterToUpper(fileName)} extends Component<IProps, IState> {
+interface ${wtils.transFirstLetterToUpper(fileName)} {
+  props: IProps;
+  state: IState;
+}
+
+class ${wtils.transFirstLetterToUpper(fileName)} extends BaseComponent {
 
   static defaultProps: IProps = {
 
@@ -45,7 +53,9 @@ export default class ${wtils.transFirstLetterToUpper(fileName)} extends Componen
       </View>
     )
   }
-}`
+}
+
+export default ${wtils.transFirstLetterToUpper(fileName)} as ComponentType`
 }
 
 module.exports = echoCompTpl

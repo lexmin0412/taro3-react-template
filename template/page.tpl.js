@@ -1,6 +1,5 @@
 const wtils = require('wtils')
 
-
 /**
  * taro页面模版
  * @param {string} filename 文件名
@@ -12,9 +11,10 @@ const echoPageTemplate = (filename, desc) => {
  */
 
 import { ComponentType } from 'react'
-import Taro, { Component, Config } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import BaseComponent from '~/components/BaseComponent/baseComponent'
 
 import './${filename}.scss'
 
@@ -22,7 +22,10 @@ import './${filename}.scss'
  * 页面props
  */
 type PageStateProps = {
-
+  /**
+   * 子元素
+   */
+  children?: any;
 }
 
 /**
@@ -39,21 +42,20 @@ interface ${wtils.transFirstLetterToUpper(filename)} {
 
 @inject('counterStore')
 @observer
-class ${wtils.transFirstLetterToUpper(filename)} extends Component {
-  config: Config = {
-    navigationBarTitleText: '${desc}'
-  }
+class ${wtils.transFirstLetterToUpper(filename)} extends BaseComponent {
 
-  state: PageState = {
+  constructor(props) {
+    super(props)
+    this.setTitle('${desc||'页面描述'}')
+    this.state = {
 
+    }
   }
 
   // 监听mobx状态变化
   componentWillReact () {
     console.log('componentWillReact', this.props)
   }
-
-  componentDidMount () { }
 
   render () {
     return (
