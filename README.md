@@ -71,7 +71,8 @@
   - [x] mp.ts 小程序独有api封装（如检查更新）
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
   - [x] toast.ts loading/toast api封装简化
-  - [ ] 表单验证类
+  - [x] formValidator.ts 表单验证
+  - [x] meta.ts meta相关功能
   
 ## 后续功能及优化
 
