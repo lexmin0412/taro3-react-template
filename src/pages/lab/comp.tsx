@@ -8,6 +8,7 @@ import { View, Button } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
 import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader } from '~/components'
+import FormValidator from '~/utils/FormValidator'
 
 import './comp.scss'
 
@@ -112,6 +113,11 @@ class Comp extends Component {
     this.setState({
       imgList: list
     })
+  }
+
+  formValidate() {
+    console.log('formValidate')
+    FormValidator.validate([1,3], false, this.state)
   }
 
   render () {
@@ -236,6 +242,9 @@ class Comp extends Component {
             />
           </View>
         }
+
+
+        <Button onClick={this.formValidate}>测试表单验证</Button>
       </View>
     )
   }
