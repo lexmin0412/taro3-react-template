@@ -6,18 +6,24 @@
 ## 导航
 
 - [功能列表](#功能列表)
+- [后续工作](#后续工作)
+- [问题记录](#问题记录)
+  - [Taro升级问题](#Taro升级问题)
+  - [其他](#其他)
+- [优化](#优化)
+  - [taro-ui样式引入](#taro-ui样式引入)
+  - [官方优化指南](#官方优化指南)
 - [项目结构](#项目结构)
-- [TODO](#TODO)
-- [Setup](#Setup)
+- [开始](#开始)
 - [开发](#开发)
-  - [新建页面](#新建页面)
+  - [编译命令](#编译命令)
+  - [新建文件](#新建文件)
+  - [开发规范](#开发规范)
     - [静态资源导入规范](#静态资源导入规范)
     - [类名规范](类名规范)
-- [请求数据](#请求数据)
-  - [创建service](#创建service)
-  - [service文件设计规范](#service文件设计规范)
-  - [直接调用service获取数据](#直接调用service获取数据)
-  - [通过dva获取数据](#通过dva获取数据)
+  - [请求数据](#请求数据)
+    - [创建service](#创建service)
+    - [直接调用service获取数据](#直接调用service获取数据)
 - [使用组件](#使用组件)
 - [技术栈](#技术栈)
 - [项目文档](#项目文档)
@@ -71,17 +77,15 @@
   - [x] mp.ts 小程序独有api封装（如检查更新）
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
   - [x] toast.ts loading/toast api封装简化
-  - [ ] 表单验证类
+  - [x] 表单验证类
   
-## 后续功能及优化
+## 后续工作
 
-- [x] 完善文件结构，实现1.0版本的所有功能
-- [ ] Hooks重构
-- [ ] 升级之后的README更新
+- [ ] Taro中的hooks与mobx结合？
 - [ ] 根据2.0迁移指南进行优化 https://nervjs.github.io/taro/docs/migrate-to-2.html
 - [ ] 组件使用外部样式类 https://nervjs.github.io/taro/docs/component-style.html#%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E7%B1%BB 
-- [ ] render-props https://nervjs.github.io/taro/docs/render-props.html
-- [ ] context https://nervjs.github.io/taro/docs/context.html
+- [ ] render-props融合 https://nervjs.github.io/taro/docs/render-props.html
+- [ ] context融合 https://nervjs.github.io/taro/docs/context.html
 - [ ] 研究拦截器在每次发起request时执行的可行性
 
 ## 问题记录
@@ -109,7 +113,7 @@
 
 ## 优化
 
-### taro-ui 样式引入
+### taro-ui样式引入
 
 ```scss
 // app.scss
@@ -142,7 +146,7 @@
 
 ![项目结构](./structure.png)
 
-## Start
+## 开始
 
 ```zsh
 # 获取模版
@@ -193,7 +197,9 @@ yarn build-mo-pro  # 部署 小程序 生产环境
 
 ### 新建文件
 
-执行 `yarn template`, 根据指引即可快速创建文件，减少繁琐的新建文件操作，通过该命令可创建如下四种文件：
+项目中封装了一个基础组件，用于所有页面和组件的继承，所以涉及到页面及组件的新建请按照以下步骤来操作：
+
+执行 `yarn template`, 根据指引即可快速生成文件模版，减少繁琐的文件操作，通过该命令可创建如下四种文件：
 
 - 页面（同时生成对应的scss和ts类型生命文件）
 - 组件（同时生成对应的scss文件）
@@ -220,7 +226,6 @@ yarn build-mo-pro  # 部署 小程序 生产环境
   import { ComponentClass } from 'react';
 
   // 导入项目内部模块
-  import { IPageOwnProps, IPageState, IProps } from './index.itf'
   import Line from '~/components/Line'
   import Toast from '~/utils/toast'
 
@@ -354,151 +359,82 @@ class Index extends Component {
 }
 ```
 
-#### 通过dva获取数据
-
-##### 1. 定义 model
-
-在 src/models 下新建文件:
-
-```ts
-// models/home.ts
-import MicangPhpService from '~/services/php/micang.php.service'
-
-export default {
-  namespace: 'home',
-  state: { exbitionData: {} },
-  effects: {
-    /**
-     * 获取会场数据
-     */
-    *getExhibition({payload}, { call, put }) {
-      const { code, data } = yield call(
-        MicangPhpService.getExhibition.bind(MicangPhpService, payload)
-      );
-      if (data) {
-        yield put({
-          type: 'saveExhibitionData',
-          payload: {
-            data
-          }
-        });
-      }
-    }
-  },
-  reducers: {
-    // 保存数据到redux
-    saveExhibitionData(state, { payload }) {
-      const { data } = payload;
-      return { ...state,
-        exbitionData: data
-      };
-    }
-  }
-};
-```
-
-##### 2. 在页面上发起 action
-
-```tsx
-// pages/home/index.tsx
-import { connect } from '@tarojs/redux'
-
-@connect(({ home }) => {
-  return { home };
-})
-class Index extends Component {
-
-  componentDidMount() {
-    this.queryExhibitionData()
-  }
-
-  // 调用dva action请求数据
-  queryExhibitionData () {
-    this.props.dispatch({
-      type: 'home/getExhibition',
-      payload: {
-        c_type: 1,
-        pageindex: 1,
-        pagesize: 10
-      }
-    })
-  }
-
-  render() {
-    const { exbitionData } = this.props.home
-    return (
-      <View className='home-index-page'>
-        {
-          exbitionData.exhibition_list && exbitionData.exhibition_list.map((item,index)=>{
-            return (
-              <View>{item.now_time_str}</View>
-            )
-          })
-        }
-      </View>
-    )
-  }
-}
-```
-
-### 使用组件
+### 组件
 
 在业务开发的过程中，我们常需要复用一些相同的结构，如商品轮播图，订单item等，如果每个页面都复制粘贴一遍，不仅不美观，更难以维护，这时候就需要开发组件了。
 
 组件分为展示型组件和容器型组件。展示型组件只需要接收父组件传递的属性并渲染页面，容器型组件则会涉及到数据处理等复杂的逻辑，难以重用，所以平常我们开发的一般都是展示型的组件。
 
-#### 1. 定义组件
-
-组件和页面不一样，我们不需要关心在整个应用层面的不同组件的逻辑关系，只需关注组件本身，所以不像 pages 目录下的文件结构，我们直接在 components 目录下新建文件即可。
-
-最简单的组件，如一条分割线，组件代码如下：
+在项目模板中已经包含了数个常用的基础组件，可直接使用，引用方式：
 
 ```tsx
-// components/Line.tsx
-import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
-
-/**
- * 组件需要的Props定义
- */
-interface IProps {
-  height?: number; // 高度
-  color?: string; // 颜色
-}
-
-export default class Line extends Component<IProps> {
-
-  render() {
-    return (
-      <View
-        style={{
-          background: this.props.color || '#F5F5F5',
-          height: `${Taro.pxTransform(this.props.height || 10)}`
-        }}
-      />
-    );
-  }
-}
+import { Card, TImage } from '~/components'
 ```
 
-如果需要定义样式，在同级文件夹下新建 scss 文件并引入即可。
+在编译前已经进行了 components 文件夹的扫描操作，自动生成了 components/index.ts，而 `~/components` 会指向 src/components/index.ts 文件，所以可以直接通过以上方式引用。
 
-#### 2. 在页面中引用
+#### 1. 定义组件
+
+通过 yarn template 命令新建组件，会生成如下模版：
 
 ```tsx
-import Line from '~/components/Line'
+/**
+  * ComponentDesc
+  */
 
-class Index extends Component {
+import { ComponentType } from 'react'
+import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import BaseComponent from '~/components/BaseComponent/baseComponent'
 
-  render() {
+import './ComponentName.scss'
+
+/**
+ * props属性
+ */
+interface IProps {
+  /**
+   * 子元素
+   */
+  children?: any;
+}
+
+/**
+ * 组件内部属性
+ */
+interface IState {
+
+}
+
+interface ComponentName {
+  props: IProps;
+  state: IState;
+}
+
+class ComponentName extends BaseComponent {
+
+  static defaultProps: IProps = {
+
+  }
+
+  render () {
     return (
-      <View className='index-page'>
-        <Text>Hello world!</Text>
-        <Line height={1} color="#45aafa" />
+      <View className="ComponentName-comp">
+        ComponentDesc
       </View>
     )
   }
 }
+
+export default ComponentName as ComponentType`
+```
+
+基于以上模版，我们就可以开始对应组件的开发了。
+
+#### 2. 在页面中引用
+
+```tsx
+import { ComponentName } from '~/components'
 ```
 
 ## 技术栈
