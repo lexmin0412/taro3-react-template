@@ -46,7 +46,7 @@ class ${wtils.transFirstLetterToUpper(filename)} extends BaseComponent {
 
   constructor(props) {
     super(props)
-    this.setTitle('${desc||'页面描述'}')
+    this._setTitle('${desc||'页面描述'}')
     this.state = {
 
     }
