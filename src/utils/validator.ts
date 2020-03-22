@@ -11,8 +11,17 @@ class FormValidator {
    * 验证函数列表
    */
   funcs = {
+    /**
+     * 非空验证
+     */
     NOT_EMPTY: val => val,
+    /**
+     * 手机号验证
+     */
     MOBILE: (value: any) => /^1[23456789]\d{9}$/.test(value),
+    /**
+     * 身份证合法验证
+     */
     IDCARD: value => IDCard.getIDCardInfo(value).isValid
   }
 

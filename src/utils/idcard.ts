@@ -69,7 +69,6 @@ class IDCard {
       msgObj.sex = '0'
     }
     // 获取出生年月日
-    // userCard.substring(6,10) + "-" + userCard.substring(10,12) + "-" + userCard.substring(12,14);
     const cardInfos = getCardInfos(userCard)
     if (Number(cardInfos.yearBirth) < 1900 || Number(cardInfos.yearBirth) > new Date().getFullYear() || Number(cardInfos.monthBirth) > 12 || Number(cardInfos.dayBirth) > 31) {
       console.log('cardInfos.yearBirth < 1900', Number(cardInfos.yearBirth) < 1900)

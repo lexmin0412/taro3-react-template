@@ -1,14 +1,14 @@
 /**
- * 组件演示
+ * 底层基础组件，用于其他页面和组件继承
  */
 
 import { ComponentType } from 'react'
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
+import BaseComponent from '~/components/BaseComponent/baseComponent'
 import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader } from '~/components'
-import FormValidator from '~/utils/FormValidator'
 
 import './comp.scss'
 
@@ -16,6 +16,10 @@ import './comp.scss'
  * 页面props
  */
 type PageStateProps = {
+  /**
+   * 子元素
+   */
+  children?: any;
   counterStore: any;
 }
 
@@ -38,28 +42,29 @@ interface Comp {
 
 @inject('counterStore')
 @observer
-class Comp extends Component {
-  config: Config = {
-    navigationBarTitleText: '组件演示'
-  }
+class Comp extends BaseComponent {
 
-  state: PageState = {
-    type: 'image',
-    imageList: [
-      'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
-      'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
-      'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
-      'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
-      'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
-      'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
-    ],
-    hasMore: true,
-    showPaging: true,
-    modalVisible: false,
-    modalType: 'center'
+  constructor(props) {
+    super(props)
+    this._setTitle('底层基础组件，用于其他页面和组件继承')
+    this.state = {
+      type: 'image',
+      imageList: [
+        'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
+        'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
+        'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
+        'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
+        'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
+        'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
+      ],
+      hasMore: true,
+      showPaging: true,
+      modalVisible: false,
+      modalType: 'center'
+    }
   }
 
   // 监听mobx状态变化
@@ -101,6 +106,10 @@ class Comp extends Component {
     }, 1000);
   }
 
+  /**
+   * 展示弹窗
+   * @param type 类型
+   */
   showModal(type) {
     this.setState({
       modalVisible: true,
@@ -108,6 +117,9 @@ class Comp extends Component {
     })
   }
 
+  /**
+   * 图片数组变更回调
+   */
   handleImgListChange(list) {
     console.log('comp page list', list)
     this.setState({
@@ -115,9 +127,40 @@ class Comp extends Component {
     })
   }
 
-  formValidate() {
-    console.log('formValidate')
-    FormValidator.validate([1,3], false, this.state)
+  /**
+   * 测试变表单验证方法
+   */
+  handleValidate() {
+    const funcs = this._validator.funcs
+    const validResult = this._validator.validate({
+      phone: [
+        {
+          errMsg: '请输入手机号',
+          test: funcs.NOT_EMPTY
+        },
+        {
+          errMsg: '测试单字段多验证规则提示',
+          test: val => val.length === 11
+        },
+      ],
+      address: [
+        {
+          errMsg: '请输入地址',
+          test: funcs.NOT_EMPTY
+        }
+      ]
+    }, true, this.state)
+    if (validResult.success) {
+      this._toast.show('验证成功')
+    } else {
+      console.error('validResult', validResult)
+    }
+  }
+
+  handleInput(type, e) {
+    this.setState({
+      [type]: e.detail.value
+    })
   }
 
   render () {
@@ -243,8 +286,19 @@ class Comp extends Component {
           </View>
         }
 
+        {
+          type === 'formValidate' &&
+          <View className="demo-page-item">
+            表单验证演示
+            <Button onClick={this.handleValidate.bind(this)}>验证</Button>
+            <Input type="number" placeholder="请输入手机号" onInput={this.handleInput.bind(this, 'phone')} />
+            <Input type="text" placeholder="请输入地址" onInput={this.handleInput.bind(this, 'address')} />
+          </View>
+        }
 
-        <Button onClick={this.formValidate}>测试表单验证</Button>
+
+        {/* <Button onClick={this.formValidate.bind(this)}>测试表单验证</Button> */}
+        {/* <Button onClick={this.testToast}>toast测试</Button> */}
       </View>
     )
   }

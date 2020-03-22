@@ -137,7 +137,7 @@ class Index extends Component {
         <Button onClick={this.hanldeCompTest.bind(this, 'button')}>按钮组件演示</Button>
         <Button onClick={this.hanldeCompTest.bind(this, 'countdown')}>倒计时组件演示</Button>
         <Button onClick={this.hanldeCompTest.bind(this, 'imgUploader')}>图片上传组件演示</Button>
-        <Button onClick={this.handleFormValidate.bind(this)}>表单验证演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'formValidate')}>表单验证演示</Button>
       </View>
     )
   }
