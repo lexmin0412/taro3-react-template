@@ -4,7 +4,8 @@
 
 import { Component } from '@tarojs/taro'
 import Meta from '~/utils/meta'
-import FormValidator from '~/utils/FormValidator'
+import FormValidator from '~/utils/validator'
+import Toast from '~/utils/toast'
 
 class BaseComponent extends Component {
 
@@ -22,6 +23,11 @@ class BaseComponent extends Component {
    * 表单验证器
    */
   _validator = FormValidator;
+
+  /**
+   * toast
+   */
+  _toast = Toast
 }
 
 export default BaseComponent;
