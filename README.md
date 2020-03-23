@@ -16,8 +16,10 @@
 - [项目结构](#项目结构)
 - [开始](#开始)
 - [开发](#开发)
-  - [编译命令](#编译命令)
-  - [新建文件](#新建文件)
+  - [编译](#编译)
+  - [页面](#页面)
+  - [组件](#组件)
+  - [样式](#样式)
   - [开发规范](#开发规范)
     - [静态资源导入规范](#静态资源导入规范)
     - [类名规范](类名规范)
@@ -60,6 +62,7 @@
     - [ ] 命令行上下键可选择要生成的文件类型等操作
     - [ ] 迁移至taro-create-file 2.0版本(开发中)，使用npm引入
   - [x] 底层组件，用于页面和组件继承，实现类似vue原型绑定的功能
+  - [ ] commitlint
   - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
   - [x] 引入自建工具类库（wtils）
   - [ ] 接入 Taro 模版源 http://taro-docs.jd.com/taro/docs/template.html
@@ -81,7 +84,16 @@
   - [x] 表单验证类
   - [x] formValidator.ts 表单验证
   - [x] meta.ts meta相关功能
-  
+
+## 功能介绍
+
+此模版做了一点小小的工作，可以减少很多前期的准备工作，更快地进入到开发阶段并提高效率。
+
+### 环境变量
+
+在根文件夹的 config 文件夹中，针对不同的环境定义了不同的环境变量及
+
+
 ## 后续工作
 
 - [ ] Taro中的hooks与mobx结合？
@@ -160,13 +172,19 @@ cd taro_template
 yarn
 # 本地浏览器运行
 yarn dev:h5
+# 本地小程序运行
+yarn dev:mp
 ```
 
 ## 开发
 
-### 编译命令
+### 编译
 
-格式：
+为了提高开发体验、调整了部分编译命令，也为不同服务器环境（包括dev/sit/uat/pro）、不同编译模式（开发/打包）、不同运行环境（h5/小程序）提供了统一的命令。
+
+主要调整的点在于新增了服务器环境的参数，这里是考虑到在处理线上问题时，经常需要在本地请求非开发环境的接口，这时候习惯的操作是去更改配置文件，而更改配置文件的风险是很高的，不仅操作繁琐，更容易在多人开发时造成冲突，甚至可能将测试的变量提交到生产环境，造成不必要的线上问题。
+
+格式如下：
 
 ```shell
 yarn <mode>:<platform>-<env>
@@ -177,12 +195,12 @@ yarn <mode>:<platform>-<env>
 - dev 本地开发
 - build 服务器部署
 
-`platform`，编译目标平台
+`platform`，运行环境
 
 - mp 微信小程序
 - h5 h5
 
-`env`，环境配置标识，不同标识使用不同的环境配置，如接口host
+`env`，服务器环境标识，不同标识对应着不同的配置项，如接口host
 
 - sit 测试环境
 - uat 预发环境
@@ -198,16 +216,56 @@ yarn build:mp   # 部署 小程序 开发环境
 yarn build-mo-pro  # 部署 小程序 生产环境
 ```
 
-### 新建文件
+完整的编译命令列表详见 [package.json](./package.json) 中的 `scripts` 配置项。
 
-项目中封装了一个基础组件，用于所有页面和组件的继承，所以涉及到页面及组件的新建请按照以下步骤来操作：
+### 深入开发
 
-执行 `yarn template`, 根据指引即可快速生成文件模版，减少繁琐的文件操作，通过该命令可创建如下四种文件：
+在开发阶段，为了减少一些重复且枯燥，还有可能造成报错的code，做了以下几个工作：
+
+- 通过命令生成文件
+- BaseComponent的实现
+- pages和components文件夹的扫描
+
+1. **通过命令生成文件**
+
+对于文件的新建操作，在项目中也预置了命令，开发者只需在命令行中输入  `taro template`，然后根据相关提示输入对应的配置项，即可生成对应的文件，目前支持以下四种文件的快捷创建：
 
 - 页面（同时生成对应的scss和ts类型生命文件）
 - 组件（同时生成对应的scss文件）
 - mobx模块
 - service类
+
+2. **`BaseComponent` 的实现**
+
+在 Vue 的项目中，可以在main.js中，使用如下的方式将方法或变量绑定到原型上，在组件中即可直接调用：
+
+```js
+// main.js
+Vue.prototype.$getLocation = AppRouter.getLocation
+```
+
+```js
+// 页面js
+created() {
+  this.$getLocation()
+}
+```
+
+为了实现类似的功能，项目中封装了一个名为 `BaseComponent` 的基础组件，目前提供的功能：
+
+- 设置页面标题
+- 表单验证
+- toast
+
+在 BaseComponent 组件中定义方法的好处是，只要一个组件（页面）继承了 BaseComponent 组件，在这个组件（页面）中就可以直接使用 `this.` 的方式来调用 BaseComponent 中定义的任何方法，省去了每个页面都需要引入工具类函数的重复操作。
+
+考虑到以上便利性，使用 `taro template` 命令生成的组件即是继承于 BaseComponent，所以项目中的页面及组件请使用命令生成。
+
+### 代码优化
+
+基于以下文档优化：
+
+- [Taro最佳实践](http://taro-docs.jd.com/taro/docs/best-practice.html)
 
 ### 开发规范
 
@@ -249,47 +307,6 @@ yarn build-mo-pro  # 部署 小程序 生产环境
 .index-page {
   background: $theme-color;
 }
-```
-
-- 接口定义
-
-```ts
-// pages/home/index.itf.ts
-/**
- * redux数据定义
- */
-interface IPageStateProps {
-  home: {
-    exbitionData: {
-      exhibition_list: Array<any>
-    }
-  },
-  loading: {
-    global: boolean;
-  };
-}
-
-/**
- * 定义dispatch
- */
-interface IPageDispatchProps {
-  dispatch: (arg0: any) => any;
-}
-
-/**
- * 界面属性定义
- */
-export interface IPageOwnProps { }
-
-/**
- * 页面state定义
- */
-export interface IPageState { }
-
-/**
- * IProps
- */
-export type IProps = IPageStateProps & IPageDispatchProps & IPageOwnProps;
 ```
 
 ### 请求数据
