@@ -8,6 +8,8 @@
     "typescript": true,
     "css": "sass"
   },
+  "author": "cathe-zhang",
+  "license": "MIT",
   "scripts": {
     "dev:mp": "npm run build:mp -- --watch",
     "dev:mp-sit": "npm run build:mp-sit -- --watch",
@@ -27,8 +29,11 @@
     "build:h5-pro": "taro build --type h5 --env pro",
     "template": "node template/index.js"
   },
-  "author": "",
-  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "standard \"src/**/*.{js,tsx,ts}\""
+    }
+  },
   "dependencies": {
     "@tarojs/components": "2.0.6",
     "@tarojs/components-qa": "2.0.6",
@@ -72,6 +77,8 @@
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-taro": "2.0.6",
+    "husky": "^4.2.3",
+    "standard": "^14.3.3",
     "stylelint": "9.3.0",
     "stylelint-config-taro-rn": "2.0.6",
     "stylelint-taro-rn": "2.0.6",
