@@ -1,0 +1,9 @@
+// 页面中普通的元素定位zIndex
+$absoluteIndex: 9;
+
+// 固定定位的元素zIndex 如底部的提交按钮 头部导航等
+$fixedZIndex: 99;
+
+// 弹窗元素zIndex 一般需要最高的层级
+$modalZIndex: 999;
+
