@@ -5,7 +5,7 @@ deploy_versions/
 node_modules/
 .DS_Store
 project.config.json
-package.lock.json
+package-lock.json
 
 # 以下文件打包时会自动生成
 src/app.tsx
