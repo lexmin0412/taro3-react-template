@@ -88,7 +88,8 @@
   - [x] 表单验证类
   - [x] formValidator.ts 表单验证
   - [x] meta.ts meta相关功能
-
+- 体验工程
+  - [ ] 骨架屏
 
 ## 项目结构
 
