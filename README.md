@@ -51,7 +51,6 @@
   - [x] 开发环境本地代理
   - [x] jsonp支持
 - 调试
-  
   - [x] vconsole（h5环境）
 - 工程化
   - [x] 全局变量
@@ -60,13 +59,10 @@
     - [x] 扫描components文件夹生成入口文件
     - [x] 扫描pages文件夹生成路由列表及app.tsx文件
   - [x] 通过命令一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
-
-    优化计划：
-    - [x] 命令行交互获取文件名等参数
-    - [ ] 命令行上下键可选择要生成的文件类型等操作
-    - [ ] 迁移至taro-create-file 2.0版本(开发中)，使用npm引入
   - [x] 底层组件，用于页面和组件继承，实现类似vue原型绑定的功能
-  - [ ] commitlint
+  - [ ] git提交hooks
+    - [ ] 代码校验
+    - [ ] commit lint
   - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
   - [x] 引入自建工具类库（wtils）
   - [ ] 接入 Taro 模版源 http://taro-docs.jd.com/taro/docs/template.html
