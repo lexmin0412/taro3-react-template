@@ -14,7 +14,8 @@ import { ComponentType } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import BaseComponent from '~/components/BaseComponent/baseComponent'
+
+import BaseComponent from '~/components'
 
 import './${filename}.scss'
 
@@ -40,7 +41,7 @@ interface ${wtils.transFirstLetterToUpper(filename)} {
   state: PageState;
 }
 
-@inject('counterStore')
+@inject('counter')
 @observer
 class ${wtils.transFirstLetterToUpper(filename)} extends BaseComponent {
 

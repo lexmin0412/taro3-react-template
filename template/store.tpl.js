@@ -7,24 +7,13 @@
 const echoModelTpl = pathname => {
   return `import { observable } from 'mobx'
 
-const counterStore = observable({
+const counter = observable({
   counter: 0,
-  counterStore() {
+  counter() {
     this.counter++
   },
-  increment() {
-    this.counter++
-  },
-  decrement() {
-    this.counter--
-  },
-  incrementAsync() {
-    setTimeout(() => {
-      this.counter++
-    }, 1000)
-  }
 })
-export default counterStore`;
+export default counter`;
 }
 
 module.exports = echoModelTpl

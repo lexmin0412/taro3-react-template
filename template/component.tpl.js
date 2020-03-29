@@ -11,10 +11,11 @@ const echoCompTpl = (fileName, desc) => {
   * ${desc}
   */
 
-import { ComponentType } from 'react'
+import { ComponentClass } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import BaseComponent from '~/components/BaseComponent/baseComponent'
+
+import { BaseComponent } from '~/components'
 
 import './${fileName}.scss'
 
@@ -42,6 +43,13 @@ interface ${wtils.transFirstLetterToUpper(fileName)} {
 
 class ${wtils.transFirstLetterToUpper(fileName)} extends BaseComponent {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+
   static defaultProps: IProps = {
 
   }
@@ -55,7 +63,7 @@ class ${wtils.transFirstLetterToUpper(fileName)} extends BaseComponent {
   }
 }
 
-export default ${wtils.transFirstLetterToUpper(fileName)} as ComponentType`
+export default ${wtils.transFirstLetterToUpper(fileName)} as ComponentClass<IProps, IState>`
 }
 
 module.exports = echoCompTpl
