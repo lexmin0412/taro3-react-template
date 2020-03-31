@@ -1,0 +1,62 @@
+/**
+ * {{FILE_DESC}}
+ */
+
+import { ComponentType } from 'react'
+import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import { observer, inject } from '@tarojs/mobx'
+
+import { BaseComponent } from '~/components'
+
+import './{{pascalCase FILE_NAME}}.scss'
+
+/**
+ * 页面props
+ */
+type PageStateProps = {
+  /**
+   * 子元素
+   */
+  children?: any;
+}
+
+/**
+ * 页面state
+ */
+type PageState = {
+
+}
+
+interface {{pascalCase FILE_NAME}} {
+  props: PageStateProps;
+  state: PageState;
+}
+
+@inject('counter')
+@observer
+class {{pascalCase FILE_NAME}} extends BaseComponent {
+
+  constructor(props) {
+    super(props)
+    this._setTitle('{{FILE_DESC}}')
+    this.state = {
+
+    }
+  }
+
+  // 监听mobx状态变化
+  componentWillReact () {
+    console.log('componentWillReact', this.props)
+  }
+
+  render () {
+    return (
+      <View className='c-page'>
+        <View>{{FILE_DESC}}</View>
+      </View>
+    )
+  }
+}
+
+export default {{pascalCase FILE_NAME}} as ComponentType
