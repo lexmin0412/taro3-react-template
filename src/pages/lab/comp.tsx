@@ -7,8 +7,16 @@ import Taro from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import BaseComponent from '~/components/BaseComponent/baseComponent'
-import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader } from '~/components'
+import BaseComponent from '~/components/BaseComponent/BaseComponent'
+import {
+  Card,
+  TImage,
+  Modal,
+  TButton,
+  Countdown,
+  TImageUploader,
+  HDMap
+} from '~/components'
 
 import './comp.scss'
 
@@ -163,6 +171,11 @@ class Comp extends BaseComponent {
     })
   }
 
+  // markerclick
+  handleMarkerClick(event) {
+    console.log('e', event)
+  }
+
   render () {
     const { type, imageList, hasMore, modalVisible, modalType } = this.state
     return (
@@ -296,9 +309,40 @@ class Comp extends BaseComponent {
           </View>
         }
 
-
-        {/* <Button onClick={this.formValidate.bind(this)}>测试表单验证</Button> */}
-        {/* <Button onClick={this.testToast}>toast测试</Button> */}
+        {
+          type === 'map' &&
+          <View className="demo-page-item">
+            地图组件演示
+            <HDMap
+              mapContainerId="webgl"
+              center={{
+                latitude: 28.207326,
+                longitude: 112.882385,
+              }}
+              markers={[
+                {
+                  position: {
+                    latitude: 28.207326,
+                    longitude: 112.882385
+                  },
+                  properties: {
+                    title: "marker1"
+                  }
+                },
+                {
+                  position: {
+                    latitude: 28.208326,
+                    longitude: 112.882385
+                  },
+                  properties: {
+                    title: "marker2"
+                  }
+                },
+              ]}
+              onMarkerClick={this.handleMarkerClick.bind(this)}
+            />
+          </View>
+        }
       </View>
     )
   }
