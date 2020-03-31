@@ -28,7 +28,7 @@ type PageStateProps = {
    * 子元素
    */
   children?: any;
-  counterStore: any;
+  common: any;
 }
 
 /**
@@ -48,7 +48,7 @@ interface Comp {
   state: PageState;
 }
 
-@inject('counterStore')
+@inject('common')
 @observer
 class Comp extends BaseComponent {
 
@@ -314,7 +314,7 @@ class Comp extends BaseComponent {
           <View className="demo-page-item">
             地图组件演示
             <HDMap
-              mapContainerId="webgl"
+              mapContainerId="webgl2"
               center={{
                 latitude: 28.207326,
                 longitude: 112.882385,
@@ -342,6 +342,7 @@ class Comp extends BaseComponent {
               onMarkerClick={this.handleMarkerClick.bind(this)}
             />
           </View>
+
         }
       </View>
     )

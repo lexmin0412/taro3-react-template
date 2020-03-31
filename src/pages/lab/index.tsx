@@ -11,11 +11,9 @@ import Toast from '~/utils/toast'
 import './index.scss'
 
 type PageStateProps = {
-  counterStore: {
+  common: {
     counter: number,
     increment: Function,
-    decrement: Function,
-    incrementAsync: Function
   }
 }
 
@@ -30,7 +28,7 @@ interface Index {
   state: PageState;
 }
 
-@inject('counterStore')
+@inject('common')
 @observer
 class Index extends Component {
 

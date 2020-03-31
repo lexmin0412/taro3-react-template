@@ -41,7 +41,7 @@ interface FormValidate {
   FormValidator: any;
 }
 
-@inject('counterStore')
+@inject('common')
 @observer
 class FormValidate extends BaseComponent {
 

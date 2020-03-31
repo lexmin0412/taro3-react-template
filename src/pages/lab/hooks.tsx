@@ -6,11 +6,9 @@ import { observer, inject } from '@tarojs/mobx'
 import './hooks.scss'
 
 type PageStateProps = {
-  counterStore: {
+  common: {
     counter: number,
     increment: Function,
-    decrement: Function,
-    incrementAsync: Function
   }
 }
 

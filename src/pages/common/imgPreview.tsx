@@ -30,7 +30,7 @@ interface ImgPreview {
   state: PageState;
 }
 
-@inject('counterStore')
+@inject('common')
 @observer
 class ImgPreview extends Component {
   config: Config = {
