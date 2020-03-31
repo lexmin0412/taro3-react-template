@@ -1,0 +1,21 @@
+import BaseRequest from '~/utils/request';
+
+/**
+ * {{FILE_DESC}}
+ */
+class {{pascalCase FILE_NAME}}Service extends BaseRequest {
+  constructor() {
+    super({
+      hostKey: ''
+    });
+  }
+
+  public queryData(payload: any): Promise<any> {
+    return this.post({
+      url: '',
+      data: payload
+    });
+  }
+}
+
+export default new {{pascalCase FILE_NAME}}Service();

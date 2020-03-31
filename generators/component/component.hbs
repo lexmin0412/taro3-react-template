@@ -1,0 +1,57 @@
+/**
+  * {{FILE_DESC}}
+  */
+
+import { ComponentClass } from 'react'
+import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
+
+import { BaseComponent } from '~/components'
+
+import './{{pascalCase FILE_NAME}}.scss'
+
+/**
+ * props属性
+ */
+interface IProps {
+  /**
+   * 子元素
+   */
+  children?: any;
+}
+
+/**
+ * 组件内部属性
+ */
+interface IState {
+
+}
+
+interface {{pascalCase FILE_NAME}} {
+  props: IProps;
+  state: IState;
+}
+
+class {{pascalCase FILE_NAME}} extends BaseComponent {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+
+  static defaultProps: IProps = {
+
+  }
+
+  render () {
+    return (
+      <View className="{{camelCase FILE_NAME}}-comp">
+        {{FILE_DESC}}
+      </View>
+    )
+  }
+}
+
+export default {{pascalCase FILE_NAME}} as ComponentClass<IProps, IState>

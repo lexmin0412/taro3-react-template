@@ -27,7 +27,7 @@
     "build:h5-sit": "taro build --type h5 --env sit",
     "build:h5-uat": "taro build --type h5 --env uat",
     "build:h5-pro": "taro build --type h5 --env pro",
-    "template": "node template/index.js"
+    "template": "plop --plopfile generators/index.js"
   },
   "husky": {
     "hooks": {
@@ -85,6 +85,7 @@
     "eslint-plugin-taro": "2.0.6",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",
+    "plop": "^2.6.0",
     "standard": "^14.3.3",
     "stylelint": "9.3.0",
     "stylelint-config-taro-rn": "2.0.6",
