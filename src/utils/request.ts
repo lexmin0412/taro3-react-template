@@ -4,8 +4,9 @@
 
 import Taro from '@tarojs/taro'
 import Constants from '~/constants/index'
-import headerInterceptor from '~/interceptors/header.interceptor'
 import urlInterceptor from '~/interceptors/url.interceptor'
+import headerInterceptor from '~/interceptors/header.interceptor'
+import paramInterceptor from '~/interceptors/param.interceptor'
 import dataInterceptor from '~/interceptors/data.interceptor'
 import delInterceptor from '~/interceptors/del.interceptor'
 
@@ -16,6 +17,7 @@ const getInterceptors = () => {
   return [
     urlInterceptor,
     headerInterceptor,
+    paramInterceptor,
     dataInterceptor,
     delInterceptor,
     Taro.interceptors.logInterceptor,
