@@ -22,29 +22,32 @@ const checkComponent = () => {
 
   outerDirs.forEach((item,index)=>{
 
-    var innerDir = fs.readdirSync(`./src/components/${item}`)
+    if ( !['.DS_Store'].includes(item) ) {
 
-    // 去除后缀名
-    let newLines = []
-    innerDir.forEach((inItem,inIndex)=>{
-      const sliceRes = inItem.slice(0,inItem.indexOf('.'))
-      // 去重
-      if ( newLines.indexOf(sliceRes) === -1 ) {
-        newLines.push(sliceRes)
-        Names = Names ? `${Names}
-  ${sliceRes},`
+      var innerDir = fs.readdirSync(`./src/components/${item}`)
+
+      // 去除后缀名
+      let newLines = []
+      innerDir.forEach((inItem,inIndex)=>{
+        const sliceRes = inItem.slice(0,inItem.indexOf('.'))
+        // 去重
+        if ( newLines.indexOf(sliceRes) === -1 ) {
+          newLines.push(sliceRes)
+          Names = Names ? `${Names}
+    ${sliceRes},`
+    :
+    `${sliceRes},`
+        }
+      })
+
+      newLines.forEach((inItem,inIndex)=>{
+          indexLines = indexLines ? `${indexLines}
+  import ${inItem} from './${item}/${inItem}';`
   :
-  `${sliceRes},`
-      }
-    })
+  `import ${inItem} from './${item}/${inItem}';`
 
-    newLines.forEach((inItem,inIndex)=>{
-        indexLines = indexLines ? `${indexLines}
-import ${inItem} from './${item}/${inItem}';`
-:
-`import ${inItem} from './${item}/${inItem}';`
-
-    })
+      })
+    }
   })
   indexLines = `${indexLines}
 
