@@ -58,7 +58,7 @@
     - [x] 环境变量检查
     - [x] 扫描components文件夹生成入口文件
     - [x] 扫描pages文件夹生成路由列表及app.tsx文件
-  - [x] 通过命令一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
+  - [x] 通过plop插件一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
   - [x] 底层组件，用于页面和组件继承，实现类似vue原型绑定的功能
   - [ ] git提交hooks
     - [ ] 代码校验
@@ -161,7 +161,7 @@ yarn build-mo-pro  # 部署 小程序 生产环境
 
 1. **通过命令生成文件**
 
-对于文件的新建操作，在项目中也预置了命令，开发者只需在命令行中输入  `taro template`，然后根据相关提示输入对应的配置项，即可生成对应的文件，目前支持以下四种文件的快捷创建：
+对于文件的新建操作，在项目中也预置了命令，开发者只需在命令行中输入  `yarn template`，然后根据相关提示输入对应的配置项，即可生成对应的文件，目前支持以下四种文件的快捷创建：
 
 - 页面（同时生成对应的scss和ts类型生命文件）
 - 组件（同时生成对应的scss文件）
@@ -192,7 +192,7 @@ created() {
 
 在 BaseComponent 组件中定义方法的好处是，只要一个组件（页面）继承了 BaseComponent 组件，在这个组件（页面）中就可以直接使用 `this.` 的方式来调用 BaseComponent 中定义的任何方法，省去了每个页面都需要引入工具类函数的重复操作。
 
-考虑到以上便利性，使用 `taro template` 命令生成的组件即是继承于 BaseComponent，所以项目中的页面及组件请使用命令生成。
+考虑到以上便利性，使用 `yarn template` 命令生成的组件即是继承于 BaseComponent，所以项目中的页面及组件请使用命令生成。
 
 3. pages和components文件夹的扫描
 
@@ -219,8 +219,10 @@ import { Line, TImage } from '~/components
 	sass: {
     // 全局注入scss文件
     resource: [
+      'src/styles/classes.scss',
       'src/styles/mixin.scss',
-      'src/styles/theme.scss'
+      'src/styles/theme.scss',
+      'src/styles/var.scss'
     ],
     // 指定项目根目录，这样在resource字段中就不需要重复书写path.resolve了
     projectDirectory: path.resolve(__dirname, '..')
@@ -229,7 +231,7 @@ import { Line, TImage } from '~/components
 
 ```
 
-作用是全局注入了mixin.scss 和 theme.scss，这样做之后，在项目内的所有scss文件中，可以直接使用这两个文件中的所有特性而不需要引入对应的文件，如果有更多的公用文件注入，只需要修改这里的配置项即可。（**TODO：后续需要在编译插件中扫描styles文件夹，省去配置项追加的操作**）
+作用是全局注入了mixin.scss 和 theme.scss，这样做之后，在项目内的所有scss文件中，可以直接使用这两个文件中的所有特性而不需要引入对应的文件，如果有更多的公用文件注入，只需要修改这里的配置项即可（注意：修改后需要重启项目才能生效）。（**TODO：后续需要在编译插件中扫描styles文件夹，省去配置项追加的操作**）
 
 ```scss
 // pages/index/index.scss
@@ -254,59 +256,55 @@ service, 也就是我们的服务模块，用于统一存放后端接口定义�
 
 **`service`文件设计规范**
 
-由于同一个接口被不同页面调用调用的可能性非常高，服务模块的结构需要依照后端接口来设计，如同时拥有 java 和 php 两个后端，那么 service 模块就要分成两个大的模块，大的模块下面再根据接口模块划分来划分小的 service 文件。
+由于同一个接口被不同页面调用调用的可能性非常高，服务模块的结构需要依照后端接口来设计，如项目内既包含了公司后端项目的接口请求，又需要请求第三方接口，那么 service 模块就要分成两个大的模块，大的模块下面再根据接口模块划分来划分小的 service 文件。
 
-如一个接口路径为 `https://xxx.normal.com/web-mapi/account/queryBalanceAccount`, 用途是查询用户账户余额，那么这个接口在 service 模块的结构就应该表现为：
+如一个接口路径为 `https://xxx.normal.com/webapi/account/queryBalanceAccount`, 用途是查询用户账户余额，那么这个接口在 service 模块的结构就应该表现为：
 
-首先后台分为两个大的模块，下一层是后台的项目，最后根据后台接口模块命名一个 `xxx.service.ts`, xxx 是后台的模块名称。只要一个接口是在后台接口项目中的这个子模块，那么在前端就应该定义在相应的 service 文件下。
+首先分为两个大的模块，下一层是后台的项目，最后根据后台接口模块命名一个 `xxx.service.ts`, xxx 是后台的模块名称。只要一个接口是在后台接口项目中的这个子模块，那么在前端就应该定义在相应的 service 文件下。
 
 上面的示例接口设计结构如下：
 
 ```bash
 ├── services        服务根文件夹
-|   ├── java        java
-|       ├── web-mapi
-|           ├── account.service.ts
-|   ├── php         php
+|   ├── inside        内部服务
+|   ├── qqMap         腾讯地图api接口
+|   		├── ws.service.ts    webservice服务
 ```
 
 ##### 直接调用service获取数据
 
 ```tsx
-import MicangPhpService from '~/services/php/micang.php.service'
+import QQMapWSService from '~/services/qqMap/ws.service'
 
 class Index extends BaseComponent {
 
   state = {}
 
   componentDidMount() {
-    this.queryExhibitionData()
+    this.handleJSONPTest()
   }
   
   // 直接调用service
-  async queryExhibitionData () {
-    let result = await MicangPhpService.getExhibition({
-      c_type: 1,
-      pageindex: 1,
-      pagesize: 10
-    },)
-    if ( +result.code === 0 ) {
-      this.setState({
-        exbitionData: result.data
-      })
-    }
+  async handleJSONPTest() {
+    const result = await QQMapWSService.geocoder({
+      location: `28.2532,112.87887`,
+      get_poi: 0,
+    })
+    this.setState({
+      locationData: result.data
+    })
+    console.log('result', result)
   }
 
   render() {
-    const { exbitionData } = this.state
+    const { locationData } = this.state
     return (
       <View className='home-index-page'>
         {
-          exbitionData.exhibition_list && exbitionData.exhibition_list.map((item,index)=>{
-            return (
-              <View>{item.now_time_str}</View>
-            )
-          })
+          locationData &&
+            <View>
+              当前位置：{locationData.latitude}，{locationData.longitude}
+            </View>
         }
       </View>
     )
@@ -337,7 +335,7 @@ import { Card, TImage } from '~/components'
   * ComponentDesc
   */
 
-import { ComponentType } from 'react'
+import { ComponentClass } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import BaseComponent from '~/components'
@@ -381,7 +379,7 @@ class ComponentName extends BaseComponent {
   }
 }
 
-export default ComponentName as ComponentType`
+export default ComponentName as ComponentClass<IProps, IState>
 ```
 
 基于以上模版，我们就可以开始组件的具体逻辑开发了。
