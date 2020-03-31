@@ -2,7 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Index from '~/pages/index'
 
-import counterStore from '~/store/counter'
+import store from '~/store'
 import { checkUpdate } from '~/utils/mp'
 
 import './app.scss'
@@ -17,11 +17,6 @@ import './app.scss'
 if (process.env.TARO_ENV === 'h5' && process.env.NODE_ENV !== 'pro') {
   const VConsole = require('vconsole')
   new VConsole()
-}
-
-// mobx store
-const store = {
-  counterStore
 }
 
 class App extends Component {
