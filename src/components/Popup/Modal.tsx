@@ -5,7 +5,7 @@
  import { ComponentType } from 'react'
  import Taro from '@tarojs/taro'
  import { View } from '@tarojs/components'
- import BaseComponent from '~/components/BaseComponent/baseComponent'
+ import BaseComponent from '~/components/BaseComponent/BaseComponent'
 
  import './Modal.scss'
 

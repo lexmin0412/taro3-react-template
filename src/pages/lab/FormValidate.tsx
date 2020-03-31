@@ -6,7 +6,7 @@ import { ComponentType } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import BaseComponent from '~/components/BaseComponent/baseComponent'
+import BaseComponent from '~/components/BaseComponent/BaseComponent'
 
 import './FormValidate.scss'
 import toast from '~/utils/toast'
