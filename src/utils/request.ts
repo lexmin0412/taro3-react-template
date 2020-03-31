@@ -65,9 +65,6 @@ class BaseRequest {
       throw "请指定service key";
     }
     const hostUrl = APP_CONF[hostKey]
-    if ( !hostUrl ) {
-      throw `找不到 hostkey: ${hostKey} 对应的host 配置`;
-    }
     header[Constants.INTERCEPTOR_HEADER] = {
       hostKey,
 			hostUrl,
