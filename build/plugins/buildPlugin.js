@@ -11,7 +11,7 @@ class BuildPlugin {
 
       // 小程序中编译project.config.json文件
       if ( process.env.TARO_ENV === 'weapp' ) {
-        require('./../template/project')
+        require('./project')
       }
 
       // 扫描pages文件夹生成路由列表文件
