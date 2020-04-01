@@ -5,5 +5,12 @@
 
   .tabs-comp-item {
     flex: 1;
+    height: 76px;
+    line-height: 76px;
+    text-align: center;
+
+    &.selected {
+      border-bottom: 1px solid #ff4a4a;
+    }
   }
 }

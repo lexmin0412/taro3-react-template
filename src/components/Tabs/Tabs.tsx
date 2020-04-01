@@ -1,12 +1,13 @@
 /**
   * tab标签页
+  * TODO 底部边框要做平滑过渡动画
   */
 
 import { ComponentClass } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
-import { BaseComponent } from '~/components'
+import { BasicComponent } from '~/components'
 
 import './Tabs.scss'
 
@@ -18,6 +19,10 @@ interface IProps {
    * 子元素
    */
   children?: any;
+  /**
+   * 初始选中的tab id
+   */
+  initTab: number;
   /**
    * tab数组
    */
@@ -34,14 +39,17 @@ interface IProps {
   /**
    * tab切换事件
    */
-  onChange: ()=>void
+  onChange: (e: any)=>void
 }
 
 /**
  * 组件内部属性
  */
 interface IState {
-
+  /**
+   * 选中的tabId
+   */
+  curTab: number;
 }
 
 interface Tabs {
@@ -49,16 +57,17 @@ interface Tabs {
   state: IState;
 }
 
-class Tabs extends BaseComponent {
+class Tabs extends BasicComponent {
 
   constructor(props) {
     super(props)
     this.state = {
-
+      curTab: 1,
     }
   }
 
   static defaultProps: IProps = {
+    initTab: 1,
     list: [
       {
         text: '文字',
@@ -68,23 +77,34 @@ class Tabs extends BaseComponent {
     onChange: ()=>{}
   }
 
+  componentWillMount() {
+    if ( this.props.initTab ) {
+      this.setState({
+        curTab: this.props.initTab
+      })
+    }
+  }
+
   /**
    * tab切换
    */
   handleTabItemClick(e) {
     console.log('e', e)
-    this.props.onChange && this.props.onChange()
+    this.setState({
+      curTab: e.id
+    })
+    this.props.onChange && this.props.onChange(e)
   }
 
   render () {
     const { list } = this.props
+    const { curTab } = this.state
     return (
       <View className="tabs-comp">
-        tab标签页
         {
           list.map((item,index)=>{
             return (
-              <View className="tabs-comp-item"
+              <View className={`tabs-comp-item ${curTab === item.id ? 'selected' : ''}`}
                 onClick={this.handleTabItemClick.bind(this, item)}
               >
                 {item.text}

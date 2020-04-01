@@ -8,7 +8,7 @@ import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
 import BasicComponent from '~/components/BasicComponent/BasicComponent'
-import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader } from '~/components'
+import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader, Tabs } from '~/components'
 
 import './comp.scss'
 
@@ -68,11 +68,11 @@ class Comp extends BasicComponent {
   }
 
   // 监听mobx状态变化
-  componentWillReact () {
+  componentWillReact() {
     console.log('componentWillReact', this.props)
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.setState({
       type: this.$router.params.type
     })
@@ -81,7 +81,7 @@ class Comp extends BasicComponent {
   onReachBottom() {
     console.log('reachBottom')
     const { showPaging } = this.state
-    if ( !showPaging ) {
+    if (!showPaging) {
       this.setState({
         showPaging: true
       })
@@ -92,11 +92,11 @@ class Comp extends BasicComponent {
   queryData() {
     const { imageList } = this.state
     setTimeout(() => {
-      if ( imageList.length <= 20 ) {
+      if (imageList.length <= 20) {
         this.setState({
           imageList: this.state.imageList.concat(['https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png',
-          'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
-          'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png'])
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584537201012&di=50279a8b6a931992f1610cac5653c469&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc75c10385343fbf233e9732cb27eca8064388ffc.jpg',
+            'https://ss0.bd2sdsdfsdtatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584433500&di=b0d1428f12e1cdea17f4d8e667298aad&src=http://cdn2.image.apk.gfan.com/asdf/PImages/2014/12/26/211610_2d6bc9db3-77eb-4d80-9330-cd5e95fa091f.png'])
         })
       } else {
         this.setState({
@@ -163,7 +163,12 @@ class Comp extends BasicComponent {
     })
   }
 
-  render () {
+  // tab标签页切换
+  handleTabChange(e) {
+    console.log('handleTabChange', e)
+  }
+
+  render() {
     const { type, imageList, hasMore, modalVisible, modalType } = this.state
     return (
       <View className='comp-page'>
@@ -173,7 +178,7 @@ class Comp extends BasicComponent {
           <View className="demo-page-item">
             图片组件
             {
-              imageList.map((item,index)=>{
+              imageList.map((item, index) => {
                 return (
                   <TImage src={item}
                     canPreview={true}
@@ -195,7 +200,7 @@ class Comp extends BasicComponent {
           <View className="demo-page-item">
             卡片组件
             {
-              imageList.map((item,index)=>{
+              imageList.map((item, index) => {
                 return (
                   <Card customStyle={{
                     borderRadius: 20,
@@ -239,7 +244,7 @@ class Comp extends BasicComponent {
               visible={modalVisible}
             >
               <View>这是内容这是内容这是内容这是内
-                容这是内容这是内容这是内容这是内容这是内容这是内容
+              容这是内容这是内容这是内容这是内容这是内容这是内容
               </View>
             </Modal>
           </View>
@@ -293,6 +298,27 @@ class Comp extends BasicComponent {
             <Button onClick={this.handleValidate.bind(this)}>验证</Button>
             <Input type="number" placeholder="请输入手机号" onInput={this.handleInput.bind(this, 'phone')} />
             <Input type="text" placeholder="请输入地址" onInput={this.handleInput.bind(this, 'address')} />
+          </View>
+        }
+
+        {
+          type === 'tabs' &&
+          <View className="demo-page-item">
+            标签页组件演示
+            <Tabs
+              initTab={2}
+              list={[
+                {
+                  text: '标签1',
+                  id: 1
+                },
+                {
+                  text: '标签2',
+                  id: 2
+                },
+              ]}
+              onChange={this.handleTabChange.bind(this)}
+            />
           </View>
         }
 
