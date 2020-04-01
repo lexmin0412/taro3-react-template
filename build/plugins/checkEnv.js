@@ -9,7 +9,6 @@ const checkEnv = (config) => {
   const APP_CONF_ATTRS = [
     'API_HOST',
     'APPID',
-    'APIS_JUHE',
     'API_MAP_QQ',
     'KEY_MAP_QQ'
   ]
