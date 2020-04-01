@@ -1,0 +1,9 @@
+.tabs-comp {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .tabs-comp-item {
+    flex: 1;
+  }
+}

@@ -137,6 +137,7 @@ class Index extends Component {
         <Button onClick={this.hanldeCompTest.bind(this, 'imgUploader')}>图片上传组件演示</Button>
         <Button onClick={this.hanldeCompTest.bind(this, 'formValidate')}>表单验证演示</Button>
         <Button onClick={this.hanldeCompTest.bind(this, 'map')}>地图组件演示</Button>
+        <Button onClick={this.hanldeCompTest.bind(this, 'tabs')}>标签页组件演示</Button>
       </View>
     )
   }

@@ -15,7 +15,8 @@ import {
   TButton,
   Countdown,
   TImageUploader,
-  HDMap
+  HDMap,
+  Tabs
 } from '~/components'
 
 import './comp.scss'
@@ -174,6 +175,11 @@ class Comp extends BaseComponent {
   // markerclick
   handleMarkerClick(event) {
     console.log('e', event)
+  }
+
+  // tabChange
+  handleTabChange(e) {
+
   }
 
   render () {
@@ -342,7 +348,26 @@ class Comp extends BaseComponent {
               onMarkerClick={this.handleMarkerClick.bind(this)}
             />
           </View>
+        }
 
+        {
+          type === 'tabs' &&
+          <View className="demo-page-item">
+            标签页组件演示
+            <Tabs
+              list={[
+                {
+                  text: '文字',
+                  id: 1
+                },
+                {
+                  text: '文2',
+                  id: 2
+                },
+              ]}
+              onChange={this.handleTabChange.bind(this)}
+            />
+          </View>
         }
       </View>
     )
