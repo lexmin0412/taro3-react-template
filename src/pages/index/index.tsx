@@ -10,9 +10,11 @@ import Toast from '~/utils/toast'
 import './index.scss'
 
 type PageStateProps = {
-  common: {
+  counter: {
     counter: number,
     increment: Function,
+    decrement: Function,
+    incrementAsync: Function
   }
 }
 
@@ -27,7 +29,7 @@ interface Index {
   state: PageState;
 }
 
-@inject('common')
+@inject('counter')
 @observer
 class Index extends Component {
 
@@ -65,8 +67,22 @@ class Index extends Component {
   componentDidHide() { }
 
   increment = () => {
-    const { common } = this.props
-    common.increment()
+    const { testState } = this.state
+    this.setState({
+      testState: `${this.state.testState}expand`
+    })
+    const { counter } = this.props
+    counter.increment()
+  }
+
+  decrement = () => {
+    const { counter } = this.props
+    counter.decrement()
+  }
+
+  incrementAsync = () => {
+    const { counter } = this.props
+    counter.incrementAsync()
   }
 
   // 手机号输入
@@ -75,6 +91,19 @@ class Index extends Component {
       phoneNumber: e.detail.value
     })
   }
+
+  // // 查询手机号归属地
+  // async queryMobile() {
+  //   console.log('into handleSearchBtnclick')
+  //   const { phoneNumber } = this.state
+  //   let result = await MobileService.queryMobile({
+  //     phoneNumber
+  //   })
+  //   const { data } = result
+  //   this.setState({
+  //     mobileText: `${data.province}${data.city}${data.company}`
+  //   })
+  // }
 
   async handleJSONPTest() {
     let result = await QQMapWSService.geocoder({
@@ -92,7 +121,8 @@ class Index extends Component {
   }
 
   render() {
-    const { common: { counter } } = this.props
+    const { counter: { counter } } = this.props
+    const { testState, mobileText } = this.state
     return (
       <View className='index'>
         <AtNoticebar>这是 NoticeBar 通告栏</AtNoticebar>
@@ -109,6 +139,9 @@ class Index extends Component {
           本地代理 测试
         </Button>
         <Button onClick={this.increment}>+</Button>
+        <Button onClick={this.decrement}>-</Button>
+        <Button onClick={this.incrementAsync}>Add Async</Button>
+        <Button onClick={this.incrementAsync}>{testState}</Button>
         <Text>{counter}</Text>
       </View>
     )

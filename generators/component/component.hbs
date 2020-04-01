@@ -6,7 +6,7 @@ import { ComponentClass } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
-import { BaseComponent } from '~/components'
+import { BasicComponent } from '~/components'
 
 import './{{pascalCase FILE_NAME}}.scss'
 
@@ -32,7 +32,7 @@ interface {{pascalCase FILE_NAME}} {
   state: IState;
 }
 
-class {{pascalCase FILE_NAME}} extends BaseComponent {
+class {{pascalCase FILE_NAME}} extends BasicComponent {
 
   constructor(props) {
     super(props)

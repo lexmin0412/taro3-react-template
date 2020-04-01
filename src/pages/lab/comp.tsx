@@ -7,17 +7,8 @@ import Taro from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import BaseComponent from '~/components/BaseComponent/BaseComponent'
-import {
-  Card,
-  TImage,
-  Modal,
-  TButton,
-  Countdown,
-  TImageUploader,
-  HDMap,
-  Tabs
-} from '~/components'
+import BasicComponent from '~/components/BasicComponent/BasicComponent'
+import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader } from '~/components'
 
 import './comp.scss'
 
@@ -29,7 +20,7 @@ type PageStateProps = {
    * 子元素
    */
   children?: any;
-  common: any;
+  counter: any;
 }
 
 /**
@@ -49,9 +40,9 @@ interface Comp {
   state: PageState;
 }
 
-@inject('common')
+@inject('counter')
 @observer
-class Comp extends BaseComponent {
+class Comp extends BasicComponent {
 
   constructor(props) {
     super(props)
@@ -170,16 +161,6 @@ class Comp extends BaseComponent {
     this.setState({
       [type]: e.detail.value
     })
-  }
-
-  // markerclick
-  handleMarkerClick(event) {
-    console.log('e', event)
-  }
-
-  // tabChange
-  handleTabChange(e) {
-
   }
 
   render () {
@@ -315,60 +296,9 @@ class Comp extends BaseComponent {
           </View>
         }
 
-        {
-          type === 'map' &&
-          <View className="demo-page-item">
-            地图组件演示
-            <HDMap
-              mapContainerId="webgl2"
-              center={{
-                latitude: 28.207326,
-                longitude: 112.882385,
-              }}
-              markers={[
-                {
-                  position: {
-                    latitude: 28.207326,
-                    longitude: 112.882385
-                  },
-                  properties: {
-                    title: "marker1"
-                  }
-                },
-                {
-                  position: {
-                    latitude: 28.208326,
-                    longitude: 112.882385
-                  },
-                  properties: {
-                    title: "marker2"
-                  }
-                },
-              ]}
-              onMarkerClick={this.handleMarkerClick.bind(this)}
-            />
-          </View>
-        }
 
-        {
-          type === 'tabs' &&
-          <View className="demo-page-item">
-            标签页组件演示
-            <Tabs
-              list={[
-                {
-                  text: '文字',
-                  id: 1
-                },
-                {
-                  text: '文2',
-                  id: 2
-                },
-              ]}
-              onChange={this.handleTabChange.bind(this)}
-            />
-          </View>
-        }
+        {/* <Button onClick={this.formValidate.bind(this)}>测试表单验证</Button> */}
+        {/* <Button onClick={this.testToast}>toast测试</Button> */}
       </View>
     )
   }

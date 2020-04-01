@@ -9,7 +9,7 @@ import './index.scss'
  * 页面props
  */
 type PageStateProps = {
-  common: any;
+  counter: any;
 }
 
 /**
@@ -24,7 +24,7 @@ interface Index {
   state: PageState;
 }
 
-@inject('common')
+@inject('counter')
 @observer
 class Index extends Component {
   config: Config = {
@@ -39,7 +39,7 @@ class Index extends Component {
   componentDidMount () { }
 
   render () {
-    const { common: { counter } } = this.props
+    const { counter: { counter } } = this.props
     return (
       <View className='index'>
         page

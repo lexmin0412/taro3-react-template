@@ -10,7 +10,9 @@
 this.setState({
   state1: []
 }, () => {
-  state2: []
+  this.setState({
+    state2: []
+  })
 })
 ```
 

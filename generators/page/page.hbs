@@ -7,7 +7,7 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { BaseComponent } from '~/components'
+import { BasicComponent } from '~/components'
 
 import './{{pascalCase FILE_NAME}}.scss'
 
@@ -35,7 +35,7 @@ interface {{pascalCase FILE_NAME}} {
 
 @inject('counter')
 @observer
-class {{pascalCase FILE_NAME}} extends BaseComponent {
+class {{pascalCase FILE_NAME}} extends BasicComponent {
 
   constructor(props) {
     super(props)

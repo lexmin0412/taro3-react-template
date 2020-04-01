@@ -7,7 +7,7 @@ import Meta from '~/utils/meta'
 import FormValidator from '~/utils/validator'
 import Toast from '~/utils/toast'
 
-class BaseComponent extends Component {
+class BasicComponent extends Component {
 
   constructor(props) {
     super(props)
@@ -30,4 +30,4 @@ class BaseComponent extends Component {
   _toast = Toast
 }
 
-export default BaseComponent;
+export default BasicComponent;

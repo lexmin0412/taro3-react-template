@@ -6,7 +6,7 @@ import { ComponentType } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import BaseComponent from '~/components/BaseComponent/BaseComponent'
+import BasicComponent from '~/components/BasicComponent/BasicComponent'
 
 import './FormValidate.scss'
 import toast from '~/utils/toast'
@@ -41,9 +41,9 @@ interface FormValidate {
   FormValidator: any;
 }
 
-@inject('common')
+@inject('counter')
 @observer
-class FormValidate extends BaseComponent {
+class FormValidate extends BasicComponent {
 
   constructor(props) {
     super(props)
