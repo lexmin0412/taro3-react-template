@@ -47,20 +47,22 @@
   - [x] 拦截器
     - [x] url拦截器
     - [x] header拦截器
+    - [x] param拦截器
     - [x] data拦截器
-  - [x] 开发环境本地代理
-  - [x] jsonp支持
+  - [x] 开发环境本地代理（h5端）
+  - [x] jsonp支持（h5端）
 - 调试
-  - [x] vconsole（h5环境）
+  - [x] vconsole（h5端）
 - 工程化
   - [x] 全局变量
   - [x] 编译前操作
     - [x] 环境变量检查
     - [x] 扫描components文件夹生成入口文件
     - [x] 扫描pages文件夹生成路由列表及app.tsx文件
+    - [x] 根据不同的环境变量生成不同的project.config.json（小程序端）
   - [x] 通过plop插件一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
   - [x] 底层组件，用于页面和组件继承，实现类似vue原型绑定的功能
-  - [ ] git提交hooks
+  - [ ] git hooks
     - [ ] 代码校验
     - [ ] commit lint
   - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
@@ -68,21 +70,22 @@
   - [ ] 接入 Taro 模版源 http://taro-docs.jd.com/taro/docs/template.html
   - [ ] 提交 Taro 物料市场 https://taro-ext.jd.com/
 - 组件
-  - [x] image 图片组件 提供错误处理、loading过渡、查看大图等功能
-  - [x] imgUploader 图片上传组件 基于image 提供上传图片、图片数量限制、删除图片、查看大图等功能
-  - [x] paging 分页提示组件 将scrollerLoader, scrollerEndMessage合并成一个组件，减少判断
-  - [x] card 卡片组件 提供圆角、阴影功能，可自定义类名、样式（圆角及内外边距）
-  - [x] 基础弹窗组件，可选择弹窗位置，包括中间弹窗、底部弹窗，抛出关闭回调
-  - [x] 倒计时组件，可自定义结束时间、自定义倒计时长、是否展示天，自定义item样式
-  - [x] 按钮组件，可自定义类名、自定义宽高、背景色、圆角、positionType
-  - [x] 缺省组件 可自定义图片、文字、宽高
+  - [x] Card 卡片组件 提供圆角、阴影功能，可自定义类名、样式（圆角及内外边距）
+  - [x] Countdown 倒计时组件，可自定义结束时间、自定义倒计时长、是否展示天，自定义item样式
+  - [x] Divider 分割线，可自定义高度
+  - [x] Nodata 缺省组件 可自定义图片、文字、宽高
+  - [x] Paging 分页提示组件 将scrollerLoader, scrollerEndMessage合并成一个组件，减少判断
+  - [x] Modal 基础弹窗组件，可选择弹窗位置，包括中间弹窗、底部弹窗，抛出关闭回调
+  - [x] Tabs 标签页
+  - [x] TButton 按钮组件，可自定义类名、自定义宽高、背景色、圆角、positionType
+  - [x] TImage 图片组件 提供错误处理、loading过渡、查看大图等功能
+  - [x] TImageUploader 图片上传组件 基于image 提供上传图片、图片数量限制、删除图片、查看大图等功能
 - 工具类
   - [x] img.ts 图片处理类（如拼接url、预览等）
   - [x] mp.ts 小程序独有api封装（如检查更新）
   - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
   - [x] toast.ts loading/toast api封装简化
-  - [x] 表单验证类
-  - [x] formValidator.ts 表单验证
+  - [x] validator.ts 表单验证
   - [x] meta.ts meta相关功能
 - 体验工程
   - [ ] 骨架屏
