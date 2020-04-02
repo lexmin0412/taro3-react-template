@@ -5,7 +5,7 @@ class QQMapWebService extends BaseRequest {
     super({
       hostKey: 'API_MAP_QQ'
     })
-	}
+  }
 
 	/**
 	 * 逆地址解析
@@ -18,18 +18,29 @@ class QQMapWebService extends BaseRequest {
     /**
      * 是否获取poi列表
      */
-    get_poi: 1|0,
-	}): Promise<any> {
-    return this.jsonp({
-      url: '/ws/geocoder/v1',
-      data: {
-        ...payload,
-        key: APP_CONF.KEY_MAP_QQ,
-        output: 'jsonp',
-        callback: 'jsonhandle1'
-      },
-      resType: 1,
-    })
+    get_poi: 1 | 0,
+  }): Promise<any> {
+    if (process.env.TARO_ENV === 'h5') {
+      return this.jsonp({
+        url: '/ws/geocoder/v1',
+        data: {
+          ...payload,
+          key: APP_CONF.KEY_MAP_QQ,
+          output: 'jsonp',
+          callback: 'jsonhandle1'
+        },
+        resType: 1,
+      })
+    } else {
+      return this.post({
+        url: '/ws/geocoder/v1',
+        data: {
+          ...payload,
+          key: APP_CONF.KEY_MAP_QQ,
+        },
+        resType: 1,
+      })
+    }
   }
 }
 
