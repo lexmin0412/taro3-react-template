@@ -3,6 +3,7 @@
  */
 
 const fs = require('fs')
+const chalk = require('chalk')
 let pages = require('./../../src/pages/routes.js')
 
 pages.forEach((item,index)=>{
@@ -16,7 +17,6 @@ pages = `    pages: [${pages}
 const initApp = () => {
 
   const appTemplate = fs.readFileSync('./build/template/app.tsx').toString().split("\n")
-  console.log('读取app.tsx模版')
 
   const pageLine = appTemplate.findIndex((item)=>item.indexOf('pages: []')>-1)
   appTemplate[pageLine] = pages
@@ -31,7 +31,8 @@ ${appTemplate.join('\n')}`
     fs.unlinkSync('./src/app.tsx')
   }
   fs.writeFileSync('./src/app.tsx', templateStr)
-  console.log('app.tsx初始化成功')
+  console.log( chalk.greenBright( chalk `✅ 初始化成功 更新入口文件 {green.bold app.tsx}
+` ) )
 }
 
 module.exports = initApp

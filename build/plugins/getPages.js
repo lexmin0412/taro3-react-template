@@ -1,15 +1,16 @@
 const fs = require('fs')
+const chalk = require('chalk')
 
 /**
  * 扫描pages文件夹生成routes.js 即app.tsx中的pages配置项
  */
 const getPages = () => {
   return new Promise((resolve, reject)=>{
-    console.log('开始扫描页面')
+    console.log( chalk.yellow( '开始' ), '进入扫描页面插件' )
 
     if ( fs.existsSync('./src/pages/routes.js') ) {
       fs.unlinkSync('./src/pages/routes.js')
-      console.log('删除pages/route.js')
+      console.log( `${chalk.redBright('删除')} 旧的${chalk.greenBright('pages/route.js')}` )
     }
 
     let indexLines = `/**
@@ -18,13 +19,13 @@ const getPages = () => {
 
 const pages = [
   'pages/index/index',`
-    let pages = []
+    const pages = []
 
-    var outerDirs = fs.readdirSync("./src/pages");
+    const outerDirs = fs.readdirSync("./src/pages");
 
     outerDirs.forEach((item,index)=>{
 
-      var innerDir = fs.readdirSync(`./src/pages/${item}`)
+      const innerDir = fs.readdirSync(`./src/pages/${item}`)
 
       // 去除后缀名
       innerDir.forEach((inItem,inIndex)=>{
@@ -51,7 +52,11 @@ const pages = [
 module.exports = pages`
 
     fs.writeFileSync('./src/pages/routes.js', indexLines)
-    console.log('页面扫描完成，pages/routes.js创建成功')
+    console.log( `${chalk.cyanBright( '创建 ')}pages/routes.js 成功
+${
+  chalk.dim( '结束 ' )
+}页面扫描完成✅
+`)
     resolve()
   })
 

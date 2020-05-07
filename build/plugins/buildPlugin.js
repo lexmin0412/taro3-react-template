@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const checkEnv = require('./checkEnv')
 const getComponent = require('./getComponent')
 const getPages = require('./getPages')
@@ -7,7 +8,9 @@ class BuildPlugin {
     builder.hooks.beforeBuild.tap('BuildPlugin', (config) => {
       // 在这里做一些打包之前的验证操作 可以获取到配置且可以修改
 
-      console.log('开始执行编译前操作, 环境标识：', process.env.NODE_ENV)
+      console.log( chalk.keyword( 'orange' )( `
+开始执行自定义插件逻辑, 环境标识：`, process.env.NODE_ENV, `
+` ) )
 
       // 小程序中编译project.config.json文件
       if ( process.env.TARO_ENV === 'weapp' ) {
@@ -25,6 +28,7 @@ class BuildPlugin {
 
       // 检查环境变量
       checkEnv(config)
+
     })
 
     builder.hooks.afterBuild.tap('BuildPlugin', (stats) => {
