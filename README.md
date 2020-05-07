@@ -1,7 +1,7 @@
-# Taro 2.0 项目模版
+# Taro 2.x 项目模版
 
-> 说明：master 分支同步taro最新稳定版本更新，且会持续添加新功能，测试通过后会合并至release分支，当前版本基于taro 2.0；
-> 基于 taro 1.0 的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
+> 说明：master 分支同步taro最新稳定版本更新，且会持续添加新功能，测试通过后会合并至release分支，当前版本基于taro 2.2.3；
+> 基于 taro 1.x 的项目模板请前往 `release-1.0.0` 分支获取，[点此前往](https://github.com/cathe-zhang/taro_template/tree/release-1.0.0/)
 
 ## 导航
 
@@ -55,7 +55,7 @@
   - [x] vconsole（h5端）
 - 工程化
   - [x] 全局变量
-  - [x] 编译前操作
+  - [x] 插件
     - [x] 环境变量检查
     - [x] 扫描components文件夹生成入口文件
     - [x] 扫描pages文件夹生成路由列表及app.tsx文件
