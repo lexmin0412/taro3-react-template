@@ -19,25 +19,25 @@ type PageStateProps = {
   /**
    * 子元素
    */
-  children?: any;
-  counter: any;
+  children?: any
+  counter: any
 }
 
 /**
  * 页面state
  */
 type PageState = {
-  type: string;
-  imageList: Array<string>;
-  hasMore: boolean;
-  showPaging: boolean;
-  modalVisible: boolean;
+  type: string
+  imageList: Array<string>
+  hasMore: boolean
+  showPaging: boolean
+  modalVisible: boolean
   modalType: 'center' | 'bottom'
 }
 
 interface Comp {
-  props: PageStateProps;
-  state: PageState;
+  props: PageStateProps
+  state: PageState
 }
 
 @inject('counter')
@@ -172,23 +172,23 @@ class Comp extends BasicComponent {
     const { type, imageList, hasMore, modalVisible, modalType } = this.state
     return (
       <View className='comp-page'>
-        <View className="comp-page-title">组件演示</View>
+        <View className='comp-page-title'>组件演示</View>
         {
           type === 'image' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             图片组件
             {
               imageList.map((item, index) => {
                 return (
                   <TImage src={item}
-                    canPreview={true}
+                    canPreview
                     previewConfig={{
                       urls: imageList,
                       current: index,
                     }}
                     width={150}
                     height={150}
-                    showLoading={true}
+                    showLoading
                   />
                 )
               })
@@ -197,7 +197,7 @@ class Comp extends BasicComponent {
         }
         {
           type === 'card' || type === 'paging' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             卡片组件
             {
               imageList.map((item, index) => {
@@ -207,7 +207,8 @@ class Comp extends BasicComponent {
                     hSpace: 20,
                     vSpace: 20,
                     padding: 20
-                  }}>
+                  }}
+                  >
                     卡片
                   </Card>
                 )
@@ -218,7 +219,7 @@ class Comp extends BasicComponent {
 
         {
           type === 'default' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             缺省组件
             <Nodata />
           </View>
@@ -226,21 +227,21 @@ class Comp extends BasicComponent {
 
         {
           type === 'paging' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             缺省组件
-            <Paging hasMore={hasMore} showPaging={true} />
+            <Paging hasMore={hasMore} showPaging />
           </View>
         }
 
         {
           type === 'modal' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             弹窗组件
             <Button onClick={this.showModal.bind(this, 'center')}>点击展示弹窗（居中弹窗）</Button>
             <Button onClick={this.showModal.bind(this, 'bottom')}>点击展示弹窗（底部弹窗）</Button>
             <Modal
               positionType={modalType}
-              title="弹窗标题"
+              title='弹窗标题'
               visible={modalVisible}
             >
               <View>这是内容这是内容这是内容这是内
@@ -252,13 +253,13 @@ class Comp extends BasicComponent {
 
         {
           type === 'button' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             按钮组件
             <TButton
               wrap={false}
-              text="按钮文字"
-              backgroundColor="#45aafa"
-              width="80%"
+              text='按钮文字'
+              backgroundColor='#45aafa'
+              width='80%'
               wrapperHeight={140}
             />
           </View>
@@ -266,7 +267,7 @@ class Comp extends BasicComponent {
 
         {
           type === 'countdown' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             倒计时组件
             <Countdown
               // leftTime={500}
@@ -278,7 +279,7 @@ class Comp extends BasicComponent {
 
         {
           type === 'imgUploader' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             图片上传组件
             <TImageUploader
               defaultList={[
@@ -293,17 +294,17 @@ class Comp extends BasicComponent {
 
         {
           type === 'formValidate' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             表单验证演示
             <Button onClick={this.handleValidate.bind(this)}>验证</Button>
-            <Input type="number" placeholder="请输入手机号" onInput={this.handleInput.bind(this, 'phone')} />
-            <Input type="text" placeholder="请输入地址" onInput={this.handleInput.bind(this, 'address')} />
+            <Input type='number' placeholder='请输入手机号' onInput={this.handleInput.bind(this, 'phone')} />
+            <Input type='text' placeholder='请输入地址' onInput={this.handleInput.bind(this, 'address')} />
           </View>
         }
 
         {
           type === 'tabs' &&
-          <View className="demo-page-item">
+          <View className='demo-page-item'>
             标签页组件演示
             <Tabs
               initTab={2}
