@@ -21,15 +21,15 @@ declare const process: {
     /**
      * TARO环境变量
      */
-    TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq';
+    TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq'
     /**
 		 * node环境变量
 		 */
-    NODE_ENV: 'dev' | 'sit' | 'uat' | 'pro';
+    NODE_ENV: 'dev' | 'sit' | 'uat' | 'pro'
     /**
      * 其他扩展属性
      */
-    [key: string]: any;
+    [key: string]: any
   }
 }
 
@@ -45,17 +45,28 @@ declare const APP_CONF: {
   /**
    * 接口HOST
    */
-  API_HOST: string;
+  API_HOST: string
   /**
    * 图片oss域名
    */
-  IMG_OSS_PREFIX: string;
+  IMG_OSS_PREFIX: string
   /**
    * 腾讯地图接口服务域名
    */
-  API_MAP_QQ: '"https://apis.map.qq.com"',
+  API_MAP_QQ: string
   /**
    * 腾讯地图服务key
    */
-  KEY_MAP_QQ: '"E6HBZ-A72WD-XM74M-PA3OE-DA3EK-FKFYO"',
+  KEY_MAP_QQ: string
 }
+
+
+/**
+ * 微信jssdk对象
+ */
+declare const wx: any
+
+/**
+ * 微信jsbridge
+ */
+declare const WeixinJSBridge: any

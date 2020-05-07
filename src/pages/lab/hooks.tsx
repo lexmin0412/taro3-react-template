@@ -7,15 +7,15 @@ import './hooks.scss'
 
 type PageStateProps = {
   counter: {
-    counter: number,
-    increment: Function,
-    decrement: Function,
+    counter: number
+    increment: Function
+    decrement: Function
     incrementAsync: Function
   }
 }
 
 interface Index {
-  props: PageStateProps;
+  props: PageStateProps
 }
 
 const Index = () => (

@@ -7,9 +7,9 @@ import Taro from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import BasicComponent from '~/components/BasicComponent/BasicComponent'
+import toast from '~/utils/toast'
 
 import './FormValidate.scss'
-import toast from '~/utils/toast'
 
 /**
  * 页面props
@@ -18,7 +18,7 @@ type PageStateProps = {
   /**
    * 子元素
    */
-  children?: any;
+  children?: any
 }
 
 /**
@@ -28,7 +28,7 @@ type PageState = {
   /**
    * 电话
    */
-  phone: string,
+  phone: string
   /**
    * 地址
    */
@@ -36,9 +36,9 @@ type PageState = {
 }
 
 interface FormValidate {
-  props: PageStateProps;
-  state: PageState;
-  FormValidator: any;
+  props: PageStateProps
+  state: PageState
+  FormValidator: any
 }
 
 @inject('counter')
@@ -100,8 +100,8 @@ class FormValidate extends BasicComponent {
       <View className='FormValidate-page'>
         <View>表单验证测试</View>
         <Button onClick={this.handleValidate.bind(this)}>验证</Button>
-        <Input type="number" placeholder="请输入手机号" onInput={this.handleInput.bind(this, 'phone')} />
-        <Input type="text" placeholder="请输入地址" onInput={this.handleInput.bind(this, 'address')} />
+        <Input type='number' placeholder='请输入手机号' onInput={this.handleInput.bind(this, 'phone')} />
+        <Input type='text' placeholder='请输入地址' onInput={this.handleInput.bind(this, 'address')} />
       </View>
     )
   }
