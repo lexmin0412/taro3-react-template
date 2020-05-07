@@ -94,7 +94,7 @@
 
 以下是项目结构的缩略图
 
-![项目结构](./structure.png)
+![项目结构](./docs/structure.png)
 
 ## 开始
 
