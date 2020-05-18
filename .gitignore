@@ -8,6 +8,6 @@ project.config.json
 package-lock.json
 
 # 以下文件打包时会自动生成
-src/app.tsx
+# src/app.tsx
 src/pages/routes.js
 src/components/index.ts

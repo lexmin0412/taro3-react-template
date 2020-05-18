@@ -63,8 +63,10 @@
   - [x] 通过plop插件一键生成模版文件（页面、组件、样式、服务类、mobx状态管理）
   - [x] 底层组件，用于页面和组件继承，实现类似vue原型绑定的功能
   - [ ] git hooks
-    - [ ] 代码校验
-    - [ ] commit lint
+    - [ ] eslint
+    - [ ] stylelint
+    - [ ] prettier
+    - [x] commit lint
   - [ ] 引入自建组件库(taro-cui，适配taro2.0版本开发中)
   - [x] 引入自建工具类库（wtils）
   - [ ] 接入 Taro 模版源 http://taro-docs.jd.com/taro/docs/template.html
