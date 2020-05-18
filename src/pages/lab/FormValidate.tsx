@@ -3,11 +3,11 @@
  */
 
 import { ComponentType } from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import BasicComponent from '~/components/BasicComponent/BasicComponent'
 import toast from '~/utils/toast'
+import Meta from '~/utils/meta'
 
 import './FormValidate.scss'
 
@@ -43,11 +43,11 @@ interface FormValidate {
 
 @inject('counter')
 @observer
-class FormValidate extends BasicComponent {
+class FormValidate extends Component {
 
   constructor(props) {
     super(props)
-    this._setTitle('表单验证测试')
+    Meta._setTitle('表单验证测试')
     this.state = {
       phone: '',
       address: ''

@@ -1,12 +1,9 @@
 /**
-  * {{FILE_DESC}}
-  */
+ * {{FILE_DESC}}
+ */
 
-import { ComponentClass } from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-
-import { BasicComponent } from '~/components'
 
 import './{{pascalCase FILE_NAME}}.scss'
 
@@ -14,10 +11,7 @@ import './{{pascalCase FILE_NAME}}.scss'
  * props属性
  */
 interface IProps {
-  /**
-   * 子元素
-   */
-  children?: any;
+
 }
 
 /**
@@ -27,22 +21,17 @@ interface IState {
 
 }
 
-interface {{pascalCase FILE_NAME}} {
-  props: IProps;
-  state: IState;
-}
+class {{pascalCase FILE_NAME}} extends Component<IProps, IState> {
 
-class {{pascalCase FILE_NAME}} extends BasicComponent {
+  static defaultProps: IProps = {
+
+  }
 
   constructor(props) {
     super(props)
     this.state = {
 
     }
-  }
-
-  static defaultProps: IProps = {
-
   }
 
   render () {
@@ -54,4 +43,4 @@ class {{pascalCase FILE_NAME}} extends BasicComponent {
   }
 }
 
-export default {{pascalCase FILE_NAME}} as ComponentClass<IProps, IState>
+export default {{pascalCase FILE_NAME}}

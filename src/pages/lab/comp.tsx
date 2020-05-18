@@ -3,11 +3,11 @@
  */
 
 import { ComponentType } from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import BasicComponent from '~/components/BasicComponent/BasicComponent'
+import Meta from '~/utils/meta'
 import { Card, TImage, Nodata, Paging, Modal, TButton, Countdown, TImageUploader, Tabs } from '~/components'
 
 import './comp.scss'
@@ -42,11 +42,11 @@ interface Comp {
 
 @inject('counter')
 @observer
-class Comp extends BasicComponent {
+class Comp extends Component {
 
   constructor(props) {
     super(props)
-    this._setTitle('底层基础组件，用于其他页面和组件继承')
+    Meta._setTitle('底层基础组件，用于其他页面和组件继承')
     this.state = {
       type: 'image',
       imageList: [
@@ -136,7 +136,7 @@ class Comp extends BasicComponent {
       phone: [
         {
           errMsg: '请输入手机号',
-          test: funcs.NOT_EMPTY
+          test: funcs._notEmpty
         },
         {
           errMsg: '测试单字段多验证规则提示',
@@ -146,7 +146,7 @@ class Comp extends BasicComponent {
       address: [
         {
           errMsg: '请输入地址',
-          test: funcs.NOT_EMPTY
+          test: funcs._notEmpty
         }
       ]
     }, true, this.state)

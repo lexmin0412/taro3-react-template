@@ -4,10 +4,8 @@
   */
 
 import { ComponentClass } from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-
-import { BasicComponent } from '~/components'
 
 import './Tabs.scss'
 
@@ -57,7 +55,7 @@ interface Tabs {
   state: IState;
 }
 
-class Tabs extends BasicComponent {
+class Tabs extends Component {
 
   constructor(props) {
     super(props)

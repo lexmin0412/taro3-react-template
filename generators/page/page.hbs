@@ -3,46 +3,47 @@
  */
 
 import { ComponentType } from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
-import { BasicComponent } from '~/components'
+import Meta from '~/utils/meta'
 
-import './{{pascalCase FILE_NAME}}.scss'
+import './{{camelCase FILE_NAME}}.scss'
 
 /**
- * 页面props
+ * 页面 props
  */
-type PageStateProps = {
-  /**
-   * 子元素
-   */
-  children?: any;
+interface IProps {
+app: any;
 }
 
 /**
- * 页面state
+ * 页面 state
  */
-type PageState = {
+interface IState {
 
 }
 
 interface {{pascalCase FILE_NAME}} {
-  props: PageStateProps;
-  state: PageState;
+  props: IProps;
+  state: IState;
 }
 
-@inject('counter')
+@inject('app')
 @observer
-class {{pascalCase FILE_NAME}} extends BasicComponent {
+class {{pascalCase FILE_NAME}} extends Component {
 
   constructor(props) {
     super(props)
-    this._setTitle('{{FILE_DESC}}')
+    Meta.setTitle('{{FILE_DESC}}')
     this.state = {
 
     }
+  }
+
+  config: Config = {
+    enablePullDownRefresh: false
   }
 
   // 监听mobx状态变化
@@ -52,7 +53,7 @@ class {{pascalCase FILE_NAME}} extends BasicComponent {
 
   render () {
     return (
-      <View className='c-page'>
+      <View className='{{camelCase DIR_NAME}}-{{camelCase FILE_NAME}}-page'>
         <View>{{FILE_DESC}}</View>
       </View>
     )

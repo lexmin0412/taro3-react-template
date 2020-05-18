@@ -158,7 +158,6 @@ yarn build-mo-pro  # 部署 小程序 生产环境
 在开发阶段，为了减少一些重复且枯燥，还有可能造成报错的代码，做了以下几个工作：
 
 - 通过命令生成文件
-- BasicComponent的实现
 - pages和components文件夹的扫描
 - 公用sass文件的全局注册
 
@@ -171,33 +170,7 @@ yarn build-mo-pro  # 部署 小程序 生产环境
 - mobx模块
 - service类
 
-2. **`BasicComponent` 的实现**
-
-在 Vue 的项目中，可以在main.js中，使用如下的方式将方法或变量绑定到原型上，在组件中即可直接调用：
-
-```js
-// main.js
-Vue.prototype.$getLocation = AppRouter.getLocation
-```
-
-```js
-// 页面js
-created() {
-  this.$getLocation()
-}
-```
-
-为了实现类似的功能，项目中封装了一个名为 `BasicComponent` 的基础组件，目前提供的功能：
-
-- 设置页面标题
-- 表单验证
-- toast
-
-在 BasicComponent 组件中定义方法的好处是，只要一个组件（页面）继承了 BasicComponent 组件，在这个组件（页面）中就可以直接使用 `this.` 的方式来调用 BasicComponent 中定义的任何方法，省去了每个页面都需要引入工具类函数的重复操作。
-
-考虑到以上便利性，使用 `yarn template` 命令生成的组件即是继承于 BasicComponent，所以项目中的页面及组件请使用命令生成。
-
-3. pages和components文件夹的扫描
+2. pages和components文件夹的扫描
 
 在平常的项目开发中，存在以下问题：
 
@@ -212,7 +185,7 @@ components 文件夹的扫描，跟pages目录同理，但生成的是一个inde
 import { Line, TImage } from '~/components
 ```
 
-4. 公用sass文件的全局注册
+3. 公用sass文件的全局注册
 
 在 config/index.js 中预置了如下内容：
 
@@ -279,7 +252,7 @@ service, 也就是我们的服务模块，用于统一存放后端接口定义�
 ```tsx
 import QQMapWSService from '~/services/qqMap/ws.service'
 
-class Index extends BasicComponent {
+class Index extends Component {
 
   state = {}
 
@@ -339,9 +312,8 @@ import { Card, TImage } from '~/components'
   */
 
 import { ComponentClass } from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import BasicComponent from '~/components'
 
 import './ComponentName.scss'
 
@@ -367,7 +339,7 @@ interface ComponentName {
   state: IState;
 }
 
-class ComponentName extends BasicComponent {
+class ComponentName extends Component {
 
   static defaultProps: IProps = {
 
