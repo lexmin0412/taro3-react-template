@@ -1,6 +1,0 @@
-.sass-test {
-  @include textOrient(1);
-  @include wh(100%, 200px);
-  @include setFont(36px, $theme-color);
-  z-index: $modalZIndex;
-}

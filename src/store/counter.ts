@@ -1,7 +1,10 @@
 import { observable } from 'mobx'
 
-const counter = observable({
+const counterStore = observable({
   counter: 0,
+  counterStore() {
+    this.counter++
+  },
   increment() {
     this.counter++
   },
@@ -14,4 +17,5 @@ const counter = observable({
     }, 1000)
   }
 })
-export default counter
+
+export default counterStore

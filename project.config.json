@@ -1,43 +1,13 @@
-
 {
   "miniprogramRoot": "./dist",
-  "projectname": "taro-template",
-  "description": "taro2.0项目模板",
-  "appid": "wxaef7e1d2cd28134e",
+  "projectname": "myAPp",
+  "description": "taro-next-template",
+  "appid": "touristappid",
   "setting": {
     "urlCheck": true,
     "es6": false,
     "postcss": false,
     "minified": false
   },
-	"compileType": "miniprogram",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"miniprogram": {
-			"current": 2,
-			"list": [
-				{
-					"id": -1,
-					"name": "首页",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "compileType": "miniprogram"
 }
