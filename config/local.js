@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    APP_ENV: '"dev"'
+    APP_ENV: '"local"'
   },
   defineConstants: {
   },
