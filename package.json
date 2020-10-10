@@ -1,32 +1,46 @@
 {
-	"name": "taro-template",
-	"version": "3.0.0",
+	"name": "taro3-react-template",
+	"version": "1.0.0",
 	"private": true,
-	"description": "基于 taro next(3.x) 的开箱即用多端项目模版",
+	"description": "taro3-react多端项目模板",
 	"templateInfo": {
 		"name": "mobx",
 		"typescript": true,
 		"css": "sass"
 	},
 	"scripts": {
-		"dev:mp": "taro build --type weapp --env local --watch",
+		"build:mp-local": "cross-env BUILD_ENV=local taro build --type weapp",
+		"build:mp-dev": "cross-env BUILD_ENV=dev taro build --type weapp",
+		"build:mp-test": "cross-env BUILD_ENV=test taro build --type weapp",
+		"build:mp-uat": "cross-env BUILD_ENV=uat taro build --type weapp",
+		"build:mp-pro": "cross-env BUILD_ENV=pro taro build --type weapp",
+		"dev:mp-local": "npm run build:mp-local -- --watch",
 		"dev:mp-dev": "npm run build:mp-dev -- --watch",
 		"dev:mp-test": "npm run build:mp-test -- --watch",
 		"dev:mp-uat": "npm run build:mp-uat -- --watch",
 		"dev:mp-pro": "npm run build:mp-pro -- --watch",
-		"build:mp-dev": "taro build --type weapp --env dev",
-		"build:mp-test": "taro build --type weapp --env sit",
-		"build:mp-uat": "taro build --type weapp --env uat",
-		"build:mp-pro": "taro build --type weapp --env pro",
-		"dev:h5": "taro build --type h5 --env local --watch",
+		"build:h5-local": "cross-env BUILD_ENV=local taro build --type h5",
+		"build:h5-dev": "cross-env BUILD_ENV=dev taro build --type h5",
+		"build:h5-test": "cross-env BUILD_ENV=test taro build --type h5",
+		"build:h5-uat": "cross-env BUILD_ENV=uat taro build --type h5",
+		"build:h5-pro": "cross-env BUILD_ENV=pro taro build --type h5",
+		"dev:h5-local": "npm run build:h5-local -- --watch",
 		"dev:h5-dev": "npm run build:h5-dev -- --watch",
 		"dev:h5-test": "npm run build:h5-test -- --watch",
 		"dev:h5-uat": "npm run build:h5-uat -- --watch",
 		"dev:h5-pro": "npm run build:h5-pro -- --watch",
-		"build:h5-dev": "taro build --type h5 --env dev",
-		"build:h5-test": "taro build --type h5 --env sit",
-		"build:h5-uat": "taro build --type h5 --env uat",
-		"build:h5-pro": "taro build --type h5 --env pro"
+		"new": "plop --plopfile generators/index.js"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged && lint-staged",
+			"commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+		}
+	},
+	"lint-staged": {
+		"**/*.js": "eslint --ext .js",
+		"src/**/*.ts": "eslint --ext .ts",
+		"src/**/*.tsx": "eslint --ext .tsx"
 	},
 	"browserslist": [
 		"last 3 versions",
@@ -37,32 +51,38 @@
 	"license": "MIT",
 	"dependencies": {
 		"@babel/runtime": "^7.7.7",
-		"@tarojs/runtime": "3.0.8",
-		"@tarojs/taro": "3.0.8",
-		"@tarojs/components": "3.0.8",
+		"@tarojs/runtime": "3.0.14",
+		"@tarojs/taro": "3.0.14",
+		"@tarojs/components": "3.0.14",
 		"mobx": "^4.8.0",
 		"mobx-react": "^6.1.4",
 		"react-dom": "^16.10.0",
-		"@tarojs/react": "3.0.8",
+		"@tarojs/react": "3.0.14",
 		"react": "^16.10.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.8.0",
-		"@tarojs/cli": "3.0.8",
-		"@tarojs/mini-runner": "3.0.8",
-		"@tarojs/webpack-runner": "3.0.8",
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
+		"@tarojs/mini-runner": "3.0.14",
+		"@tarojs/webpack-runner": "3.0.14",
 		"@types/react": "^16.0.0",
 		"@types/webpack-env": "^1.13.6",
-		"@typescript-eslint/eslint-plugin": "^2.x",
-		"@typescript-eslint/parser": "^2.x",
-		"babel-preset-taro": "3.0.8",
+		"@typescript-eslint/eslint-plugin": "^2.34.0",
+		"@typescript-eslint/parser": "^2.34.0",
+		"babel-preset-taro": "3.0.14",
+		"cross-env": "^7.0.2",
 		"eslint": "^6.8.0",
-		"eslint-config-taro": "3.0.8",
+		"eslint-config-taro": "3.0.14",
 		"eslint-plugin-import": "^2.12.0",
 		"eslint-plugin-react": "^7.8.2",
 		"eslint-plugin-react-hooks": "^1.6.1",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.4.0",
+		"plop": "^2.7.4",
+		"prettier": "^2.1.2",
+		"pretty-quick": "^3.0.2",
 		"stylelint": "9.3.0",
-		"typescript": "^3.7.0",
-		"webpack-bundle-analyzer": "^3.8.0"
+		"typescript": "^3.7.0"
 	}
 }

@@ -1,0 +1,28 @@
+// 设置字体大小及颜色
+@mixin setFont($fontSize, $color) {
+	font-size: $fontSize;
+	color: $color;
+}
+
+// 多行截取
+@mixin textOrient($line) {
+	// 单行
+	@if $line==1 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	// 多行
+	@else {
+		display: -webkit-box;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: break-all;
+		// 需要加上这一句autoprefixer的忽略规则 否则这一行样式加不上 导致无法展示省略号
+
+		/*! autoprefixer: ignore next */
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: $line;
+	}
+}

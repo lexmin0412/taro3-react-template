@@ -1,9 +1,41 @@
 # Taro 3.0 项目模板
 
-技术栈：
+一个可用于生产环境的基于 Taro3 的 React 框架多端项目模版。
+
+## 技术栈
+
 - Taro
 - React
 - Mobx
+
+## 功能列表
+
+- 基础功能
+  - [x] TypeScript
+  - [x] Sass 支持, 基础公用文件
+  - [x] 状态管理(mobx)
+  - [ ] iconfont 支持
+- 接口请求
+  - [x] request 类
+  - [x] 拦截器
+    - [x] url 拦截器
+    - [x] header 拦截器
+    - [x] param 拦截器
+    - [x] data 拦截器
+  - [x] 开发环境本地代理（h5 端）
+  - [ ] jsonp 支持（h5 端）
+- 基础工具类
+  - [x] toast 提示
+  - [x] validator 表单验证类
+  - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
+- 工程化
+  - [x] ts 文件路径 alias
+  - [x] 通过 plop 插件一键生成模版文件（页面、组件、样式、服务类、mobx 状态管理）
+  - [x] git hooks实现代码提交前的检查
+    - [x] eslint
+    - [x] stylelint
+    - [x] prettier
+    - [x] commit lint
 
 ## 关于 process.env.NODE_ENV
 
@@ -32,20 +64,20 @@ taro build --type h5 --env dev
 ```js
 // config/index.js
 module.exports = function (merge) {
-	let exportConfig = {}
-	const ENV = process.env.NODE_ENV
-	if (ENV === 'pro') {
-		exportConfig = merge({}, config, require('./pro'))
-	} else if (ENV === 'sit') {
-		exportConfig = merge({}, config, require('./sit'))
-	} else if (ENV === 'uat') {
-		exportConfig = merge({}, config, require('./uat'))
-	} else if (ENV === 'local') {
-		exportConfig = merge({}, config, require('./local'))
-	} else {
-		exportConfig = merge({}, config, require('./dev'))
-	}
-	return exportConfig
+  let exportConfig = {}
+  const ENV = process.env.NODE_ENV
+  if (ENV === 'pro') {
+    exportConfig = merge({}, config, require('./pro'))
+  } else if (ENV === 'sit') {
+    exportConfig = merge({}, config, require('./sit'))
+  } else if (ENV === 'uat') {
+    exportConfig = merge({}, config, require('./uat'))
+  } else if (ENV === 'local') {
+    exportConfig = merge({}, config, require('./local'))
+  } else {
+    exportConfig = merge({}, config, require('./dev'))
+  }
+  return exportConfig
 }
 ```
 

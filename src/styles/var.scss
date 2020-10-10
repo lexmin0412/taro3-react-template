@@ -1,0 +1,12 @@
+// 定位元素层级
+$absoluteIndex: 9; // 页面中普通的元素定位zIndex
+$fixedZIndex: 99; // 固定定位的元素zIndex 如底部的提交按钮 头部导航等
+$tabbarZIndex: 998; // tabbar层级 需高于一般的定位元素 但低于全屏弹窗的mask
+$modalMaskZIndex: 999; // 弹窗元素遮罩zIndex
+$modalContentZIndex: 1000; // 弹窗元素内容 一般需要最高的层级
+
+// 字体大小
+$baseFontSize: 28px;
+
+// 颜色
+$baseFontColor: #222;

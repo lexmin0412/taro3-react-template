@@ -1,63 +1,102 @@
 import React, { Component } from 'react'
+import Taro from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from 'mobx-react'
+
+import toast from '~/utils/toast'
+import LianouService from '~/services/hydee/lianou.service'
 
 import './index.scss'
 
 type PageStateProps = {
-  store: {
-    counterStore: {
-      counter: number,
-      increment: Function,
-      decrement: Function,
-      incrementAsync: Function
-    }
-  }
+	app: {
+		counter: number
+		increment: Function
+		decrement: Function
+		incrementAsync: Function
+	}
 }
 
 interface Index {
-  props: PageStateProps;
+	props: PageStateProps
 }
 
-@inject('store')
+@inject(({ store }) => ({
+	app: store.app,
+}))
 @observer
 class Index extends Component {
-  componentWillMount () { }
+	componentWillMount() {}
 
-  componentDidMount () { }
+	componentDidMount() {
+		console.log('process.env.APP_CONF', APP_CONF)
+		// this.queryData()
+		this.asyncQueryData()
+	}
 
-  componentWillUnmount () { }
+	componentWillUnmount() {}
 
-  componentDidShow () { }
+	componentDidShow() {}
 
-  componentDidHide () { }
+	componentDidHide() {}
 
-  increment = () => {
-    const { counterStore } = this.props.store
-    counterStore.increment()
-  }
+	/**
+	 * request请求测试
+	 */
+	queryData() {
+		toast.loading('')
+		LianouService.queryDiseaseByDrugName({
+			ComName: '阿莫西林',
+		})
+			.then(res => {
+				console.log('res', res)
+			})
+			.catch(err => {
+				console.error('err', err)
+			})
+		setTimeout(() => {
+			toast.info('请求成功')
+		}, 2000)
+	}
 
-  decrement = () => {
-    const { counterStore } = this.props.store
-    counterStore.decrement()
-  }
+	/**
+	 * async/await测试
+	 */
+	async asyncQueryData() {
+		const result = await LianouService.queryDiseaseByDrugName({
+			ComName: '阿莫西林',
+		})
+		console.log('页面async/await 请求结果', result)
+	}
 
-  incrementAsync = () => {
-    const { counterStore } = this.props.store
-    counterStore.incrementAsync()
-  }
+	increment = () => {
+		const { app } = this.props
+		app.increment()
+	}
 
-  render () {
-    const { counterStore: { counter } } = this.props.store
-    return (
-      <View className='index'>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
-      </View>
-    )
-  }
+	decrement = () => {
+		const { app } = this.props
+		app.decrement()
+	}
+
+	incrementAsync = () => {
+		const { app } = this.props
+		app.incrementAsync()
+	}
+
+	render() {
+		const {
+			app: { counter },
+		} = this.props
+		return (
+			<View className='index'>
+				<Button onClick={this.increment}>+</Button>
+				<Button onClick={this.decrement}>-</Button>
+				<Button onClick={this.incrementAsync}>Add Async1111</Button>
+				<Text className='test'>{counter}</Text>
+			</View>
+		)
+	}
 }
 
 export default Index

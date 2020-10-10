@@ -1,9 +1,7 @@
 module.exports = {
-  env: {
-    APP_ENV: '"uat"'
-  },
   defineConstants: {
-  },
-  mini: {},
-  h5: {}
+		APP_CONF: {
+			API_BASE: JSON.stringify('https://m.uat.xxx.com')
+		}
+  }
 }

@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "myAPp",
-  "description": "taro-next-template",
+  "projectname": "taro3-react-template",
+  "description": "taro3-react多端项目模板",
   "appid": "touristappid",
   "setting": {
     "urlCheck": true,

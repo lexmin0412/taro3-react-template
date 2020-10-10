@@ -1,0 +1,51 @@
+/**
+ * {{FILE_DESC}}
+ */
+
+import React, { Component } from 'react'
+import { View } from '@tarojs/components'
+
+import './{{camelCase FILE_NAME}}.scss'
+
+/**
+ * 页面 props
+ */
+type PageProps = {
+
+}
+
+/**
+ * 页面 state
+ */
+type PageState = {
+
+}
+
+interface {{pascalCase FILE_NAME}} {
+  props: PageProps;
+  state: PageState;
+}
+
+class {{pascalCase FILE_NAME}} extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+
+	componentDidShow() {
+
+	}
+
+  render () {
+    return (
+      <View className='{{camelCase DIR_NAME}}-{{camelCase FILE_NAME}}-component'>
+        <View>{{FILE_DESC}}</View>
+      </View>
+    )
+  }
+}
+
+export default {{pascalCase FILE_NAME}}
