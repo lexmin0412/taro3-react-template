@@ -1,4 +1,4 @@
-# Taro 3.0 项目模板
+# Taro 3.x 项目模板
 
 一个可用于生产环境的基于 Taro3 的 React 框架多端项目模版。
 
@@ -42,6 +42,7 @@
     - [x] prettier
     - [x] commit lint
   - [ ] 接入 [Taro 项目自定义模板](https://taro-docs.jd.com/taro/docs/template)
+  - [ ] 支持 Vue
 
 ## 关于 process.env.NODE_ENV
 
