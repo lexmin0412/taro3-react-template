@@ -1,4 +1,5 @@
 import BaseRequest from '~/utils/request'
+import { HOSTS } from '~/constants/index'
 
 /**
  * 莲藕相关服务
@@ -6,7 +7,7 @@ import BaseRequest from '~/utils/request'
 class LianouService extends BaseRequest {
 	constructor() {
 		super({
-			hostKey: 'API_BASE',
+			hostKey: HOSTS.API_BASE,
 		})
 	}
 

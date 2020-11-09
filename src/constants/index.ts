@@ -16,4 +16,14 @@ const Constants = {
 	INTERCEPTOR_HEADER: 'interceptor-custom-header',
 }
 
+/**
+ * 网络链接
+ */
+export enum HOSTS {
+	/**
+	 * 接口请求base
+	 */
+	API_BASE = 'API_BASE',
+}
+
 export default Constants
