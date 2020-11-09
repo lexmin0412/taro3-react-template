@@ -51,14 +51,14 @@
 	"license": "MIT",
 	"dependencies": {
 		"@babel/runtime": "^7.7.7",
+		"@tarojs/components": "3.0.16",
+		"@tarojs/react": "3.0.16",
 		"@tarojs/runtime": "3.0.16",
 		"@tarojs/taro": "3.0.16",
-		"@tarojs/components": "3.0.16",
 		"mobx": "^4.8.0",
 		"mobx-react": "^6.1.4",
-		"react-dom": "^16.10.0",
-		"@tarojs/react": "3.0.16",
-		"react": "^16.10.0"
+		"react": "^16.10.0",
+		"react-dom": "^16.10.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.8.0",
@@ -66,6 +66,7 @@
 		"@commitlint/config-conventional": "^11.0.0",
 		"@tarojs/mini-runner": "3.0.16",
 		"@tarojs/webpack-runner": "3.0.16",
+		"@tarox/plugin-init-app": "^1.0.0-alpha.15",
 		"@types/react": "^16.0.0",
 		"@types/webpack-env": "^1.13.6",
 		"@typescript-eslint/eslint-plugin": "^2.34.0",
