@@ -36,7 +36,7 @@ class Pages {
 
 	backToHome() {
 		Taro.switchTab({
-			url: '/pages/goods/list',
+			url: '/pages/index/index',
 		})
 	}
 }
