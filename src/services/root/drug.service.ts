@@ -2,9 +2,9 @@ import BaseRequest from '~/utils/request'
 import { HOSTS } from '~/constants/index'
 
 /**
- * 莲藕相关服务
+ * 药品相关服务
  */
-class LianouService extends BaseRequest {
+class DrugService extends BaseRequest {
 	constructor() {
 		super({
 			hostKey: HOSTS.API_BASE,
@@ -18,13 +18,10 @@ class LianouService extends BaseRequest {
 		ComName: string // 药品名称 多个药品用_隔开
 	}) {
 		return this.post({
-			url: '/store/queryCenterStore',
-			data: {
-				merCode: '666666',
-				...payload,
-			},
+			url: '/drug/queryDiseaseByDrug',
+			data: payload,
 		})
 	}
 }
 
-export default new LianouService()
+export default new DrugService()

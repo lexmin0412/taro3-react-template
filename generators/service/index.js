@@ -6,7 +6,7 @@ module.exports = {
 			type: 'input', // 问题类型 此处为输入
 			name: 'DIR_NAME', // actions 和 hbs 模板文件中可使用该变量
 			message: '请输入所在文件夹名称', // 问题
-			default: 'hydee', // 问题的默认答案
+			default: 'root', // 问题的默认答案
 		},
 		{
 			type: 'input', // 问题类型 此处为输入
