@@ -1,0 +1,102 @@
+import Taro from '@tarojs/taro'
+const wtils = require('wtils')
+
+/**
+ * 路由配置对象
+ */
+interface IRoute {
+	/**
+	 * 页面路径
+	 */
+	url: string
+	/**
+	 * query参数
+	 */
+	query?: {
+		[key: string]: any
+	}
+}
+
+class Router {
+	/**
+	 * 返回上一页面
+	 */
+	navigateBack() {
+		Taro.navigateBack()
+	}
+
+	/**
+	 * 页面push
+	 */
+	navigateTo(params: IRoute) {
+		this.jump({
+			type: 'navigateTo',
+			config: params,
+		})
+	}
+
+	/**
+	 * 重定向
+	 */
+	redirectTo(params: IRoute) {
+		this.jump({
+			type: 'redirectTo',
+			config: params,
+		})
+	}
+
+	/**
+	 * 重定向
+	 */
+	relaunch(params: IRoute) {
+		this.jump({
+			type: 'relaunch',
+			config: params,
+		})
+	}
+
+	/**
+	 * 跳转页面
+	 */
+	jump(params: {
+		type: 'navigateTo' | 'redirectTo' | 'relaunch'
+		config: IRoute
+	}) {
+		const {
+			type,
+			config: { url, query },
+		} = params
+
+		// url校验
+		if (!url) {
+			throw new Error('jump方法参数校验失败：缺少url')
+		}
+		if (!url.startsWith('/')) {
+			throw new Error('jump方法参数校验失败：url必须以“/”开头')
+		}
+
+		let suffix = ''
+		if (query && Object.keys(query).length > 0) {
+			suffix = wtils.transParams(JSON.stringify(query))
+		}
+		const finalUrl = `${url}${suffix}`
+		switch (type) {
+			case 'redirectTo':
+				Taro.redirectTo({
+					url: finalUrl,
+				})
+				break
+			case 'relaunch':
+				Taro.reLaunch({
+					url: finalUrl,
+				})
+			default:
+				Taro.navigateTo({
+					url: finalUrl,
+				})
+				break
+		}
+	}
+}
+
+export default new Router()
