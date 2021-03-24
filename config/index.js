@@ -58,6 +58,9 @@ const config = {
 	h5: {
 		publicPath: '/h5',
 		staticDirectory: 'static',
+		router: {
+			mode: 'browser', // 使用history模式
+		},
 		postcss: {
 			autoprefixer: {
 				enable: true,
