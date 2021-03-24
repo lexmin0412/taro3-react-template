@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import Taro from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from 'mobx-react'
 
 import toast from '~/utils/toast'
-import LianouService from '~/services/hydee/lianou.service'
+import DrugService from '~/services/root/drug.service'
 
 import './index.scss'
 
@@ -63,7 +62,7 @@ class Index extends Component {
 	 * async/await测试
 	 */
 	async asyncQueryData() {
-		const result = await LianouService.queryDiseaseByDrugName({
+		const result = await DrugService.queryDiseaseByDrugName({
 			ComName: '阿莫西林',
 		})
 		console.log('页面async/await 请求结果', result)
