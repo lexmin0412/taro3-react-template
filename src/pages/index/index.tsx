@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from 'mobx-react'
+import { XButton } from 'taro-x-ui'
 
 import toast from '~/utils/toast'
+import Router from '~/utils/router'
 import DrugService from '~/services/root/drug.service'
 
 import './index.scss'
@@ -30,7 +32,7 @@ class Index extends Component {
 	componentDidMount() {
 		console.log('process.env.APP_CONF', APP_CONF)
 		// this.queryData()
-		this.asyncQueryData()
+		// this.asyncQueryData()
 	}
 
 	componentWillUnmount() {}
@@ -44,7 +46,7 @@ class Index extends Component {
 	 */
 	queryData() {
 		toast.loading('')
-		LianouService.queryDiseaseByDrugName({
+		DrugService.queryDiseaseByDrugName({
 			ComName: '阿莫西林',
 		})
 			.then(res => {
@@ -83,6 +85,22 @@ class Index extends Component {
 		app.incrementAsync()
 	}
 
+	/**
+	 * 跳转demo页面
+	 */
+	jumpToDemo(demoType: 'router') {
+		switch (demoType) {
+			case 'router':
+				Router.navigateTo({
+					url: '/demo/router/router',
+				})
+				break
+
+			default:
+				break
+		}
+	}
+
 	render() {
 		const {
 			app: { counter },
@@ -93,6 +111,9 @@ class Index extends Component {
 				<Button onClick={this.decrement}>-</Button>
 				<Button onClick={this.incrementAsync}>Add Async1111</Button>
 				<Text className='test'>{counter}</Text>
+				<XButton onClick={this.jumpToDemo.bind(this, 'router')}>
+					路由跳转
+				</XButton>
 			</View>
 		)
 	}
