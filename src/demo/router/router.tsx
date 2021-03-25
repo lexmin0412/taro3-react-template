@@ -41,7 +41,7 @@ class RouterDemo extends Component {
 	componentDidShow() {}
 
 	handleRouterTest(
-		navType: 'navigateTo' | 'redirectTo' | 'relaunch',
+		navType: 'navigateTo' | 'redirectTo' | 'relaunch' | 'navigateBack',
 		validateType: 'noUrl' | 'invalidUrl'
 	) {
 		switch (validateType) {
@@ -77,6 +77,9 @@ class RouterDemo extends Component {
 					},
 				})
 				break
+			case 'navigateBack':
+				Router.navigateBack()
+				break
 			default:
 				Router.navigateTo({
 					url: '/demo/router/routerTarget',
@@ -100,6 +103,9 @@ class RouterDemo extends Component {
 				</XButton>
 				<XButton onClick={this.handleRouterTest.bind(this, 'relanuch')}>
 					relanuch
+				</XButton>
+				<XButton onClick={this.handleRouterTest.bind(this, 'navigateBack')}>
+					navigateBack
 				</XButton>
 				<XButton
 					onClick={this.handleRouterTest.bind(this, 'relanuch', 'noUrl')}
