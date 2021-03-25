@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { getCurrentPages } from '@tarojs/taro'
 const wtils = require('wtils')
 
 /**
@@ -22,6 +22,11 @@ class Router {
 	 * 返回上一页面
 	 */
 	navigateBack() {
+		const curPages = getCurrentPages()
+		if (curPages.length <= 1) {
+			console.error('已无上层页面，无法返回')
+			return
+		}
 		Taro.navigateBack()
 	}
 
