@@ -12,6 +12,7 @@
 - Taro
 - React
 - Mobx
+- TypeScript
 
 ## 功能列表
 
