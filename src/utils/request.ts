@@ -80,7 +80,7 @@ class BaseRequest {
 		if (method === 'UPLOAD') {
 			return new Promise((resolve, reject) => {
 				return Taro.uploadFile({
-					url: `${APP_CONF[hostKey]}/${url}`, //仅为示例，非真实的接口地址
+					url: `${APP_CONF[hostKey]}/${url}`,
 					filePath: data,
 					name: 'file',
 					success(res) {
