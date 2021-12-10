@@ -1,10 +1,8 @@
 const config = {
 	defineConstants: {
-		APP_CONF: {
-			API_BASE: JSON.stringify(
-				process.env.TARO_ENV === 'weapp' ? 'https://m.test.xxx.cn/api' : '/api'
-			), // h5本地调试时接口使用代理 指向需要请求的后端服务
-		},
+		TARO_API_BASE: JSON.stringify(
+			process.env.TARO_ENV === 'weapp' ? 'https://m.test.xxx.cn/api' : '/api'
+		), // h5本地调试时接口使用代理 指向需要请求的后端服务
 	},
 	h5: {
 		devServer: {

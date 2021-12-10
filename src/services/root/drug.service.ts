@@ -7,7 +7,7 @@ import { HOSTS } from '~/constants/index'
 class DrugService extends BaseRequest {
 	constructor() {
 		super({
-			hostKey: HOSTS.API_BASE,
+			hostKey: HOSTS.TARO_API_BASE,
 		})
 	}
 

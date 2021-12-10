@@ -12,9 +12,9 @@ import './index.scss'
 type PageStateProps = {
 	app: {
 		counter: number
-		increment: Function
-		decrement: Function
-		incrementAsync: Function
+		increment: () => void
+		decrement: () => void
+		incrementAsync: () => void
 	}
 }
 
@@ -30,9 +30,8 @@ class Index extends Component {
 	componentWillMount() {}
 
 	componentDidMount() {
-		console.log('process.env.APP_CONF', APP_CONF)
-		// this.queryData()
-		// this.asyncQueryData()
+		console.log('process.env', process.env.TARO_ENV)
+		console.log('TARO_API_BASE', TARO_API_BASE)
 	}
 
 	componentWillUnmount() {}

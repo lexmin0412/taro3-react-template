@@ -19,11 +19,11 @@ const Constants = {
 /**
  * 网络链接
  */
-export enum HOSTS {
+export const HOSTS = {
 	/**
 	 * 接口请求base
 	 */
-	API_BASE = 'API_BASE',
+	TARO_API_BASE: 'TARO_API_BASE',
 }
 
 export default Constants
