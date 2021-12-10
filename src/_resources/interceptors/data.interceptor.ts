@@ -3,10 +3,10 @@
  */
 
 import Taro from '@tarojs/taro'
-import { SUCC_LIST, LOGIN_FAILURE_LIST } from '~/constants/code'
-import Toast from '~/utils/toast'
-import Page from '~/utils/page'
-import Constants from '~/constants/index'
+import { SUCC_LIST, LOGIN_FAILURE_LIST } from '@/constants/code'
+import Toast from '@/utils/toast'
+import Page from '@/utils/page'
+import Constants from '@/constants/index'
 
 export default function (chain) {
 	console.log('enter data interceptor', chain)

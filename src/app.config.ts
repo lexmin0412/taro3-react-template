@@ -1,9 +1,13 @@
 export default {
-	pages: ['pages/index/index'],
+	pages: ['index/index'],
 	subpackages: [
 		{
 			root: 'demo',
 			pages: ['router/router', 'router/routerTarget'],
+		},
+		{
+			root: 'default',
+			pages: ['404'],
 		},
 	],
 	window: {

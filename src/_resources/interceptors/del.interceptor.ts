@@ -2,7 +2,7 @@
  * 删除自定义请求头拦截器
  */
 
-import Constants from '~/constants/index'
+import Constants from '@/constants/index'
 
 export default function (chain) {
 	console.log('enter del interceptor', chain)

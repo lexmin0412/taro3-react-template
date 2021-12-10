@@ -1,5 +1,5 @@
-import BaseRequest from '~/utils/request'
-import { HOSTS } from '~/constants/index'
+import BaseRequest from '@/utils/request'
+import { HOSTS } from '@/constants/index'
 
 /**
  * 药品相关服务

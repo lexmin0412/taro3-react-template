@@ -1,4 +1,4 @@
-import Toast from '~/utils/toast'
+import Toast from './../utils/toast'
 
 /**
  * 表单验证类
@@ -51,7 +51,7 @@ class FormValidator {
 				/**
 				 * 验证规则
 				 */
-				test: Function
+				test: () => void
 				/**
 				 * 错误信息
 				 */

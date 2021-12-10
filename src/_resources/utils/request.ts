@@ -3,14 +3,14 @@
  */
 
 import Taro from '@tarojs/taro'
-import Constants from '~/constants/index'
-import { SUCC_LIST } from '~/constants/code'
-import urlInterceptor from '~/interceptors/url.interceptor'
-import headerInterceptor from '~/interceptors/header.interceptor'
-import paramInterceptor from '~/interceptors/param.interceptor'
-import dataInterceptor from '~/interceptors/data.interceptor'
-import delInterceptor from '~/interceptors/del.interceptor'
-import toast from '~/utils/toast'
+import Constants from '@/constants/index'
+import { SUCC_LIST } from '@/constants/code'
+import urlInterceptor from '@/interceptors/url.interceptor'
+import headerInterceptor from '@/interceptors/header.interceptor'
+import paramInterceptor from '@/interceptors/param.interceptor'
+import dataInterceptor from '@/interceptors/data.interceptor'
+import delInterceptor from '@/interceptors/del.interceptor'
+import toast from '@/utils/toast'
 
 // 添加拦截器
 const getInterceptors = () => {

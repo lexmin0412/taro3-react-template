@@ -5,7 +5,7 @@
 import React from 'react'
 import { View } from '@tarojs/components'
 
-import './notFound.scss'
+import './404.scss'
 
 const NotFound = (): JSX.Element => {
 	return (

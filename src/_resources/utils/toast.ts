@@ -5,7 +5,6 @@
 import Taro from '@tarojs/taro'
 
 class Toast {
-
 	/**
 	 * 展示加载动画
 	 * @param title 加载文字

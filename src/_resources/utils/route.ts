@@ -17,7 +17,7 @@ interface IRoute {
 	}
 }
 
-class Router {
+class Route {
 	/**
 	 * 返回上一页面
 	 */
@@ -104,4 +104,4 @@ class Router {
 	}
 }
 
-export default new Router()
+export default new Route()

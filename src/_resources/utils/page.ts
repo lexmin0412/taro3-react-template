@@ -11,15 +11,7 @@ class Pages {
 			/**
 			 * 首页
 			 */
-			home: 'pages/index/index',
-			/**
-			 * 授权页
-			 */
-			auth: 'pages/auth/auth',
-			/**
-			 * 个人中心页
-			 */
-			user: 'pages/user/index',
+			home: 'index/index',
 		}
 	}
 
@@ -36,7 +28,7 @@ class Pages {
 
 	backToHome() {
 		Taro.switchTab({
-			url: '/pages/index/index',
+			url: '/index/index',
 		})
 	}
 }

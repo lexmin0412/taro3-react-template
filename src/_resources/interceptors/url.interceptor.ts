@@ -2,7 +2,7 @@
  * host拦截器 处理url拼接等
  */
 
-import Constants from '~/constants/index'
+import Constants from '@/constants/index'
 
 export default function (chain) {
 	const requestParams = chain.requestParams

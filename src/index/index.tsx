@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { View } from '@tarojs/components'
 import { XButton } from 'taro-x-ui'
-import Router from '~/utils/router'
+import Router from '@/utils/route'
 
 import './index.scss'
 
