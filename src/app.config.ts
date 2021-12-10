@@ -1,9 +1,11 @@
-const pages = require('./pages.js')
-const subPackages = require('./subPackages.js')
-
 export default {
-	pages: pages,
-	subPackages,
+	pages: ['pages/index/index'],
+	subpackages: [
+		{
+			root: 'demo',
+			pages: ['router/router', 'router/routerTarget'],
+		},
+	],
 	window: {
 		backgroundTextStyle: 'light',
 		navigationBarBackgroundColor: '#fff',
