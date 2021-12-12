@@ -21,7 +21,7 @@
 		"resolveJsonModule": true,
 		"typeRoots": ["node_modules/@types", "global.d.ts"],
 		"paths": {
-			"@": ["src/_resources"]
+			"@/*": ["src/_resources/*"]
 		}
 	},
 	"exclude": ["node_modules", "dist"],
