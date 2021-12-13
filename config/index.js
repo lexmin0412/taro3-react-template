@@ -3,7 +3,7 @@ const plugins = require('./plugins')
 
 const config = {
 	projectName: 'taro3-react-template',
-	date: '2020-10-5',
+	date: '2021-12-10',
 	designWidth: 750,
 	deviceRatio: {
 		640: 2.34 / 2,
