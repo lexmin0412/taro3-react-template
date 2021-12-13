@@ -61,10 +61,21 @@ class Route {
 	}
 
 	/**
+	 * 切换tabbar
+	 * @param params
+	 */
+	switchTab(params: IRoute) {
+		this.jump({
+			type: 'switchTab',
+			config: params,
+		})
+	}
+
+	/**
 	 * 跳转页面
 	 */
 	jump(params: {
-		type: 'navigateTo' | 'redirectTo' | 'relaunch'
+		type: 'navigateTo' | 'redirectTo' | 'relaunch' | 'switchTab'
 		config: IRoute
 	}) {
 		const {
@@ -93,6 +104,11 @@ class Route {
 				break
 			case 'relaunch':
 				Taro.reLaunch({
+					url: finalUrl,
+				})
+				break
+			case 'switchTab':
+				Taro.switchTab({
 					url: finalUrl,
 				})
 			default:
