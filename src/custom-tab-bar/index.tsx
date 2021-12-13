@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import './index.less'
+import './index.scss'
 
 const list = [
 	{
@@ -9,8 +9,8 @@ const list = [
 		text: '首页',
 	},
 	{
-		pagePath: '/demo/router/router',
-		text: '路由演示',
+		pagePath: '/user/index',
+		text: '我的',
 	},
 ]
 

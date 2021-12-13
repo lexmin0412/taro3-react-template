@@ -1,9 +1,13 @@
 export default {
-	pages: ['index/index', 'demo/router/router'],
+	pages: ['index/index', 'user/index'],
 	subpackages: [
 		{
 			root: 'default',
 			pages: ['404'],
+		},
+		{
+			root: 'demo',
+			pages: ['router/router', 'router/routerTarget'],
 		},
 	],
 	tabBar: {
@@ -14,8 +18,8 @@ export default {
 				text: '首页',
 			},
 			{
-				pagePath: 'demo/router/router',
-				text: '路由演示',
+				pagePath: 'user/index',
+				text: '我的',
 			},
 		],
 	},

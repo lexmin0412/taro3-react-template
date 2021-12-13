@@ -17,7 +17,7 @@ const Index = (): JSX.Element => {
 	const jumpToDemo = (demoType: 'router') => {
 		switch (demoType) {
 			case 'router':
-				Router.switchTab({
+				Router.navigateTo({
 					url: '/demo/router/router',
 				})
 				break
