@@ -10,40 +10,19 @@
 ## 技术栈
 
 - Taro
-- React
-- Mobx
+- React Hooks
 - TypeScript
+- Less
 
-## 功能列表
+## 支持特性
 
-- 基础功能
-  - [x] TypeScript
-  - [x] Sass 支持, 基础公用文件
-  - [x] 状态管理(mobx)
-  - [ ] iconfont 支持
-- 接口请求
-  - [x] request 类
-  - [x] 拦截器
-    - [x] url 拦截器
-    - [x] header 拦截器
-    - [x] param 拦截器
-    - [x] data 拦截器
-  - [x] 开发环境本地代理（h5 端）
-  - [ ] jsonp 支持（h5 端）
-- 基础工具类
-  - [x] toast 提示
-  - [x] validator 表单验证类
-  - [x] page.ts 页面工具类，实现获取页面路由、跳转等功能
-- 工程化
-  - [x] ts 文件路径 alias
-  - [x] 通过 plop 插件一键生成模版文件（页面、组件、样式、服务类、mobx 状态管理）
-  - [x] git hooks 实现代码提交前的检查
-    - [x] eslint
-    - [x] stylelint
-    - [x] prettier
-    - [x] commit lint
-  - [ ] 接入 [Taro 项目自定义模板](https://taro-docs.jd.com/taro/docs/template)
-  - [ ] 支持 Vue
+- 🏠 基于 Taro3
+- 📦 支持 React
+- 🐑 CSS 预处理器( Less )
+- 🥣 完全使用 TypeScript 开发
+- 🔛 企业级的 request 类及拦截器封装
+- 👮 `eslint`+`stylelint`+`prettier`+`commitlint`+`editorConfig` 实现的无死角代码规范体系
+- 💰 更多更好功能等你发现...
 
 ## 优化
 
@@ -51,13 +30,13 @@
 
 ```js
 module.exports = {
-  h5: {
-    webpackChain(chain) {
-      chain
-        .plugin('analyzer')
-        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
-    },
-  },
+	h5: {
+		webpackChain(chain) {
+			chain
+				.plugin('analyzer')
+				.use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
+		},
+	},
 }
 ```
 
