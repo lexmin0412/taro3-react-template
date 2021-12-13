@@ -67,7 +67,7 @@ class BaseRequest {
 		if (!hostKey) {
 			throw '请指定service key'
 		}
-		const hostUrl = APP_CONF[hostKey] // 通过hostKey去配置文件中寻找对应的host
+		const hostUrl = TARO_API_BASE // 通过hostKey去配置文件中寻找对应的host
 		header[Constants.INTERCEPTOR_HEADER] = {
 			hostKey,
 			hostUrl,
@@ -80,7 +80,7 @@ class BaseRequest {
 		if (method === 'UPLOAD') {
 			return new Promise((resolve, reject) => {
 				return Taro.uploadFile({
-					url: `${APP_CONF[hostKey]}/${url}`,
+					url: `${hostUrl}/${url}`,
 					filePath: data,
 					name: 'file',
 					success(res) {
