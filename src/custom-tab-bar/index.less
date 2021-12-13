@@ -1,0 +1,24 @@
+.tabbar-container {
+	display: flex;
+	align-items: center;
+	height: 100px;
+	box-shadow: 0px -2px 20px 1px #eff0f5;
+
+	.tabbar-item {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		&-selected {
+			.tabbar-item-text {
+				color: #ff0036;
+			}
+		}
+
+		.tabbar-item-text {
+			text-align: center;
+		}
+	}
+}

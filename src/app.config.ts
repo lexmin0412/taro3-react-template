@@ -1,15 +1,24 @@
 export default {
-	pages: ['index/index'],
+	pages: ['index/index', 'demo/router/router'],
 	subpackages: [
-		{
-			root: 'demo',
-			pages: ['router/router', 'router/routerTarget'],
-		},
 		{
 			root: 'default',
 			pages: ['404'],
 		},
 	],
+	tabBar: {
+		custom: true,
+		list: [
+			{
+				pagePath: 'index/index',
+				text: '首页',
+			},
+			{
+				pagePath: 'demo/router/router',
+				text: '路由演示',
+			},
+		],
+	},
 	window: {
 		backgroundTextStyle: 'light',
 		navigationBarBackgroundColor: '#fff',
