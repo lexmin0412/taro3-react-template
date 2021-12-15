@@ -24,7 +24,6 @@ const CustomTabBar = (): JSX.Element => {
 	const [currentTab, setCurrentTab] = useState('')
 
 	const handleSwtich = (item: any) => {
-		console.log(item)
 		Taro.switchTab({
 			url: `/${item.pagePath}`,
 		})
