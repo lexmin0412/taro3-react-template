@@ -30,13 +30,13 @@
 
 ```js
 module.exports = {
-	h5: {
-		webpackChain(chain) {
-			chain
-				.plugin('analyzer')
-				.use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
-		},
-	},
+  h5: {
+    webpackChain(chain) {
+      chain
+        .plugin('analyzer')
+        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
+    },
+  },
 }
 ```
 
