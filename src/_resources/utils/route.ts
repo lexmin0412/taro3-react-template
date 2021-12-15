@@ -130,16 +130,6 @@ class Route {
 			? currentPages[currentPages.length - 1].route
 			: ''
 	}
-
-	/**
-	 * 通过路由找到tabbarItem
-	 */
-	findTabbarByRoute(route: string) {
-		const tabbarItem = __wxConfig.tabBar.list.find(
-			item => item.pagePath.split('.html')[0] === route
-		)
-		return tabbarItem?.pagePath
-	}
 }
 
 export default new Route()
