@@ -1,48 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
+import Route from '@/utils/route'
 import './index.scss'
 
-const list = [
+interface TabbarItem {
+	pagePath: string
+	text: string
+}
+
+const list: TabbarItem[] = [
 	{
-		pagePath: '/index/index',
+		pagePath: 'index/index',
 		text: '首页',
 	},
 	{
-		pagePath: '/user/index',
+		pagePath: 'user/index',
 		text: '我的',
 	},
 ]
 
-const app = Taro.getApp()
-
-if (!app.globalData) {
-	app.globalData = {
-		currentTab: list[0].pagePath,
-	}
-}
-
 const CustomTabBar = (): JSX.Element => {
+	const [currentTab, setCurrentTab] = useState('')
+
 	const handleSwtich = (item: any) => {
 		console.log(item)
 		Taro.switchTab({
-			url: item.pagePath,
+			url: `/${item.pagePath}`,
 		})
-		// 这里使用globalData的原因是每次switchTab之后都是一个新的实例，hooks会失效
-		app.globalData.currentTab = item.pagePath
 	}
+
+	useEffect(() => {
+		// 默认选中当前页面
+		const currentRoute = Route.getCurrentRoute()
+		if (currentRoute) {
+			setCurrentTab(currentRoute)
+		}
+
+		// 监听变化
+		wx.onAppRoute((res: { path: string }) => {
+			if (res.path) {
+				setCurrentTab(res.path)
+			}
+		})
+	}, [])
 
 	return (
 		<View className='tabbar-container'>
-			{list.map((item: any) => {
+			{list.map(item => {
 				return (
 					<View
 						onClick={() => handleSwtich(item)}
 						key={item.pagePath}
 						className={`tabbar-item ${
-							item.pagePath === app.globalData.currentTab
-								? 'tabbar-item-selected'
-								: ''
+							item.pagePath === currentTab ? 'tabbar-item-selected' : ''
 						}`}
 					>
 						<View className='tabbar-item-text'>{item.text}</View>

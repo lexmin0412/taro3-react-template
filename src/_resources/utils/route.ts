@@ -118,6 +118,28 @@ class Route {
 				break
 		}
 	}
+
+	/**
+	 * 获取当前路由
+	 */
+	getCurrentRoute() {
+		const currentPages = getCurrentPages()
+		console.log('当前页面', currentPages)
+
+		return currentPages.length
+			? currentPages[currentPages.length - 1].route
+			: ''
+	}
+
+	/**
+	 * 通过路由找到tabbarItem
+	 */
+	findTabbarByRoute(route: string) {
+		const tabbarItem = __wxConfig.tabBar.list.find(
+			item => item.pagePath.split('.html')[0] === route
+		)
+		return tabbarItem?.pagePath
+	}
 }
 
 export default new Route()
