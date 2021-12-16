@@ -118,6 +118,18 @@ class Route {
 				break
 		}
 	}
+
+	/**
+	 * 获取当前路由
+	 */
+	getCurrentRoute() {
+		const currentPages = getCurrentPages()
+		console.log('当前页面', currentPages)
+
+		return currentPages.length
+			? currentPages[currentPages.length - 1].route
+			: ''
+	}
 }
 
 export default new Route()
