@@ -25,22 +25,6 @@
 - 🔥 自定义 tabbar
 - 💰 更多更好功能等你发现...
 
-## 优化
+## 规划
 
-1. 如果 h5 端编译后体积过大，可以使用 webpack-bundle-analyzer 插件对打包体积进行分析。
-
-```js
-module.exports = {
-  h5: {
-    webpackChain(chain) {
-      chain
-        .plugin('analyzer')
-        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
-    },
-  },
-}
-```
-
-在打包之后将会在浏览器中打开类似如下的页面，可以对文件占用体积分析，进行相关优化。
-
-![webpack-bundle-analyzer](./docs/images/webpack-bundle-analyzer.png)
+- [ ] 🐘 Github Actions
