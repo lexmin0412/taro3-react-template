@@ -1,0 +1,25 @@
+name: 构建部署 H5 应用
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: 安装依赖
+        run: |
+          npm install
+          npm run build:h5-pro
+      - name: 部署应用
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
