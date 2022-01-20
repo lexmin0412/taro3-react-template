@@ -1,4 +1,5 @@
-export default {
+export default defineAppConfig({
+	entryPagePath: 'index/index',
 	pages: ['index/index', 'user/index'],
 	subpackages: [
 		{
@@ -29,4 +30,4 @@ export default {
 		navigationBarTitleText: 'WeChat',
 		navigationBarTextStyle: 'black',
 	},
-}
+})
