@@ -7,6 +7,8 @@ const config = {
 	h5: {
 		devServer: {
 			port: '9001',
+			open: false,
+			https: true,
 			proxy: {
 				'/api': {
 					target: 'https://m.test.xxx.com',
