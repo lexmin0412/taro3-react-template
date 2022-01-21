@@ -49,7 +49,7 @@ const config = {
 		staticDirectory: 'static',
 		router: {
 			mode: 'browser', // 使用history模式
-			basename: '/taro3-react-template',
+			basename: '',
 		},
 		postcss: {
 			autoprefixer: {
