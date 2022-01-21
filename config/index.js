@@ -45,10 +45,11 @@ const config = {
 		},
 	},
 	h5: {
-		publicPath: '/h5',
+		publicPath: '/taro3-react-template',
 		staticDirectory: 'static',
 		router: {
 			mode: 'browser', // 使用history模式
+			basename: '/taro3-react-template',
 		},
 		postcss: {
 			autoprefixer: {
