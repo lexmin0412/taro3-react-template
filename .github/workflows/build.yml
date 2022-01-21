@@ -1,4 +1,4 @@
-name: 构建部署 H5 应用
+name: 构建部署H5应用
 on:
   push:
     branches:
@@ -17,6 +17,8 @@ jobs:
         run: |
           npm install
           npm run build:h5-pro
+          cd dist
+          cp index.html 404.html
       - name: 部署应用
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
