@@ -29,7 +29,9 @@
 		"dev:h5-test": "npm run build:h5-test -- --watch",
 		"dev:h5-uat": "npm run build:h5-uat -- --watch",
 		"dev:h5-pro": "npm run build:h5-pro -- --watch",
-		"new": "plop --plopfile generators/index.js"
+		"new": "plop --plopfile generators/index.js",
+		"preview:mp": "node scripts/wechat-mp-preview.js",
+		"preview:mp-local-watch": "npm run preview:mp && npm run dev:mp-local"
 	},
 	"husky": {
 		"hooks": {
@@ -85,6 +87,7 @@
 		"eslint-plugin-react-hooks": "^1.6.1",
 		"husky": "^4.3.0",
 		"lint-staged": "^10.4.0",
+		"miniprogram-automator": "^0.11.0",
 		"plop": "^2.7.4",
 		"prettier": "^2.1.2",
 		"pretty-quick": "^3.0.2",
