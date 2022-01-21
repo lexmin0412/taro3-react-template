@@ -44,8 +44,7 @@ module.exports = {
 				},
 				{
 					type: 'add', // 操作类型，这里是添加文件
-					path:
-						'../src/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.config.ts', // 添加的文件的路径
+					path: '../src/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.config.ts', // 添加的文件的路径
 					templateFile: './page/config.hbs', // 模板文件的路径
 				},
 			])
@@ -53,20 +52,17 @@ module.exports = {
 			actions = actions.concat([
 				{
 					type: 'add', // 操作类型，这里是添加文件
-					path:
-						'../src/pages/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.tsx', // 添加的文件的路径
+					path: '../src/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.tsx', // 添加的文件的路径
 					templateFile: './page/page.hbs', // 模板文件的路径
 				},
 				{
 					type: 'add', // 操作类型，这里是添加文件
-					path:
-						'../src/pages/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.scss', // 添加的文件的路径
+					path: '../src/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.scss', // 添加的文件的路径
 					templateFile: './page/scss.hbs', // 模板文件的路径
 				},
 				{
 					type: 'add', // 操作类型，这里是添加文件
-					path:
-						'../src/pages/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.config.ts', // 添加的文件的路径
+					path: '../src/{{camelCase DIR_NAME}}/{{camelCase FILE_NAME}}.config.ts', // 添加的文件的路径
 					templateFile: './page/config.hbs', // 模板文件的路径
 				},
 			])
