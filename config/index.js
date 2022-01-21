@@ -45,7 +45,7 @@ const config = {
 		},
 	},
 	h5: {
-		publicPath: '/taro3-react-template',
+		publicPath: './',
 		staticDirectory: 'static',
 		router: {
 			mode: 'browser', // 使用history模式
