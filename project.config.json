@@ -1,13 +1,13 @@
 {
-  "miniprogramRoot": "./dist",
-  "projectname": "taro3-react-template",
-  "description": "taro3-react多端项目模板",
-  "appid": "touristappid",
-  "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "postcss": false,
-    "minified": false
-  },
-  "compileType": "miniprogram"
+	"miniprogramRoot": "./dist",
+	"projectname": "taro3-react-template",
+	"description": "taro3-react多端项目模板",
+	"appid": "wxfc18f27dc0b3851a",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false
+	},
+	"compileType": "miniprogram"
 }
