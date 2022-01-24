@@ -29,10 +29,7 @@ export default defineAppConfig({
 		],
 	},
 	window: {
-		backgroundTextStyle: 'light',
-		navigationBarBackgroundColor: '#fff',
-		navigationBarTitleText: 'WeChat',
-		navigationBarTextStyle: 'black',
+		navigationStyle: 'custom',
 	},
 	// 页面切换动画
 	animation: {
