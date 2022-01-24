@@ -5,6 +5,7 @@
 import React from 'react'
 import { View } from '@tarojs/components'
 import { XButton } from 'taro-x-ui'
+import CustomNavigationHeader from '@/components/navigation_header'
 
 import Router from '@/utils/route'
 
@@ -65,6 +66,7 @@ const RouterDemo = (): JSX.Element => {
 
 	return (
 		<View className='demo-router-page'>
+			<CustomNavigationHeader title='路由演示' />
 			<XButton onClick={() => handleRouterTest('navigateTo')}>
 				navigateTo
 			</XButton>
