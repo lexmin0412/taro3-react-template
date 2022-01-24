@@ -130,6 +130,18 @@ class Route {
 			? currentPages[currentPages.length - 1].route
 			: ''
 	}
+
+	/**
+	 * 返回首页
+	 */
+	backToHome() {
+		const { tabBar } = __wxConfig
+		if (tabBar.list && tabBar.list.length) {
+			this.switchTab({
+				url: `/${tabBar.list[0].pagePath.split('.')[0]}`,
+			})
+		}
+	}
 }
 
 export default new Route()
