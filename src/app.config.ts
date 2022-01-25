@@ -10,6 +10,10 @@ export default defineAppConfig({
 			root: 'demo',
 			pages: ['router/router', 'router/routerTarget'],
 		},
+		{
+			root: 'webview',
+			pages: ['index'],
+		},
 	],
 	tabBar: {
 		custom: true,
