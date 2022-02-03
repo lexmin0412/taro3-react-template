@@ -42,7 +42,8 @@
 	"lint-staged": {
 		"**/*.js": "eslint --ext .js",
 		"src/**/*.ts": "eslint --ext .ts",
-		"src/**/*.tsx": "eslint --ext .tsx"
+		"src/**/*.tsx": "eslint --ext .tsx",
+		"**/*.md": "markdownlint-cli2 .md"
 	},
 	"browserslist": [
 		"last 3 versions",
@@ -88,6 +89,8 @@
 		"eslint-plugin-react-hooks": "^1.6.1",
 		"husky": "^4.3.0",
 		"lint-staged": "^10.4.0",
+		"markdownlint": "^0.25.1",
+		"markdownlint-cli2": "^0.4.0",
 		"miniprogram-automator": "^0.11.0",
 		"miniprogram-automator-scripts": "0.0.2",
 		"plop": "^2.7.4",
