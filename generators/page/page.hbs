@@ -1,11 +1,17 @@
-/** *
-{{FILE_DESC}}
-*/ import React from 'react' import { View } from '@tarojs/components' import
-'./{{camelCase FILE_NAME}}.scss' const
-{{pascalCase FILE_NAME}}
-= (): JSX.Element => { return (
-<View className='{{camelCase DIR_NAME}}-{{camelCase FILE_NAME}}-page'>
-	<View>{{FILE_DESC}}</View>
-</View>
-) } export default
-{{pascalCase FILE_NAME}}
+/**
+ * {{FILE_DESC}}
+ */
+
+import React from 'react'
+import { View } from '@tarojs/components'
+import './{{camelCase FILE_NAME}}.scss'
+
+const {{pascalCase FILE_NAME}} = (): JSX.Element => {
+	return (
+		<View className='{{camelCase DIR_NAME}}-{{camelCase FILE_NAME}}-page'>
+			<View>{{FILE_DESC}}</View>
+		</View>
+	)
+}
+
+export default {{pascalCase FILE_NAME}}
