@@ -2,7 +2,7 @@
  * {{FILE_DESC}}
  */
 
-import React, { Component } from 'react'
+import React from 'react'
 import { View } from '@tarojs/components'
 
 import './{{camelCase FILE_NAME}}.scss'
@@ -10,42 +10,19 @@ import './{{camelCase FILE_NAME}}.scss'
 /**
  * 页面 props
  */
-type PageProps = {
+type {{pascalCase FILE_NAME}}Props = {
 
 }
 
-/**
- * 页面 state
- */
-type PageState = {
+export default function {{pascalCase FILE_NAME}} (props:
+	{{pascalCase FILE_NAME}}Props
+): JSX.Element {
 
-}
-
-interface {{pascalCase FILE_NAME}} {
-  props: PageProps;
-  state: PageState;
-}
-
-class {{pascalCase FILE_NAME}} extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-
-    }
-  }
-
-	componentDidShow() {
-
-	}
-
-  render () {
-    return (
-      <View className='{{camelCase DIR_NAME}}-{{camelCase FILE_NAME}}-component'>
-        <View>{{FILE_DESC}}</View>
-      </View>
-    )
-  }
+  return (
+    <View className='{{camelCase DIR_NAME}}-{{camelCase FILE_NAME}}-component'>
+      <View>{{FILE_DESC}}</View>
+    </View>
+  )
 }
 
 export default {{pascalCase FILE_NAME}}
