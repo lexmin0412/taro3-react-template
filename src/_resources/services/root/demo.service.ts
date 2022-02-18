@@ -12,13 +12,13 @@ class DemoService extends BaseRequest {
 	}
 
 	/**
-	 * 根据药品获取疾病
+	 * 一个获取某项数据的 get 请求
 	 */
-	queryDiseaseByDrugName(payload: {
+	getSomething(payload: {
 		paramName: string // 参数
 	}) {
 		return this.post({
-			url: '/demo/getSomethingInDemo',
+			url: '/demo/getSomething',
 			data: payload,
 		})
 	}
