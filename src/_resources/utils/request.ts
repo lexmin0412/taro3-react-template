@@ -40,6 +40,11 @@ interface IRequestConfig {
 	[key: string]: any
 }
 
+interface Response {
+	code: string
+	data: any
+}
+
 class BaseRequest {
 	public options: IOptions
 
@@ -61,7 +66,7 @@ class BaseRequest {
 		jsonp = false,
 		crossHeaderInterceptor = false,
 		resType = 0,
-	}: IRequestConfig) {
+	}: IRequestConfig): Promise<any> {
 		// 添加自定义请求头，用于host和header处理
 		const hostKey = this.options ? this.options.hostKey : ''
 		if (!hostKey) {
@@ -122,7 +127,7 @@ class BaseRequest {
 		header?: any
 		resType?: 1 | 0
 		crossHeaderInterceptor?: boolean
-	}) {
+	}): Promise<Response> {
 		return this.request({
 			method: 'GET',
 			...payload,
@@ -136,7 +141,7 @@ class BaseRequest {
 		header?: any
 		resType?: 1 | 0
 		crossHeaderInterceptor?: boolean
-	}) {
+	}): Promise<Response> {
 		return this.request({
 			method: 'POST',
 			...payload,
@@ -150,7 +155,7 @@ class BaseRequest {
 		header?: any
 		resType?: 1 | 0
 		crossHeaderInterceptor?: boolean
-	}) {
+	}): Promise<Response> {
 		return this.request({
 			method: 'PUT',
 			...payload,
@@ -164,7 +169,7 @@ class BaseRequest {
 		header?: any
 		resType?: 1 | 0
 		crossHeaderInterceptor?: boolean
-	}) {
+	}): Promise<Response> {
 		return this.request({
 			method: 'DELETE',
 			...payload,
@@ -178,7 +183,7 @@ class BaseRequest {
 		header?: any
 		resType?: 1 | 0
 		crossHeaderInterceptor?: boolean
-	}) {
+	}): Promise<Response> {
 		return this.request({
 			method: 'GET',
 			jsonp: true,
@@ -196,7 +201,7 @@ class BaseRequest {
 		header?: any
 		resType?: 1 | 0
 		crossHeaderInterceptor?: boolean
-	}) {
+	}): Promise<Response> {
 		return this.request({
 			...payload,
 			method: 'UPLOAD',
