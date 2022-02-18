@@ -60,7 +60,7 @@ export default function (chain) {
 			// 3. 接口返回错误code时前端错误抛出
 			// 4. 登录失效前端逻辑处理
 			if (LOGIN_FAILURE_LIST.includes(resultData.code)) {
-				console.error('into login falire')
+				console.error('into login failure')
 				Taro.setStorageSync(
 					Constants.LOGIN_FAILURE_TIMESTAMP,
 					new Date().getTime()
