@@ -20,8 +20,11 @@ interface INavigationBarInfo {
 export const useNavigationBarInfo = (
 	presets: UseNavigationBarInfoPresets = {} as any
 ): INavigationBarInfo => {
-	const menuButtonInfo =
-		presets.menuButtonInfo || Taro.getMenuButtonBoundingClientRect()
+	const systemMenuButtonInfo =
+		process.env.TARO_ENV === 'weapp'
+			? Taro.getMenuButtonBoundingClientRect()
+			: {}
+	const menuButtonInfo = presets.menuButtonInfo || systemMenuButtonInfo
 	const systemInfo = presets.systemInfo || Taro.getSystemInfoSync()
 	const { statusBarHeight } = systemInfo
 	let navigationContentHeight = 40
