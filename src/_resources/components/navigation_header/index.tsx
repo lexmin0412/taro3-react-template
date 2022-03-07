@@ -1,9 +1,12 @@
 import React from 'react'
-import { View, Image } from '@tarojs/components'
+import {
+	View,
+	// Image
+} from '@tarojs/components'
 import { useNavigationBarInfo } from '@/utils/hooks'
-import icon_back from '@/assets/icons/back.svg'
-import icon_home from '@/assets/icons/home.svg'
-import Router from '@/utils/route'
+// import icon_back from '@/assets/icons/back.svg'
+// import icon_home from '@/assets/icons/home.svg'
+// import Router from '@/utils/route'
 import './index.scss'
 
 type NavigationHeaderProps = {
@@ -19,18 +22,18 @@ export default function NavigationHeader(
 		statusBarHeight,
 		navigationBarHeight,
 		navigationContentHeight,
-		menuButtonHeight,
+		// menuButtonHeight,
 		navigationPaddding,
-		menuButtonWidth,
+		// menuButtonWidth,
 	} = useNavigationBarInfo()
 
-	const handleBack = () => {
-		Router.navigateBack()
-	}
+	// const handleBack = () => {
+	// 	Router.navigateBack()
+	// }
 
-	const handleBackToHome = () => {
-		Router.backToHome()
-	}
+	// const handleBackToHome = () => {
+	// 	Router.backToHome()
+	// }
 
 	return (
 		<View
@@ -52,7 +55,7 @@ export default function NavigationHeader(
 					height: `${navigationContentHeight}px`,
 				}}
 			>
-				<View
+				{/* <View
 					className='nav-header-content-left'
 					style={{
 						width: menuButtonWidth,
@@ -77,14 +80,14 @@ export default function NavigationHeader(
 							onClick={handleBackToHome}
 						/>
 					</View>
-				</View>
+				</View> */}
 				<View className='nav-header-content-center'>{title || '页面标题'}</View>
-				<View
+				{/* <View
 					className='nav-header-content-right'
 					style={{
 						width: menuButtonWidth,
 					}}
-				/>
+				/> */}
 			</View>
 		</View>
 	)

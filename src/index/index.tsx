@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { View } from '@tarojs/components'
-import CustomNavHeader from '@/components/navigation_header'
+import PageContainer from '@/components/page_container'
 import { XButton } from 'taro-x-ui'
 import Router from '@/utils/route'
 
@@ -29,10 +28,9 @@ const Index = (): JSX.Element => {
 	}
 
 	return (
-		<View className='index'>
-			<CustomNavHeader title='首页' />
+		<PageContainer title='首页' containerClass='index'>
 			<XButton onClick={() => jumpToDemo('router')}>路由跳转</XButton>
-		</View>
+		</PageContainer>
 	)
 }
 

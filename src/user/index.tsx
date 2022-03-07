@@ -4,18 +4,17 @@
 
 import React from 'react'
 import { View } from '@tarojs/components'
-import CustomNavigationHeader from '@/components/navigation_header'
+import PageContainer from '@/components/page_container'
 
 import './index.scss'
 
 const UserIndex = (): JSX.Element => {
 	return (
-		<View className='user-index-page'>
-			<CustomNavigationHeader title='个人中心' />
+		<PageContainer title='个人中心' containerClass='user-index-page'>
 			<View className='user-index-content'>
-				<View>个人中心页</View>
+				I&apos;m Lexmin, a FrontEnd Engineer.
 			</View>
-		</View>
+		</PageContainer>
 	)
 }
 
