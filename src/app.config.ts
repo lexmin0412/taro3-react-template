@@ -1,3 +1,5 @@
+const tabbarConfig = require('./tabbar.config')
+
 export default defineAppConfig({
 	entryPagePath: 'index/index',
 	pages: ['index/index', 'user/index'],
@@ -15,24 +17,7 @@ export default defineAppConfig({
 			pages: ['index'],
 		},
 	],
-	tabBar: {
-		custom: true,
-		selectedColor: '#FF0000',
-		list: [
-			{
-				pagePath: 'index/index',
-				text: '首页',
-				iconPath: './_resources/assets/icons/home.png',
-				selectedIconPath: './_resources/assets/icons/home_selected.png',
-			},
-			{
-				pagePath: 'user/index',
-				text: '我的',
-				iconPath: './_resources/assets/icons/user.png',
-				selectedIconPath: './_resources/assets/icons/user_selected.png',
-			},
-		],
-	},
+	tabBar: tabbarConfig,
 	window: {
 		navigationStyle: 'custom',
 	},
