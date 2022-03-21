@@ -1,5 +1,6 @@
 import Taro, { getCurrentPages } from '@tarojs/taro'
 const wtils = require('wtils')
+const tabbarConfig = require('./../../tabbar.config')
 
 /**
  * 路由配置对象
@@ -135,10 +136,10 @@ class Route {
 	 * 返回首页
 	 */
 	backToHome() {
-		const { tabBar } = __wxConfig
+		const tabBar = tabbarConfig
 		if (tabBar.list && tabBar.list.length) {
 			this.switchTab({
-				url: `/${tabBar.list[0].pagePath.split('.')[0]}`,
+				url: `/${tabBar.list[0].pagePath}`,
 			})
 		}
 	}
