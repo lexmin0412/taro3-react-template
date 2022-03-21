@@ -27,6 +27,8 @@
 				width: 40px;
 				height: 100%;
 				padding: 0 20px;
+				display: flex;
+				align-items: center;
 
 				&-divider {
 					height: 36px;
@@ -44,6 +46,8 @@
 		}
 
 		&-right {
+			width: 20%;
+			height: 100%;
 		}
 	}
 }
