@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+const tabbarConfig = require('./../../tabbar.config')
 
 interface UseNavigationBarInfoPresets {
 	menuButtonInfo: Taro.getMenuButtonBoundingClientRect.Rect
@@ -38,5 +39,34 @@ export const useNavigationBarInfo = (
 		navigationPaddding: systemInfo.windowWidth - menuButtonInfo.right,
 		statusBarHeight: systemInfo.statusBarHeight,
 		menuButtonWidth: menuButtonInfo.width,
+	}
+}
+
+/**
+ * 判断是否tabbar页面
+ * @param route
+ * @returns
+ */
+const isTabbar = (route: string) => {
+	const validRoute = route.includes('?')
+		? route.slice(0, route.indexOf('?'))
+		: route
+
+	const { list } = tabbarConfig
+
+	return list.some(item => item.pagePath === validRoute)
+}
+
+/**
+ * 获取当前页面信息
+ */
+export const usePageInfo = () => {
+	const pages = Taro.getCurrentPages()
+	const currentPage = pages[pages.length - 1]
+	return {
+		navigationBarTitleText: currentPage.config.navigationBarTitleText,
+		route: currentPage.route,
+		isTabbar: isTabbar(currentPage.route),
+		stackLength: pages.length,
 	}
 }
