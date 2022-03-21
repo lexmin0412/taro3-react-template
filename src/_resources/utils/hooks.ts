@@ -48,9 +48,13 @@ export const useNavigationBarInfo = (
  * @returns
  */
 const isTabbar = (route: string) => {
-	const validRoute = route.includes('?')
+	let validRoute = route.includes('?')
 		? route.slice(0, route.indexOf('?'))
 		: route
+
+	if (process.env.TARO_ENV === 'h5') {
+		validRoute = validRoute.slice(1)
+	}
 
 	const { list } = tabbarConfig
 
