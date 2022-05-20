@@ -22,6 +22,7 @@ const config = {
 		patterns: [],
 		options: {},
 	},
+	compiler: 'webpack5',
 	framework: 'react',
 	mini: {
 		postcss: {
