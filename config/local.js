@@ -8,7 +8,7 @@ const config = {
 		devServer: {
 			port: '9001',
 			open: false,
-			https: true,
+			https: false,
 			proxy: {
 				'/api': {
 					target: 'https://m.test.xxx.com',
