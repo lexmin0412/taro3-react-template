@@ -76,7 +76,6 @@
 		"babel-preset-taro": "3.5.5",
 		"cache-loader": "^4.1.0",
 		"cross-env": "^7.0.2",
-		"dotenv": "^16.0.2",
 		"eslint": "^6.8.0",
 		"eslint-config-taro": "3.5.5",
 		"eslint-plugin-import": "^2.12.0",
@@ -94,6 +93,7 @@
 		"react-refresh": "0.11.0",
 		"stylelint": "9.3.0",
 		"taro-plugin-compiler-optimization": "^1.0.1",
+		"taro-plugin-dotenv": "^1.0.0",
 		"thread-loader": "^3.0.4",
 		"typescript": "^4.1.0",
 		"webpack": "^5.74.0"

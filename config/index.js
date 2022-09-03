@@ -1,11 +1,5 @@
 const path = require('path')
 const plugins = require('./plugins')
-const dotenv = require('dotenv')
-const env = dotenv.config().parsed
-const envKeys = Object.keys(env).reduce((prev, next) => {
-	prev[`process.env.${next}`] = JSON.stringify(env[next])
-	return prev
-}, {})
 
 const config = {
 	projectName: 'taro3-react-template',
@@ -23,7 +17,7 @@ const config = {
 		'@': path.resolve(__dirname, '..', 'src/_resources'),
 	},
 	plugins,
-	defineConstants: envKeys,
+	defineConstants: {},
 	copy: {
 		patterns: [],
 		options: {},
