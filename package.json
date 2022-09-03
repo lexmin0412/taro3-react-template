@@ -10,12 +10,12 @@
 	},
 	"scripts": {
 		"build:weapp": "taro build --type weapp",
-		"dev:weapp": "npm run build:weapp -- --watch",
+		"dev:weapp": "pnpm build:weapp -- --watch",
 		"build:h5": "taro build --type h5",
-		"dev:h5": "npm run build:h5 -- --watch",
+		"dev:h5": "pnpm build:h5 -- --watch",
 		"new": "plop --plopfile generators/index.js",
 		"preview:weapp": "npx mpa",
-		"preview:weapp-local-watch": "npm run preview:weapp && npm run dev:weapp"
+		"preview:weapp-local-watch": "pnpm preview:weapp && pnpm dev:weapp"
 	},
 	"husky": {
 		"hooks": {
