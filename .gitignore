@@ -12,3 +12,5 @@ yarn.lock
 src/pages.js
 src/subPackages.js
 src/components/index.ts
+
+.env

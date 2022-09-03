@@ -1,5 +1,11 @@
 const path = require('path')
 const plugins = require('./plugins')
+const dotenv = require('dotenv')
+const env = dotenv.config().parsed
+const envKeys = Object.keys(env).reduce((prev, next) => {
+	prev[`process.env.${next}`] = JSON.stringify(env[next])
+	return prev
+}, {})
 
 const config = {
 	projectName: 'taro3-react-template',
@@ -17,7 +23,7 @@ const config = {
 		'@': path.resolve(__dirname, '..', 'src/_resources'),
 	},
 	plugins,
-	defineConstants: {},
+	defineConstants: envKeys,
 	copy: {
 		patterns: [],
 		options: {},
@@ -68,27 +74,10 @@ const config = {
 	},
 }
 
-console.log('构建环境变量', process.env.BUILD_ENV)
-
 module.exports = function (merge) {
-	// 根据cross-env传递的不同环境变量合并不同环境的配置
-	let outerConfig = {}
-	switch (process.env.BUILD_ENV) {
-		case 'local':
-			outerConfig = require('./local')
-			break
-		case 'dev':
-			outerConfig = require('./dev')
-			break
-		case 'test':
-			outerConfig = require('./test')
-			break
-		case 'uat':
-			outerConfig = require('./uat')
-			break
-		default:
-			outerConfig = require('./pro')
-			break
+	// 如果是本地调试 则合并开发变量
+	if (process.env.NODE_ENV === 'development') {
+		return merge({}, config, require('./local'))
 	}
-	return merge({}, config, outerConfig)
+	return config
 }

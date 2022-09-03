@@ -8,7 +8,7 @@ import './index.scss'
 const Index = (): JSX.Element => {
 	useEffect(() => {
 		console.log('process.env', process.env.TARO_ENV)
-		console.log('TARO_API_BASE', TARO_API_BASE)
+		console.log('TARO_API_BASE', process.env.TARO_API_BASE)
 	}, [])
 
 	/**

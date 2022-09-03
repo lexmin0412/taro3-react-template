@@ -9,29 +9,13 @@
 		"css": "sass"
 	},
 	"scripts": {
-		"build:mp-local": "cross-env BUILD_ENV=local taro build --type weapp",
-		"build:mp-dev": "cross-env BUILD_ENV=dev taro build --type weapp",
-		"build:mp-test": "cross-env BUILD_ENV=test taro build --type weapp",
-		"build:mp-uat": "cross-env BUILD_ENV=uat taro build --type weapp",
-		"build:mp-pro": "cross-env BUILD_ENV=pro taro build --type weapp",
-		"dev:mp-local": "npm run build:mp-local -- --watch",
-		"dev:mp-dev": "npm run build:mp-dev -- --watch",
-		"dev:mp-test": "npm run build:mp-test -- --watch",
-		"dev:mp-uat": "npm run build:mp-uat -- --watch",
-		"dev:mp-pro": "npm run build:mp-pro -- --watch",
-		"build:h5-local": "cross-env BUILD_ENV=local taro build --type h5",
-		"build:h5-dev": "cross-env BUILD_ENV=dev taro build --type h5",
-		"build:h5-test": "cross-env BUILD_ENV=test taro build --type h5",
-		"build:h5-uat": "cross-env BUILD_ENV=uat taro build --type h5",
-		"build:h5-pro": "cross-env BUILD_ENV=pro taro build --type h5",
-		"dev:h5-local": "npm run build:h5-local -- --watch",
-		"dev:h5-dev": "npm run build:h5-dev -- --watch",
-		"dev:h5-test": "npm run build:h5-test -- --watch",
-		"dev:h5-uat": "npm run build:h5-uat -- --watch",
-		"dev:h5-pro": "npm run build:h5-pro -- --watch",
+		"build:weapp": "taro build --type weapp",
+		"dev:weapp": "npm run build:weapp -- --watch",
+		"build:h5": "taro build --type h5",
+		"dev:h5": "npm run build:h5 -- --watch",
 		"new": "plop --plopfile generators/index.js",
-		"preview:mp": "npx mpa",
-		"preview:mp-local-watch": "npm run preview:mp && npm run dev:mp-local"
+		"preview:weapp": "npx mpa",
+		"preview:weapp-local-watch": "npm run preview:weapp && npm run dev:weapp"
 	},
 	"husky": {
 		"hooks": {
@@ -92,6 +76,7 @@
 		"babel-preset-taro": "3.5.3",
 		"cache-loader": "^4.1.0",
 		"cross-env": "^7.0.2",
+		"dotenv": "^16.0.2",
 		"eslint": "^6.8.0",
 		"eslint-config-taro": "3.5.3",
 		"eslint-plugin-import": "^2.12.0",
