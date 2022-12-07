@@ -1,3 +1,3 @@
 module.exports = {
-	...require('@youtils/prettier-config-standard'),
+	...require('@lexmin0412/prettier-config-standard'),
 }

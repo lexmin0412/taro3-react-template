@@ -6,6 +6,7 @@ specifiers:
   '@commitlint/cli': ^11.0.0
   '@commitlint/config-conventional': ^11.0.0
   '@commitlint/lint': ^17.0.3
+  '@lexmin0412/prettier-config-standard': ^2.0.0
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.4
   '@tarojs/cli': 3.5.8
   '@tarojs/components': 3.5.8
@@ -25,7 +26,6 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^4.0.0
   '@typescript-eslint/parser': ^4.0.0
   '@youtils/commitlint-plugin-standard': ^0.0.1
-  '@youtils/prettier-config-standard': ^1.0.1
   babel-loader: ^8.2.5
   babel-preset-taro: 3.5.8
   cache-loader: ^4.1.0
@@ -86,6 +86,7 @@ devDependencies:
   '@commitlint/cli': 11.0.0
   '@commitlint/config-conventional': 11.0.0
   '@commitlint/lint': 17.0.3
+  '@lexmin0412/prettier-config-standard': 2.0.0
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.4_metx475lqcp4j5c75za4zf7xbi
   '@tarojs/cli': 3.5.8_@types+react@18.0.15
   '@tarojs/webpack5-runner': 3.5.8_hcnh3ozcdw46pf74wi2eq5zixu
@@ -95,7 +96,6 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 4.33.0_jzkccvb4lenajp6msx3prptnxi
   '@typescript-eslint/parser': 4.33.0_nbcwli3tdjzkqybobvobagytby
   '@youtils/commitlint-plugin-standard': 0.0.1_2qgcox4aozd4gyakja4iekljga
-  '@youtils/prettier-config-standard': 1.0.1
   babel-loader: 8.2.5_xc6oct4hcywdrbo4ned6ytbybm
   babel-preset-taro: 3.5.8_mn2m5jogos23kkrgl2kl2brrqu
   cache-loader: 4.1.0_webpack@5.74.0
@@ -2946,6 +2946,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
+  /@lexmin0412/prettier-config-standard/2.0.0:
+    resolution: {integrity: sha512-72V/v9BHYarQ1vT1suyY5U7AwHQ5yb3Yqh7Ux6m145bfZ52zzxtxJi234FyJ+v6nhycbv1szZw/7+cGPXiO4yQ==}
+    dev: true
+
   /@mrmlnc/readdir-enhanced/2.2.1:
     resolution: {integrity: sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g==}
     engines: {node: '>=4'}
@@ -4521,10 +4525,6 @@ packages:
       '@commitlint/lint': 17.0.3
     dev: true
 
-  /@youtils/prettier-config-standard/1.0.1:
-    resolution: {integrity: sha512-YjMVXhX1Kn1BRzh9S5VgxziV1TR6XdDyRIjCIZK3XmqF9U3kybQQ2MuUd5kjZtbWEywJgXwQrQRn/t2CogrWBA==}
-    dev: true
-
   /JSONStream/1.3.5:
     resolution: {integrity: sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==}
     hasBin: true
@@ -5274,8 +5274,6 @@ packages:
       babel-register: 6.26.0
       babylon: 6.18.0
       require-from-string: 2.0.2
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /babel-plugin-syntax-class-properties/6.13.0:
