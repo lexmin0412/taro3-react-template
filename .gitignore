@@ -14,3 +14,5 @@ src/subPackages.js
 src/components/index.ts
 
 .env
+
+.swc
