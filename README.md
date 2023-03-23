@@ -7,10 +7,6 @@
 - [基于 Taro1.x 的模版](https://github.com/lexmin0412/taro-template/tree/1.x)
 - [基于 Taro2.x 的模版](https://github.com/lexmin0412/taro-template/tree/2.x)
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=lexmin0412/taro3-react-template&type=Timeline)](https://star-history.com/#lexmin0412/taro3-react-template&Timeline)
-
 ## 技术栈
 
 - Taro
@@ -29,3 +25,7 @@
 - 🔥 自定义 tabbar
 - 🌩️ 使用多核心及缓存提升编译速度
 - 💰 更多特性持续迭代中...
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=lexmin0412/taro3-react-template&type=Timeline)](https://star-history.com/#lexmin0412/taro3-react-template&Timeline)
