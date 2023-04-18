@@ -52,7 +52,7 @@ specifiers:
   react-refresh: 0.11.0
   stylelint: 9.3.0
   taro-plugin-compiler-optimization: ^1.0.1
-  taro-plugin-dotenv: ^1.0.0
+  taro-plugin-dotenv: ^1.0.1
   taro-x-ui: 0.0.1
   thread-loader: ^3.0.4
   typescript: ^4.1.0
@@ -115,7 +115,7 @@ devDependencies:
   react-refresh: 0.11.0
   stylelint: 9.3.0
   taro-plugin-compiler-optimization: 1.0.4
-  taro-plugin-dotenv: 1.0.0_@types+react@18.0.15
+  taro-plugin-dotenv: 1.0.1_@types+react@18.0.15
   thread-loader: 3.0.4_webpack@5.75.0
   typescript: 4.9.5
   webpack: 5.75.0
@@ -5795,7 +5795,7 @@ packages:
     dev: true
 
   /bytes/3.0.0:
-    resolution: {integrity: sha512-pMhOfFDPiv9t5jjIXkHosWmkSyQbvsgEVNkz0ERHbuLh2T/7j4Mqqpz523Fe8MVY89KC6Sh/QfS2sM+SjgFDcw==}
+    resolution: {integrity: sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=}
     engines: {node: '>= 0.8'}
     dev: true
 
@@ -11525,7 +11525,7 @@ packages:
     dev: true
 
   /media-typer/0.3.0:
-    resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
+    resolution: {integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=}
     engines: {node: '>= 0.6'}
     dev: true
 
@@ -15456,8 +15456,8 @@ packages:
     resolution: {integrity: sha512-7aAOSWLpkPlJkCM6NPjcZEqoLXdquNy16CEEKIzAAD03OJ742rHhVzbZ0NIdMABMV7xC+gzRFq9eoZ64gm9o2g==}
     dev: true
 
-  /taro-plugin-dotenv/1.0.0_@types+react@18.0.15:
-    resolution: {integrity: sha512-0j0m52nyuf82zGDAC0sbJyknll/7iii8Vc5J8Z4Q2bi7lIorOmgYIgdIMww6bP27/F3KiQdDAdJ6vSmxma2ssQ==}
+  /taro-plugin-dotenv/1.0.1_@types+react@18.0.15:
+    resolution: {integrity: sha512-HLET1bNsEPTX9zN4K6R5dViEKt1yjF/RjuBtY/zWNiPI3dRTlHLBj6dqCftLt5yCfA7w+UVRJifxWvZxSTO4Tg==}
     dependencies:
       '@tarojs/helper': 3.5.5
       '@tarojs/service': 3.5.5_@types+react@18.0.15
