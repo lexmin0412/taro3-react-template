@@ -33,22 +33,22 @@
 - config  # Taro 配置
 - generators  # Plop 模版配置
 - src  #源码目录
-	- custom-tab-bar  # 自定义 tabbar
-	- default  # 缺省页面
-	- demo  # 演示页面
-	- index  # 首页
-	- shared  # 公用代码
-	  - assets  # 静态资源
-		  - icons # 图标
-		- components  # 公共组件
-		- constants  # 常量
-		- interceptors  # 拦截器
-		- services  # 服务类
-		- store  # 状态管理
-		- styles  # 公共样式
-		- utils  # 工具类
-	- user  # 用户相关页面
-	- webview  # webview 功能演示
+  - custom-tab-bar  # 自定义 tabbar
+  - default  # 缺省页面
+  - demo  # 演示页面
+  - index  # 首页
+  - shared  # 公用代码
+    - assets  # 静态资源
+    - icons # 图标
+    - components  # 公共组件
+    - constants  # 常量
+    - interceptors  # 拦截器
+    - services  # 服务类
+    - store  # 状态管理
+    - styles  # 公共样式
+    - utils  # 工具类
+  - user  # 用户相关页面
+  - webview  # webview 功能演示
 - .editorConfig  # 编辑器编码风格配置
 - .env  # 本地环境配置
 - .eslintrc.js  # eslint 配置
