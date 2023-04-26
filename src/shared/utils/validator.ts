@@ -51,7 +51,7 @@ class FormValidator {
 				/**
 				 * 验证规则
 				 */
-				test: () => void
+				test: (value: unknown) => boolean
 				/**
 				 * 错误信息
 				 */
@@ -96,7 +96,7 @@ class FormValidator {
 				console.log('each item', element)
 
 				let tempErrMsg = ''
-				element.forEach(item => {
+				element?.forEach(item => {
 					if (item.test(obj[key])) {
 						console.log('test success')
 						returnObj.formData[key] = obj[key]
