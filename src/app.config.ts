@@ -10,7 +10,7 @@ export default defineAppConfig({
 		},
 		{
 			root: 'demo',
-			pages: ['router/router', 'router/routerTarget'],
+			pages: ['router/router', 'router/routerTarget', 'form/form'],
 		},
 		{
 			root: 'webview',

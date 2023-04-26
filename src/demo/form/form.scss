@@ -1,0 +1,15 @@
+.form-item {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+
+	&-label {
+		width: 100px;
+		font-size: 28px;
+	}
+
+	&-input {
+		margin-left: 12px;
+		font-size: 28px;
+	}
+}

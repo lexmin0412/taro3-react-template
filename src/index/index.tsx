@@ -14,22 +14,29 @@ const Index = (): JSX.Element => {
 	/**
 	 * 跳转demo页面
 	 */
-	const jumpToDemo = (demoType: 'router') => {
+	const jumpToDemo = (demoType: 'router'|'form') => {
 		switch (demoType) {
 			case 'router':
 				Router.navigateTo({
 					url: '/demo/router/router',
 				})
 				break
+			case 'form':
+				Router.navigateTo({
+					url: '/demo/form/form'
+				})
 
-			default:
 				break
 		}
 	}
 
 	return (
-		<PageContainer title='首页' containerClass='index'>
+		<PageContainer
+			title="首页"
+			containerClass="index"
+		>
 			<XButton onClick={() => jumpToDemo('router')}>路由跳转</XButton>
+			<XButton onClick={() => jumpToDemo('form')}>表单验证</XButton>
 		</PageContainer>
 	)
 }
