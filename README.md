@@ -1,4 +1,4 @@
-# Taro 3.x 项目模板
+# taro3-react-template
 
 基于 Taro3 + React 的开箱即用多端项目模版。
 
