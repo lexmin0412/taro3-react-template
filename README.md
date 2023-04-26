@@ -64,6 +64,11 @@
 - README.md 项目说明文档
 - tsconfig.json ts配置
 
+说明：与一般的项目结构划分不同，这里将所有静态资源、公用组件、状态管理等功能统一放到了 src/shared 目录下，而将页面目录直接平铺到了 src 目录，有以下原因：
+
+- 没有规范限制页面文件一定要放在 src/pages 目录下，在我看来它只会带来书写的负担
+- 一个文件，它要么是全局共享，要么是专为某个页面（模块）服务，`[shared, xxx, yyy, zzz]` 的形式会让我在书写一个模块时更容易识别到它是全局共享还是模块共享资源
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lexmin0412/taro3-react-template&type=Timeline)](https://star-history.com/#lexmin0412/taro3-react-template&Timeline)
