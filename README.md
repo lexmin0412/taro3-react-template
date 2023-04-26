@@ -32,7 +32,7 @@
 - config taro 配置
 - generators plop 模版配置
 - src
-  - custom-tab-bar 自定义 tabbar
+	- custom-tab-bar 自定义 tabbar
 	- default 缺省页面
 	- demo 演示页面
 	- index 首页
