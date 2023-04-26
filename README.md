@@ -28,46 +28,49 @@
 
 ## 目录结构
 
-- .github github 相关配置
-- config taro 配置
-- generators plop 模版配置
-- src
-	- custom-tab-bar 自定义 tabbar
-	- default 缺省页面
-	- demo 演示页面
-	- index 首页
-	- shared 公用代码
-	  - assets 静态资源
-		  - icons 图标
-		- components 公共组件
-		- constants 常量
-		- interceptors 拦截器
-		- services 服务类
-		- store 状态管理
-		- styles 公共样式
-		- utils 工具类
-	- user 用户相关页面
-	- webview webview 功能演示
-- .editorConfig 编辑器编码风格配置
-- .env 本地环境配置
-- .eslintrc.js eslint配置
-- .gitignore git忽略配置
-- .markdownlint.yml markdownlint配置
-- .npmrc npm相关配置
-- .prettierignore prettier忽略配置
-- babel.config.js babel配置文件
-- commitlint.config.js commitlint配置
-- global.d.ts ts全局类型声明
-- package.json 你懂的
-- pnpm-lock.yaml pnpm依赖锁文件
-- project.config.json 微信小程序配置
-- README.md 项目说明文档
-- tsconfig.json ts配置
+```bash
+- .github  # Github 相关配置
+- config  # Taro 配置
+- generators  # Plop 模版配置
+- src  #源码目录
+	- custom-tab-bar  # 自定义 tabbar
+	- default  # 缺省页面
+	- demo  # 演示页面
+	- index  # 首页
+	- shared  # 公用代码
+	  - assets  # 静态资源
+		  - icons # 图标
+		- components  # 公共组件
+		- constants  # 常量
+		- interceptors  # 拦截器
+		- services  # 服务类
+		- store  # 状态管理
+		- styles  # 公共样式
+		- utils  # 工具类
+	- user  # 用户相关页面
+	- webview  # webview 功能演示
+- .editorConfig  # 编辑器编码风格配置
+- .env  # 本地环境配置
+- .eslintrc.js  # eslint 配置
+- .gitignore  # git 忽略配置
+- .markdownlint.yml  # markdownlint 配置
+- .npmrc  # npm 相关配置
+- .prettierignore  # prettier 忽略配置
+- babel.config.js  # babel 配置文件
+- commitlint.config.js  # commitlint 配置
+- global.d.ts  # ts 全局类型声明
+- package.json  # 你懂的
+- pnpm-lock.yaml  # pnpm 依赖锁文件
+- project.config.json  # 微信小程序配置
+- README.md  # 项目说明文档
+- tsconfig.json  # ts 配置
+```
 
-说明：与一般的项目结构划分不同，这里将所有静态资源、公用组件、状态管理等功能统一放到了 src/shared 目录下，而将页面目录直接平铺到了 src 目录，有以下原因：
+说明：与一般的项目结构划分不同，这里将所有静态资源、公用组件、状态管理等功能统一放到了 `src/shared` 目录下，而将页面目录直接平铺到了 src 目录，有以下原因：
 
-- 没有规范限制页面文件一定要放在 src/pages 目录下，在我看来它只会带来书写的负担
-- 一个文件，它要么是全局共享，要么是专为某个页面（模块）服务，`[shared, xxx, yyy, zzz]` 的形式会让我在书写一个模块时更容易识别到它是全局共享还是模块共享资源
+- 作为一个前端项目，在 src 下直接按照模块组织能够更直观地展示整个系统的业务组成及模块划分
+- 没有规范限制页面文件一定要放在 `src/pages` 目录下，在我看来它只会带来书写的负担
+- 一个文件，它要么是全局共享，要么是专为某个页面（模块）服务，`{shared, xxx, yyy, zzz}` 的形式会让我在书写一个文件时更容易识别到它是全局共享还是局部共享资源
 
 ## Star History
 
