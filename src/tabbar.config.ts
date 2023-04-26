@@ -5,14 +5,14 @@ const tabbarConfig = {
 		{
 			pagePath: 'index/index',
 			text: '首页',
-			iconPath: './_resources/assets/icons/home.png',
-			selectedIconPath: './_resources/assets/icons/home_selected.png',
+			iconPath: './shared/assets/icons/home.png',
+			selectedIconPath: './shared/assets/icons/home_selected.png',
 		},
 		{
 			pagePath: 'user/index',
 			text: '我的',
-			iconPath: './_resources/assets/icons/user.png',
-			selectedIconPath: './_resources/assets/icons/user_selected.png',
+			iconPath: './shared/assets/icons/user.png',
+			selectedIconPath: './shared/assets/icons/user_selected.png',
 		},
 	],
 }

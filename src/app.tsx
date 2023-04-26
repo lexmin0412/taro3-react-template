@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Provider } from 'mobx-react'
 
-import store from './_resources/store'
-import Router from './_resources/utils/route'
+import store from './shared/store'
+import Router from './shared/utils/route'
 
 import './app.scss'
 

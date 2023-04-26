@@ -14,7 +14,7 @@ const config = {
 	outputRoot: 'dist',
 	// 解析alias路径
 	alias: {
-		'@': path.resolve(__dirname, '..', 'src/_resources'),
+		'@': path.resolve(__dirname, '..', 'src/shared'),
 	},
 	plugins,
 	defineConstants: {},
