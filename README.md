@@ -7,6 +7,10 @@
 - [基于 Taro1.x 的模版](https://github.com/lexmin0412/taro-template/tree/1.x)
 - [基于 Taro2.x 的模版](https://github.com/lexmin0412/taro-template/tree/2.x)
 
+## Repo Activity
+
+![Repo Activity](https://repobeats.axiom.co/api/embed/e39e5816e00d2a9627dca894852446b7f7c83463.svg "Repobeats analytics image")
+
 ## 技术栈
 
 - Taro
@@ -71,10 +75,6 @@
 - 作为一个前端项目，在 src 下直接按照模块组织能够更直观地展示整个系统的业务组成及模块划分
 - 没有规范限制页面文件一定要放在 `src/pages` 目录下，在我看来它只会带来书写的负担
 - 一个文件，它要么是全局共享，要么是专为某个页面（模块）服务，`{shared, xxx, yyy, zzz}` 的形式会让我在书写一个文件时更容易识别到它是全局共享还是局部共享资源
-
-## Repo Activity
-
-![Repo Activity](https://repobeats.axiom.co/api/embed/e39e5816e00d2a9627dca894852446b7f7c83463.svg "Repobeats analytics image")
 
 ## Star History
 
