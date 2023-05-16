@@ -16,6 +16,7 @@
 - Taro
 - React Hooks
 - TypeScript
+- NutUI
 - SCSS
 
 ## 支持特性
