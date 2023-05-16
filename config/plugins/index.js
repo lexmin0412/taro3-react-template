@@ -1,4 +1,6 @@
-const plugins = []
+const plugins = [
+	'@tarojs/plugin-html'
+]
 
 if (process.env.TARO_ENV === 'weapp') {
 	plugins.push('taro-plugin-compiler-optimization')

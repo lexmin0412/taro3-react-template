@@ -38,9 +38,11 @@
 	"license": "MIT",
 	"dependencies": {
 		"@babel/runtime": "^7.7.7",
+		"@nutui/nutui-react-taro": "^1.5.4",
 		"@tarojs/components": "3.6.6",
 		"@tarojs/helper": "3.6.6",
 		"@tarojs/plugin-framework-react": "3.6.6",
+		"@tarojs/plugin-html": "^3.6.6",
 		"@tarojs/plugin-platform-h5": "3.6.6",
 		"@tarojs/plugin-platform-weapp": "3.6.6",
 		"@tarojs/react": "3.6.6",
@@ -54,7 +56,6 @@
 		"postcss": "^8.4.23",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"taro-x-ui": "0.0.1",
 		"wtils": "^0.2.0"
 	},
 	"devDependencies": {
@@ -73,6 +74,7 @@
 		"@typescript-eslint/parser": "^4.0.0",
 		"@youtils/commitlint-plugin-standard": "^0.0.1",
 		"babel-loader": "^8.2.5",
+		"babel-plugin-import": "^1.13.6",
 		"babel-preset-taro": "3.6.6",
 		"cache-loader": "^4.1.0",
 		"cross-env": "^7.0.2",

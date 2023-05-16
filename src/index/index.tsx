@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PageContainer from '@/components/page_container'
-import { XButton } from 'taro-x-ui'
+import { Button } from '@nutui/nutui-react-taro'
 import Router from '@/utils/route'
 
 import './index.scss'
@@ -35,8 +35,20 @@ const Index = (): JSX.Element => {
 			title="首页"
 			containerClass="index"
 		>
-			<XButton onClick={() => jumpToDemo('router')}>路由跳转</XButton>
-			<XButton onClick={() => jumpToDemo('form')}>表单验证</XButton>
+			<Button
+				size="large"
+				type="primary"
+				onClick={() => jumpToDemo('router')}
+			>
+				路由跳转
+			</Button>
+			<Button
+				size="large"
+				type="primary"
+				onClick={() => jumpToDemo('form')}
+			>
+				表单验证
+			</Button>
 		</PageContainer>
 	)
 }

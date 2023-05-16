@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { View } from '@tarojs/components'
-import { XButton } from 'taro-x-ui'
+import { Button } from '@nutui/nutui-react-taro'
 import CustomNavigationHeader from '@/components/navigation_header'
 
 import Router from '@/utils/route'
@@ -65,24 +65,14 @@ const RouterDemo = (): JSX.Element => {
 	}
 
 	return (
-		<View className='demo-router-page'>
-			<CustomNavigationHeader title='路由演示' />
-			<XButton onClick={() => handleRouterTest('navigateTo')}>
-				navigateTo
-			</XButton>
-			<XButton onClick={() => handleRouterTest('redirectTo')}>
-				redirectTo
-			</XButton>
-			<XButton onClick={() => handleRouterTest('relaunch')}>relanuch</XButton>
-			<XButton onClick={() => handleRouterTest('navigateBack')}>
-				navigateBack
-			</XButton>
-			<XButton onClick={() => handleRouterTest('relaunch', 'noUrl')}>
-				url校验
-			</XButton>
-			<XButton onClick={() => handleRouterTest('relaunch', 'invalidUrl')}>
-				relaunch
-			</XButton>
+		<View className="demo-router-page">
+			<CustomNavigationHeader title="路由演示" />
+			<Button  size='large' type='primary' onClick={() => handleRouterTest('navigateTo')}>navigateTo</Button>
+			<Button  size='large' type='primary' onClick={() => handleRouterTest('redirectTo')}>redirectTo</Button>
+			<Button  size='large' type='primary' onClick={() => handleRouterTest('relaunch')}>relanuch</Button>
+			<Button  size='large' type='primary' onClick={() => handleRouterTest('navigateBack')}>navigateBack</Button>
+			<Button  size='large' type='primary' onClick={() => handleRouterTest('relaunch', 'noUrl')}>url校验</Button>
+			<Button  size='large' type='primary' onClick={() => handleRouterTest('relaunch', 'invalidUrl')}>relaunch</Button>
 		</View>
 	)
 }
