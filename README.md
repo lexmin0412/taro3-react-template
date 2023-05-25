@@ -2,8 +2,6 @@
 
 基于 Taro3 + React 的开箱即用多端项目模板。
 
-本项目还有基于 Taro 2.x 和 1.x 的版本，请点击以下链接前往：
-
 ## 相关仓库
 
 - [taro2-template](https://github.com/lexmin0412/taro2-template/tree/2.x) - 基于 Taro2 的项目模板。
