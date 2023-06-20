@@ -18,6 +18,11 @@
 - NutUI
 - SCSS
 
+## 运行环境
+
+- Node 16+
+- Pnpm 8+
+
 ## 支持特性
 
 - 🏠 基于 Taro3
