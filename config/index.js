@@ -17,6 +17,9 @@ const config = {
 		'@': path.resolve(__dirname, '..', 'src/shared'),
 	},
 	plugins,
+	sass: {
+		data: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`
+	},
 	defineConstants: {},
 	copy: {
 		patterns: [],
