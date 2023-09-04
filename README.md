@@ -36,6 +36,16 @@
 
 ### 本地开发
 
+#### 环境变量构建
+
+在根目录新建 .env 文件，写入环境变量
+
+```bash
+TARO_API_BASE=/api
+```
+
+#### 启动调试
+
 ```shell
 pnpm dev:h5 # h5
 pnpm dev:weapp # 微信小程序
