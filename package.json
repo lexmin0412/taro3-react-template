@@ -8,6 +8,10 @@
 		"typescript": true,
 		"css": "sass"
 	},
+	"engines": {
+		"node": ">=16.14.0",
+		"pnpm": ">=8.0.0"
+	},
 	"scripts": {
 		"build:weapp": "taro build --type weapp",
 		"dev:weapp": "taro build --type weapp --watch",
