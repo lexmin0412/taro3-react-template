@@ -36,6 +36,7 @@ const Index = (): JSX.Element => {
 			containerClass="index"
 		>
 			<Button
+				block
 				size="large"
 				type="primary"
 				onClick={() => jumpToDemo('router')}
@@ -43,6 +44,7 @@ const Index = (): JSX.Element => {
 				路由跳转
 			</Button>
 			<Button
+				block
 				size="large"
 				type="primary"
 				onClick={() => jumpToDemo('form')}

@@ -67,12 +67,38 @@ const RouterDemo = (): JSX.Element => {
 	return (
 		<View className="demo-router-page">
 			<CustomNavigationHeader title="路由演示" />
-			<Button  size='large' type='primary' onClick={() => handleRouterTest('navigateTo')}>navigateTo</Button>
-			<Button  size='large' type='primary' onClick={() => handleRouterTest('redirectTo')}>redirectTo</Button>
-			<Button  size='large' type='primary' onClick={() => handleRouterTest('relaunch')}>relanuch</Button>
-			<Button  size='large' type='primary' onClick={() => handleRouterTest('navigateBack')}>navigateBack</Button>
-			<Button  size='large' type='primary' onClick={() => handleRouterTest('relaunch', 'noUrl')}>url校验</Button>
-			<Button  size='large' type='primary' onClick={() => handleRouterTest('relaunch', 'invalidUrl')}>relaunch</Button>
+			<Button
+				block
+				size="large"
+				type="primary"
+				onClick={() => handleRouterTest('navigateTo')}
+			>
+				navigateTo
+			</Button>
+			<Button
+				block
+				size="large"
+				type="primary"
+				onClick={() => handleRouterTest('redirectTo')}
+			>
+				redirectTo
+			</Button>
+			<Button
+				block
+				size="large"
+				type="primary"
+				onClick={() => handleRouterTest('relaunch')}
+			>
+				relanuch
+			</Button>
+			<Button
+				block
+				size="large"
+				type="primary"
+				onClick={() => handleRouterTest('navigateBack')}
+			>
+				navigateBack
+			</Button>
 		</View>
 	)
 }
