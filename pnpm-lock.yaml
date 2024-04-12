@@ -1,12 +1,16 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@babel/runtime':
     specifier: ^7.7.7
     version: 7.20.13
   '@nutui/nutui-react-taro':
-    specifier: ^1.5.4
-    version: 1.5.4(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.5.2
+    version: 2.5.2(react-dom@18.2.0)(react@18.2.0)
   '@tarojs/components':
     specifier: 3.6.16
     version: 3.6.16(@types/react@18.0.15)(postcss@8.4.23)(react@18.2.0)
@@ -2286,6 +2290,13 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.11
 
+  /@babel/runtime@7.24.4:
+    resolution: {integrity: sha512-dkxf7+hn8mFBwKjs9bvBlArzLVxVbS8usaPUDd5p2a9JCL9tB8OaOVN1isD4+Xyk4ns89/xeOmbQvgdK7IIVdA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.1
+    dev: false
+
   /@babel/runtime@7.9.2:
     resolution: {integrity: sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==}
     dependencies:
@@ -2324,10 +2335,6 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
-
-  /@bem-react/classname@1.6.0:
-    resolution: {integrity: sha512-SFBwUHMcb7TFFK5ld88+JhecoEun3/kHZ6KvLDjj3w5hv/tfRV8mtGHA8N42uMctXLF4bPEcr96xwXXcRFuweg==}
-    dev: false
 
   /@commitlint/cli@11.0.0:
     resolution: {integrity: sha512-YWZWg1DuqqO5Zjh7vUOeSX76vm0FFyz4y0cpGMFhrhvUi5unc4IVfCXZ6337R9zxuBtmveiRuuhQqnRRer+13g==}
@@ -3059,22 +3066,32 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@nutui/nutui-react-taro@1.5.4(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JJnmIc00mOr1Vh/115ZEQYzkBw8pTwBlPB8iZ1cwmJWeFYsMQDKQvitwpf0OvlQpCjnwjB2pvtQnrYeGPgKdDg==}
+  /@nutui/icons-react-taro@1.0.4:
+    resolution: {integrity: sha512-2sDhJXJPAgatSg8dSWVYLYVvxCZo2OIWpSzVO0xkyCU0X6pWtKt7Hh26UbT9PTWaTfg9cX9xqwYvBkkxUypvSQ==}
+    dev: false
+
+  /@nutui/nutui-react-taro@2.5.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-UBxXbQHtRRX4+TYP8mre8tjI66cRNwXlBrbsvoo3Q10GRJ3XzauyLd1gx7Inr2q+m/5Uwr4JF71KRbMgyLdBwg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@babel/runtime': 7.20.13
-      '@bem-react/classname': 1.6.0
+      '@babel/runtime': 7.24.4
+      '@nutui/icons-react-taro': 1.0.4
+      '@nutui/touch-emulator': 1.0.0
       '@react-spring/web': 9.6.1(react-dom@18.2.0)(react@18.2.0)
       '@use-gesture/react': 10.2.20(react@18.2.0)
       async-validator: 4.2.5
-      classnames: 2.3.2
+      classnames: 2.5.1
+      lodash.isequal: 4.5.0
       lodash.kebabcase: 4.1.1
       react: 18.2.0
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - react-dom
+    dev: false
+
+  /@nutui/touch-emulator@1.0.0:
+    resolution: {integrity: sha512-k2hvI/9LlRA7Ph1Chni27pTuvPmKPt+/I10sWWd2sWzqiCOYRerD79eIwCMRGUF/q6WVDEKVnv00t9CEUL4sPA==}
     dev: false
 
   /@parcel/css@1.14.0:
@@ -6307,6 +6324,10 @@ packages:
   /classnames@2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
 
+  /classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
+    dev: false
+
   /clean-css@4.2.4:
     resolution: {integrity: sha512-EJUDT7nDVFDvaQgAo2G/PJvxmp1o/c6iXLbswsBbUFXi1Nr+AjA2cKmfbKDMjMvzEe75g3P6JkaDDAKk96A85A==}
     engines: {node: '>= 4.0'}
@@ -7543,7 +7564,7 @@ packages:
   /dom-helpers@5.2.1:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
     dependencies:
-      '@babel/runtime': 7.20.13
+      '@babel/runtime': 7.24.4
       csstype: 3.1.1
     dev: false
 
@@ -11319,6 +11340,10 @@ packages:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
     dev: true
 
+  /lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: false
+
   /lodash.kebabcase@4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
 
@@ -11990,8 +12015,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /miniprogram-compiler@0.2.2:
-    resolution: {integrity: sha512-fiJXv/15jCcRAU8YKcO7S7fkPKLa5ZBgpLN+d6B3r3KMktM5tAkDEQ+zm6aTfNoHurYOHcRyPyGf26gqQXlFXg==}
+  /miniprogram-compiler@0.2.3:
+    resolution: {integrity: sha512-/MfFiXTBUwYxnrTbj1hgwk1+qGkMCTL1zi8IReOq/0SPVkUxpx19E89w+ohYCELFXkMfVbD+6ejrHh3Y1u5sVg==}
     dependencies:
       glob: 7.2.3
       unescape-js: 1.1.4
@@ -12007,7 +12032,7 @@ packages:
       csso: 3.5.1
       j-component: 1.4.8
       less: 3.13.1
-      miniprogram-compiler: 0.2.2
+      miniprogram-compiler: 0.2.3
       postcss: 7.0.39
     dev: true
 
@@ -13139,7 +13164,7 @@ packages:
     dependencies:
       htmlparser2: 3.10.1
       postcss: 6.0.23
-      postcss-syntax: 0.28.0(postcss-html@0.28.0)(postcss-less@2.0.0)(postcss-markdown@0.28.0)(postcss-scss@1.0.6)(postcss@6.0.23)
+      postcss-syntax: 0.28.0(postcss@8.4.23)
     dev: true
 
   /postcss-import@14.1.0(postcss@8.4.23):
@@ -13182,7 +13207,7 @@ packages:
       postcss-syntax: '>=0.28.0'
     dependencies:
       postcss: 6.0.23
-      postcss-syntax: 0.28.0(postcss-html@0.28.0)(postcss-less@2.0.0)(postcss-markdown@0.28.0)(postcss-scss@1.0.6)(postcss@6.0.23)
+      postcss-syntax: 0.28.0(postcss@8.4.23)
       remark: 9.0.0
       unist-util-find-all-after: 1.0.5
     dev: true
@@ -13500,7 +13525,7 @@ packages:
       svgo: 2.8.0
     dev: true
 
-  /postcss-syntax@0.28.0(postcss-html@0.28.0)(postcss-less@2.0.0)(postcss-markdown@0.28.0)(postcss-scss@1.0.6)(postcss@6.0.23):
+  /postcss-syntax@0.28.0(postcss@8.4.23):
     resolution: {integrity: sha512-9W3T1fSE9QWKyW6s84kZapv0BP5uvj7mNBp34kwI93uGWULzZjaKv4xR4phubBD53cRgaM/qnvquVK1KLsl+Kg==}
     peerDependencies:
       postcss: '>=5.0.0'
@@ -13521,11 +13546,7 @@ packages:
       postcss-scss:
         optional: true
     dependencies:
-      postcss: 6.0.23
-      postcss-html: 0.28.0(postcss-syntax@0.28.0)(postcss@6.0.23)
-      postcss-less: 2.0.0
-      postcss-markdown: 0.28.0(postcss-syntax@0.28.0)(postcss@6.0.23)
-      postcss-scss: 1.0.6
+      postcss: 8.4.23
     dev: true
 
   /postcss-unique-selectors@5.1.1(postcss@8.4.23):
@@ -13705,6 +13726,7 @@ packages:
 
   /prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -13891,7 +13913,7 @@ packages:
       react: '>=16.6.0'
       react-dom: '>=16.6.0'
     dependencies:
-      '@babel/runtime': 7.20.13
+      '@babel/runtime': 7.24.4
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
@@ -14018,6 +14040,10 @@ packages:
 
   /regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+
+  /regenerator-runtime@0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
+    dev: false
 
   /regenerator-transform@0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
@@ -15325,7 +15351,7 @@ packages:
       postcss-sass: 0.3.5
       postcss-scss: 1.0.6
       postcss-selector-parser: 3.1.2
-      postcss-syntax: 0.28.0(postcss-html@0.28.0)(postcss-less@2.0.0)(postcss-markdown@0.28.0)(postcss-scss@1.0.6)(postcss@6.0.23)
+      postcss-syntax: 0.28.0(postcss@8.4.23)
       postcss-value-parser: 3.3.1
       resolve-from: 4.0.0
       signal-exit: 3.0.7
