@@ -4,8 +4,15 @@ const plugins = require('./plugins')
 const config = {
 	projectName: 'taro3-react-template',
 	date: '2021-12-10',
-	designWidth: 750,
+	designWidth(input) {
+		// nutui 组件库需要特殊处理
+		if (input?.file.replace(/\\+/g, '/').indexOf('@nutui/nutui-react-taro') > -1) {
+			return 375
+		}
+		return 750
+  },
 	deviceRatio: {
+		375: 2 / 1,
 		640: 2.34 / 2,
 		750: 1,
 		828: 1.81 / 2,
@@ -28,8 +35,9 @@ const config = {
 	compiler: {
 		type: 'webpack5',
 		prebundle: {
+			// exclude 掉第三方库，规避 prebundle 模式下可能出现的报错
 			exclude: ['@nutui/nutui-react-taro']
-		}
+		},
 	},
 	framework: 'react',
 	mini: {
