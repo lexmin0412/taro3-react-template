@@ -2,7 +2,17 @@
 	"name": "taro3-react-template",
 	"version": "1.0.0",
 	"private": true,
-	"description": "taro3-react多端项目模板",
+	"description": "基于 Taro3 + React Hooks + TypeScript + Scss 的开箱即用的多端项目模版。",
+	"keywords": [
+		"taro",
+		"taro3",
+		"react"
+	],
+	"author": {
+		"name": "lexmin0412",
+		"email": "zhangle_dev@ouutlook.com",
+		"url": "https://github.com/lexmin0412"
+	},
 	"templateInfo": {
 		"name": "mobx",
 		"typescript": true,
@@ -38,7 +48,6 @@
 		"Android >= 4.1",
 		"ios >= 8"
 	],
-	"author": "",
 	"license": "MIT",
 	"dependencies": {
 		"@babel/runtime": "^7.7.7",
