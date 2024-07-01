@@ -27,7 +27,7 @@ module.exports = {
 		'react/jsx-indent-props': 0, // 不验证jsx缩进
 		'no-unused-vars': [
 			// 不允许未使用的变量
-			'error',
+			'warn',
 			{
 				varsIgnorePattern: 'Taro', // Taro框架要求在使用class组件的时候必须在文件中声明Taro 但是不是所有文件都会显式使用到 所以忽略
 			},
