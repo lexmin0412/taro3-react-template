@@ -5,8 +5,8 @@ const config = {
 	projectName: 'taro3-react-template',
 	date: '2021-12-10',
 	designWidth(input) {
-		// nutui 组件库需要特殊处理
-		if (input?.file.replace(/\\+/g, '/').indexOf('@nutui/nutui-react-taro') > -1) {
+		// nutui 组件库特殊处理
+		if (input?.file && input.file.replace(/\\+/g, '/').indexOf('@nutui/nutui-react-taro') > -1) {
 			return 375
 		}
 		return 750
