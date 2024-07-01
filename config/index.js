@@ -25,7 +25,12 @@ const config = {
 		patterns: [],
 		options: {},
 	},
-	compiler: 'webpack5',
+	compiler: {
+		type: 'webpack5',
+		prebundle: {
+			exclude: ['@nutui/nutui-react-taro']
+		}
+	},
 	framework: 'react',
 	mini: {
 		postcss: {
