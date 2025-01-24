@@ -112,6 +112,7 @@ class Route {
 				Taro.switchTab({
 					url: finalUrl,
 				})
+				break
 			default:
 				Taro.navigateTo({
 					url: finalUrl,
