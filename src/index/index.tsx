@@ -4,30 +4,38 @@ import { Button } from '@nutui/nutui-react-taro'
 import Router from '@/utils/route'
 
 import './index.scss'
+import toast from '@/utils/toast'
 
 const Index = (): JSX.Element => {
 	useEffect(() => {
-		console.log('process.env', process.env.TARO_ENV)
-		console.log('TARO_API_BASE', process.env.TARO_API_BASE)
+		try {
+			console.log('已配置环境变量✅')
+			console.log('process.env', process.env.TARO_ENV)
+			console.log('TARO_API_BASE', process.env.TARO_API_BASE)
+		} catch (error) {
+			const msg = '读取环境变量异常，请先阅读 README.md, 配置环境变量后重新启动'
+			console.error(msg)
+			toast.info(msg)
+		}
 	}, [])
 
 	/**
 	 * 跳转demo页面
 	 */
 	const jumpToDemo = (demoType: 'router'|'form') => {
+		let url = ''
 		switch (demoType) {
 			case 'router':
-				Router.navigateTo({
-					url: '/demo/router/router',
-				})
+				url = '/demo/router/router';
 				break
 			case 'form':
-				Router.navigateTo({
-					url: '/demo/form/form'
-				})
-
+				url = '/demo/form/form';
 				break
+			default:
+				toast.info('不存在的 Demo 页面，请检查')
+				return
 		}
+		Router.navigateTo({ url })
 	}
 
 	return (
