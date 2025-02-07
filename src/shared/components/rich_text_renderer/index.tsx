@@ -18,11 +18,11 @@ interface RichTextRendererProps {
 	/**
 	 * 图片点击事件
 	 */
-	onImageClick?: () => void
+	onImageClick?: (src: string) => void
 	/**
 	 * 链接点击事件
 	 */
-	onLinkClick?: () => void
+	onLinkClick?: (src: string) => void
 }
 
 const RichTextRenderer: React.FC<RichTextRendererProps> = props => {
