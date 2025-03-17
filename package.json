@@ -49,7 +49,7 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@babel/runtime": "^7.7.7",
+		"@babel/runtime": "^7.26.10",
 		"@nutui/nutui-react-taro": "^2.5.2",
 		"@tarojs/components": "3.6.32",
 		"@tarojs/helper": "3.6.32",
