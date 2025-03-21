@@ -22,6 +22,7 @@
 		"node": ">=16.14.0",
 		"pnpm": ">=8.0.0"
 	},
+	"packageManager": "pnpm@8.9.2",
 	"scripts": {
 		"build:weapp": "taro build --type weapp",
 		"dev:weapp": "taro build --type weapp --watch",
@@ -38,9 +39,18 @@
 		}
 	},
 	"lint-staged": {
-		"*.{cjs,mjs,js,ts,tsx}": ["eslint", "prettier --write"],
-		"*.{css,less}": ["stylelint --fix", "prettier --write"],
-		"*.{json,jsonc,html,yml,yaml,md}": ["markdownlint-cli2 .md", "prettier --write"]
+		"*.{cjs,mjs,js,ts,tsx}": [
+			"eslint",
+			"prettier --write"
+		],
+		"*.{css,less}": [
+			"stylelint --fix",
+			"prettier --write"
+		],
+		"*.{json,jsonc,html,yml,yaml,md}": [
+			"markdownlint-cli2 .md",
+			"prettier --write"
+		]
 	},
 	"browserslist": [
 		"last 3 versions",
@@ -83,18 +93,18 @@
 		"@types/react": "18.0.15",
 		"@types/webpack-env": "^1.13.6",
 		"@typescript-eslint/parser": "^6.2.0",
-    "@typescript-eslint/eslint-plugin": "^6.2.0",
+		"@typescript-eslint/eslint-plugin": "^6.2.0",
 		"@youtils/commitlint-plugin-standard": "^0.0.1",
 		"babel-loader": "^8.2.5",
 		"babel-plugin-import": "^1.13.6",
 		"babel-preset-taro": "3.6.32",
 		"cache-loader": "^4.1.0",
 		"cross-env": "^7.0.2",
-    "eslint": "^8.12.0",
-    "eslint-config-taro": "3.6.32",
-    "eslint-plugin-react": "^7.8.2",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
+		"eslint": "^8.12.0",
+		"eslint-config-taro": "3.6.32",
+		"eslint-plugin-react": "^7.8.2",
+		"eslint-plugin-import": "^2.12.0",
+		"eslint-plugin-react-hooks": "^4.2.0",
 		"husky": "^4.3.0",
 		"lint-staged": "^10.4.0",
 		"markdownlint": "^0.25.1",
